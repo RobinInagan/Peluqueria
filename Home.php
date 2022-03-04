@@ -16,8 +16,11 @@
 
     <!-- Iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" language="javascript" src="js/funciones.js"></script>
-
+    <!-- <script type="text/javascript" language="javascript" src="js/funciones.js"></script> -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Outfit:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="./CSS/Style.css">
 
@@ -26,7 +29,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="./Home.php">
                 <img src="./Images/LogoPequeño.jpg" alt="" width="100" height="100">
@@ -93,7 +96,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="recipient-name" class="col-form-label">Nombre(s): </label>
-                                        <input type="text" class="form-control" id="user">
+                                        <input type="text" class="form-control" id="nombre">
                                     </div>
                                     <div class="mb-3">
                                         <label for="recipient-name" class="col-form-label">Apellidos: </label>
@@ -124,32 +127,34 @@
                     </div>
                 </div>
     </nav>
-    <div class="p-3 mb-2 centrar">
-        <div id="carouselExampleIndicators" class="carousel slide tamanio centrar" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <div class="container">
+        <div class="p-3 mb-2">
+            <div id="carouselExampleIndicators" class="carousel slide " data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./Images/Local.jpeg" class="d-block w-100" alt="..." height="600">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./Images/Local2.jpeg" class="d-block w-100" alt="..." height="600">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./Images/Local3.jpeg" class="d-block w-100" alt="..." height="600">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <div class="carousel-inner tamanio centrar">
-                <div class="carousel-item active">
-                    <img src="./Images/Local.jpeg" class="d-block w-100" alt="..." height="500" width="250">
-                </div>
-                <div class="carousel-item">
-                    <img src="./Images/Local2.jpeg" class="d-block w-100" alt="..." height="500" width="250">
-                </div>
-                <div class="carousel-item">
-                    <img src="./Images/Local3.jpeg" class="d-block w-100" alt="..." height="500" width="250">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
     </div>
     <?php
@@ -197,6 +202,17 @@
     ?>
 
     </table>
+
+    <footer class="bg bg-dark text-white">
+        <div class="centrar">
+            <address>
+                <h3>Galfersh Barber</h3>
+                <p> <span class="format"></span> Cra 33 #23-45 </p>
+                <p><span class=""></span>323424455</p>
+                <p><span class=""></span>galfershbarber@gmail.com</p>
+            </address>
+        </div>
+    </footer>
 
     <script src="./jquery/jquery-3.6.0.min.js"></script>
     <script src="./sw/dist/sweetalert2.all.min.js"></script>
