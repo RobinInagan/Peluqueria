@@ -12,7 +12,7 @@
     <link rel="stylesheet" language="javascript" href="./bootstrap/css/bootstrap.min.css">
     <!-- Sweet alert-->
     <link rel="stylesheet" href="./sw/dist/sweetalert2.min.css">
-    <script type="text/javascript" language="javascript" src="./js/funciones.js"></script>
+    <script type="text/javascript" language="javascript" src="./JavasScript/Funciones.js"></script>
     <title>Gestión Empleados</title>
 </head>
 
@@ -71,7 +71,7 @@
             Swal.fire({
                 title: 'Exito',
                 text: 'El empleado con id $idC fue modificado',
-                icon: 'Success',
+                icon: 'success',
             }).then((result)=>{
                     if(result.value){
                         window.location ='gestionC.php';
@@ -92,17 +92,17 @@
         }
         
         public function Eliminar($id){
-            $sql="Delete from `cliente` where `idCliente` = $id ";
-            $res = mysqli_query(Conexion::Conectar(),$sql)or die ("Error en la consulta sql al editar");
+            $sql="DELETE FROM `cliente` WHERE `cliente`.`idCliente` = $id";
+            $res=mysqli_query(Conexion::Conectar(),$sql)or die ("Error en la consulta sql al Eliminar");
             echo " 
             <script type = 'text/javascript'>
             Swal.fire({
                 title: 'Exito',
                 text: 'El cliente con id $id fue eliminado',
-                icon: 'Success',
+                icon: 'success',
             }).then((result)=>{
                     if(result.value){
-                        window.location ='menu.php';
+                        window.location ='gestionC.php';
                     }
                 });
             </script>

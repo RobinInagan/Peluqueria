@@ -16,7 +16,7 @@
 
     <!-- Iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" language="javascript" src="js/funciones.js"></script>
+    <script type="text/javascript" language="javascript" src="./JavasScript/Funciones.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -182,7 +182,7 @@
                             <button class="btn btn-warning " onclick=window.location="./editarC.php?idCliente=<?php echo $reg[$i]['idCliente']; ?>">
                                 <span class="material-icons">mode_edit</span>
                             </button>
-                            <button class="btn btn-danger" onclick="eliminar('eliminar.php?id=<?php echo $reg[$i]['idCliente']; ?>')">
+                            <button class="btn btn-danger" onclick="eliminar('eliminarC.php?id=<?php echo $reg[$i]['idCliente']; ?>')">
                                 <span class="material-icons">delete_sweep </span>
                             </button>
                         </td>
