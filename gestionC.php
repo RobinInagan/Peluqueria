@@ -178,7 +178,7 @@
                         echo "<td>" . $reg[$i]['Fecha_N'] . "</td>";
                     ?>
                         <td class="col-2">
-                            <button class="btn btn-warning " onclick=window.location="./editar.php?id=<?php echo $reg[$i]['idCliente']; ?>">
+                            <button class="btn btn-warning " data-bs-toggle="modal" data-bs-target="#Editar">
                                 <span class="material-icons">mode_edit</span>
                             </button>
                             <button class="btn btn-danger" onclick="eliminar('eliminar.php?id=<?php echo $reg[$i]['idCliente']; ?>')">
@@ -186,14 +186,45 @@
                             </button>
                         </td>
                         </tr>
+                        <div class="modal fade" id="Editar" tabindex="-1" aria-labelledby="Editar" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Editar">Editar Datos</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="message-text" class="col-form-label">Cédula: </label>
+                                                <input type="text" class="form-control" id="id_C" value="<?php echo $reg[$i]['idCliente']; ?>">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="message-text" class="col-form-label">Nombre(s): </label>
+                                                <input type="text" class="form-control" id="nombres" value="<?php echo $reg[$i]['nombres']; ?>">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer centrar">
+                                        <button type="button" class="btn btn btn-success ">Iniciar Sesión</button>
+                                    </div>
+                                    <div class="mb-3 centrar">
+                                        <a href=" ">Olvido Su Contraseña?</a>
+                                    </div>
+                                    <div class="mb-3 centrar">
+                                        <a>¿No tiene cuenta aún? Registrese!</a><br>
+                                        <button type="button" class="btn btn-secondary" data-bs-target="#Registrar" data-bs-toggle="modal" data-bs-dismiss="modal">Registrarse</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     <?php
                     }
                     ?>
-                </table>                
+                </table>
             </div>
         </div>
         <footer class="bg bg-dark text-white fixed-bottom">
-
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
