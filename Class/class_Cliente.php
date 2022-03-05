@@ -41,33 +41,34 @@
             return $this-> cliente;
         }
 
-        public function insertar($cod,$nom,$apel,$email,$te,$fn,$dep){
-            $sql ="insert into empleados values ($cod,'$nom','$apel','$email','$te','$fn',$dep)";
-            $res = mysqli_query(Conectar::con(),$sql)or die ("Error en la consulta sql al insertar");
+        public function insertar($idC,$nomC,$apelC,$dirC,$email,$fn){
+            $sql ="INSERT INTO `cliente`(`idCliente`, `nombres`, `Apellidos`, `direccion`, `Correo`, `Fecha_N`) VALUES ('$idC','$nomC','$apelC','$dirC','$email','$fn')";
+            $res = mysqli_query(Conexion::conectar(),$sql) or die ("Error en la consulta sql al insertar");
             echo " 
                 <script type = 'text/javascript'>
                 Swal.fire({
                     title: 'Exito',
-                    text: 'El empleado se registro correctamente',
+                    text: 'El cliente se registro correctamente',
                     icon: 'Success',
                 }).then((result)=>{
                         if(result.value){
-                            window.location ='menu.php';
+                            window.location ='Home.php';
                         }
                     });
                 </script>
             ";
         }
 
-        public function  editar($nom,$apel,$email,$fn,$te,$id){
-            $sql="UPDATE `empleados` SET `nomb_e`='$nom',`apel_e`='$apel',`email_e`='$email',
-            `tele_e`='$te',`fecha_e`='$fn' WHERE  id_e='$id'";
-            $res = mysqli_query(Conectar::con(),$sql)or die ("Error en la consulta sql al editar");
+
+
+        public function  editar($idC,$nomC,$apelC,$dirC,$email,$fn){
+            $sql="UPDATE `cliente` SET `nombres`='$nomC',`Apellidos`='$apelC',`direccion`='$dirC',`Correo`='$email',`Fecha_N`='$fn' WHERE `idCliente` =$idC'";
+            $res = mysqli_query(Conexion::conectar(),$sql)or die ("Error en la consulta sql al editar");
             echo " 
             <script type = 'text/javascript'>
             Swal.fire({
                 title: 'Exito',
-                text: 'El empleado con id $id fue modificado',
+                text: 'El empleado con id $idC fue modificado',
                 icon: 'Success',
             }).then((result)=>{
                     if(result.value){
@@ -76,26 +77,26 @@
                 });
             </script>
         ";
-
         }
+
         //Crear una función para capturar el id de los botones de acción 
-        public function empid($id){
-            $sql="select * from empleados where id_e = $id";
-            $res = mysqli_query(Conectar::con(),$sql)or die ("Error en la consulta sql al buscar");
+        public function clientepid($id){
+            $sql="select * from `cliente` where `idCliente` = $id";
+            $res = mysqli_query(Conexion::Conectar(),$sql)or die ("Error en la consulta sql al buscar");
             if($reg=mysqli_fetch_assoc($res)){
-                $this -> emple[]=$reg;
+                $this -> cliente[]=$reg;
             }
-            return $this -> emple;
+            return $this -> cliente;
         }
         
         public function Eliminar($id){
-            $sql="Delete from empleados where id_e= $id ";
-            $res = mysqli_query(Conectar::con(),$sql)or die ("Error en la consulta sql al editar");
+            $sql="Delete from `cliente` where `idCliente` = $id ";
+            $res = mysqli_query(Conexion::Conectar(),$sql)or die ("Error en la consulta sql al editar");
             echo " 
             <script type = 'text/javascript'>
             Swal.fire({
                 title: 'Exito',
-                text: 'El empleado con id $id fue eliminado',
+                text: 'El cliente con id $id fue eliminado',
                 icon: 'Success',
             }).then((result)=>{
                     if(result.value){
@@ -103,7 +104,7 @@
                     }
                 });
             </script>
-        ";;
+        ";
         }
     }
     ?>

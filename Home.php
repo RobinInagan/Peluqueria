@@ -47,6 +47,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
+                    </li>
                 </ul>
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Login">Acceder</button>
             </div>
@@ -97,11 +98,11 @@
                     <form>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Cédula: </label>
-                            <input type="text" class="form-control" id="id_c">
+                            <input type="number" class="form-control" id="id_c">
                         </div>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Nombre(s): </label>
-                            <input type="text" class="form-control" id="user">
+                            <input type="text" class="form-control" id="nomb">
                         </div>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Apellidos: </label>
@@ -113,7 +114,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Teléfono: </label>
-                            <input type="text" class="form-control" id="tel_u">
+                            <input type="number" class="form-control" id="tel_u">
                         </div>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Dirección: </label>
@@ -122,6 +123,14 @@
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Fecha de Nacimiento: </label>
                             <input type="date" class="form-control" id="fecha_n">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Usuario: </label>
+                            <input type="text" class="form-control" id="user">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Contraseña: </label>
+                            <input type="password" class="form-control" id="paswd">
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Registrarse</button>
