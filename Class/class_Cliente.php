@@ -19,6 +19,8 @@
 <body>
     <?php
 
+    include("./Conexion.php");
+
     //clase empleado 
     class Cliente{
         private $cliente;
@@ -62,7 +64,7 @@
 
 
         public function  editar($idC,$nomC,$apelC,$dirC,$email,$fn){
-            $sql="UPDATE `cliente` SET `nombres`='$nomC',`Apellidos`='$apelC',`direccion`='$dirC',`Correo`='$email',`Fecha_N`='$fn' WHERE `idCliente` =$idC'";
+            $sql="UPDATE `cliente` SET `nombres`='$nomC',`Apellidos`='$apelC',`direccion`='$dirC',`Correo`='$email',`Fecha_N`='$fn' WHERE `idCliente` ='$idC'";
             $res = mysqli_query(Conexion::conectar(),$sql)or die ("Error en la consulta sql al editar");
             echo " 
             <script type = 'text/javascript'>
@@ -72,7 +74,7 @@
                 icon: 'Success',
             }).then((result)=>{
                     if(result.value){
-                        window.location ='menu.php';
+                        window.location ='gestionC.php';
                     }
                 });
             </script>
@@ -80,7 +82,7 @@
         }
 
         //Crear una función para capturar el id de los botones de acción 
-        public function clientepid($id){
+        public function clienteid($id){
             $sql="select * from `cliente` where `idCliente` = $id";
             $res = mysqli_query(Conexion::Conectar(),$sql)or die ("Error en la consulta sql al buscar");
             if($reg=mysqli_fetch_assoc($res)){

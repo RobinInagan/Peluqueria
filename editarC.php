@@ -1,3 +1,15 @@
+<?php
+include("./Class/class_Cliente.php");
+
+$cli = new Cliente();
+
+if (isset($_POST['grabar']) && $_POST['grabar'] == "si") {
+    $cli->editar($_POST['id'], $_POST['nom_c'], $_POST['apel_c'], $_POST['dir_c'], $_POST['email_c'], $_POST['fecha_c']);
+    exit();
+}
+
+$reg = $cli->clienteid($_GET['idCliente']);
+?>
 <!doctype html>
 <html lang="es">
 
@@ -28,7 +40,7 @@
     <link rel="icon" type="image/x-icon" href="./Images/Logo.jpg">
 </head>
 
-<body>
+<body class="bg-secondary bg-gradient">
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="./Home.php">
@@ -145,68 +157,63 @@
     </div>
     <div class="posicion">
         <div class="container">
-            <?php
-            //crear el objeto de tipo cliente
-            include("./Class/class_Cliente.php");
-
-            $cl = new Cliente();
-            $reg = $cl->Mostrar();
-
-            ?>
-            <div class="card-footer posicion">
-                <table class="table table-dark table-striped">
-                    <thead>
-                        <tr>
-                            <th>Cédula</th>
-                            <th>Nombre(s)</th>
-                            <th>Apellidos</th>
-                            <th>Dirección</th>
-                            <th>Correo</th>
-                            <th>fecha Nacimiento</th>
-                            <th class="col-2">Acciones</th>
-                        </tr>
-                    </thead>
-                    <?php
-
-                    //traer datos de la función mostrar.
-                    for ($i = 0; $i < count($reg); $i++) {
-                        echo "<tr>";
-                        echo "<td>" . $reg[$i]['idCliente'] . "</td>";
-                        echo "<td>" . $reg[$i]['nombres'] . "</td>";
-                        echo "<td>" . $reg[$i]['Apellidos'] . "</td>";
-                        echo "<td>" . $reg[$i]['direccion'] . "</td>";
-                        echo "<td>" . $reg[$i]['Correo'] . "</td>";
-                        echo "<td>" . $reg[$i]['Fecha_N'] . "</td>";
-                    ?>
-                        <td class="col-2">
-                            <button class="btn btn-warning " onclick=window.location="./editarC.php?idCliente=<?php echo $reg[$i]['idCliente']; ?>">
-                                <span class="material-icons">mode_edit</span>
-                            </button>
-                            <button class="btn btn-danger" onclick="eliminar('eliminar.php?id=<?php echo $reg[$i]['idCliente']; ?>')">
-                                <span class="material-icons">delete_sweep </span>
-                            </button>
-                        </td>
-                        </tr>
-                    <?php
-                    }
-                    ?>
-                </table>
+            <div class="card-header ">
+                <br>
+                <h3 class="text-white">ACTUALIZACIÓN DE CLIENTES</h3>
             </div>
+            <div class=" card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <form name="form" action="editarC.php" method="POST">
+                            <input type="hidden" name="grabar" value="si">
+                            <label for="idCliente">Cedula</label>
+                            <input class="form-control" type="text" name="id" value="<?php echo $_GET['idCliente'] ?>" readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="nom_e">Nombre</label>
+                        <input type="text" id="nom_c" name="nom_c" class="form-control" value="<?php echo $reg[0]['nombres'] ?>">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="apel_e">Apellidos</label>
+                        <input type="text" id="apel_c" name="apel_c" class="form-control" value="<?php echo $reg[0]['Apellidos'] ?>">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="tel_e">Dirección</label>
+                        <input type="text" id="dir_c" name="dir_c" class="form-control" value="<?php echo $reg[0]['direccion'] ?>">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="email_e">Correo</label>
+                        <input type="text" id="email_c" name="email_c" class="form-control" value="<?php echo $reg[0]['Correo'] ?>">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="fecha_e">Fecha de Nacimiento</label>
+                        <input type="date" id="fecha_c" name="fecha_c" class="form-control" value="<?php echo $reg[0]['Fecha_N'] ?>">
+                    </div>
+                    <br><br><br>
+                    <div class="col-md-12 centrar">
+                        <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='gestionC.php'">
+                        <input type="submit" value="Editar" class="btn btn-dark" title="Editar">
+                    </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
-        <footer class="bg bg-dark text-white fixed-bottom">
-            <div class="centrar">
-                <address>
-                    <h3>Galfersh Barber</h3>
-                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
-                </address>
-            </div>
-        </footer>
-
-        <script src="./jquery/jquery-3.6.0.min.js"></script>
-        <script src="./sw/dist/sweetalert2.all.min.js"></script>
-        <script src="./bootstrap/js/bootstrap.min.js"></script>
+    </div>
+    <footer class="bg bg-dark text-white fixed-bottom">
+        <div class="centrar">
+            <address>
+                <h3>Galfersh Barber</h3>
+                <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
+                <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
+                <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+            </address>
+        </div>
+    </footer>
+    <script src="./jquery/jquery-3.6.0.min.js"></script>
+    <script src="./sw/dist/sweetalert2.all.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
