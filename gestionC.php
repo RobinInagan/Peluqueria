@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./Home.php">Home</a>
+                        <a class="nav-link " aria-current="page" href="./Home.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sobre Nosotros</a>
@@ -49,7 +49,7 @@
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./gestionC.php">Gestión clientes</a>
+                        <a class="nav-link active" href="./gestionC.php">Gestión clientes</a>
                     </li>
                 </ul>
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Login">Acceder</button>
@@ -143,106 +143,70 @@
             </div>
         </div>
     </div>
-
     <div class="posicion">
         <div class="container">
-            <div class="p-3 mb-2 centrar">
-                <div id="carouselExampleIndicators" class="carousel slide tamanio centrar" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner tamanio centrar">
-                        <div class="carousel-item active">
-                            <img src="./Images/Local.jpeg" class="d-block w-100" alt="..." height="600" width="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./Images/Local2.jpeg" class="d-block w-100" alt="..." height="600" width="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./Images/Local3.jpeg" class="d-block w-100" alt="..." height="600" width="">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+            <?php
+            //crear el objeto de tipo cliente
+            include("./Class/class_Cliente.php");
+            include("./Conexion.php");
+            $cl = new Cliente();
+            $reg = $cl->Mostrar();
+            ?>
+            <div class="card-footer posicion">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cédula</th>
+                            <th>Nombre(s)</th>
+                            <th>Apellidos</th>
+                            <th>Dirección</th>
+                            <th>Correo</th>
+                            <th>fecha Nacimiento</th>
+                            <th class="col-2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <?php
+
+                    //traer datos de la función mostrar.
+                    for ($i = 0; $i < count($reg); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $reg[$i]['idCliente'] . "</td>";
+                        echo "<td>" . $reg[$i]['nombres'] . "</td>";
+                        echo "<td>" . $reg[$i]['Apellidos'] . "</td>";
+                        echo "<td>" . $reg[$i]['direccion'] . "</td>";
+                        echo "<td>" . $reg[$i]['Correo'] . "</td>";
+                        echo "<td>" . $reg[$i]['Fecha_N'] . "</td>";
+                    ?>
+                        <td class="col-2">
+                            <button class="btn btn-warning " onclick=window.location="./editar.php?id=<?php echo $reg[$i]['idCliente']; ?>">
+                                <span class="material-icons">mode_edit</span>
+                            </button>
+                            <button class="btn btn-danger" onclick="eliminar('eliminar.php?id=<?php echo $reg[$i]['idCliente']; ?>')">
+                                <span class="material-icons">delete_sweep </span>
+                            </button>
+                        </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>                
             </div>
         </div>
-    </div>
-    <?php
-    /*
-    //crear el objeto de tipo empleado
-    include("./Class/class_Cliente.php");
-    include("./Conexion.php");
-    $cl = new Cliente();
-    $reg = $cl->Mostrar();
-    ?>
-    <div class="card-footer">
-        <table class="table table-dark table-striped">
-            <thead>
-                <tr>
-                    <th>Cédula</th>
-                    <th>Nombre</th>
-                    <th>Dirección</th>
-                    <th class="col-2">Acciones</th>
-                </tr>
-            </thead>
-            <?php
+        <footer class="bg bg-dark text-white fixed-bottom">
 
-            //traer datos de la función mostrar.
-            for ($i = 0; $i < count($reg); $i++) {
-                echo "<tr>";
-                echo "<td>" . $reg[$i]['idCliente'] . "</td>";
-                echo "<td>" . $reg[$i]['nombre'] . "</td>";
-                echo "<td>" . $reg[$i]['direccion'] . "</td>";
-            ?>
-                <td>
-                    <button class="btn btn-warning" onclick=window.location="./editar.php?id=<?php echo $reg[$i]['idCliente']; ?>">
-                        <span class="material-icons">mode_edit</span>
-                    </button>
-                </td>
-                <td>
-                <td><button class="btn btn-danger" onclick="eliminar('eliminar.php?id=<?php echo $reg[$i]['idCliente']; ?>')">
-                        <span class="material-icons">delete_sweep </span>
-                    </button>
-                </td>
-                </td>
-                </tr>
-            <?php
-            }
-            */
-    ?>
+            <div class="centrar">
+                <address>
+                    <h3>Galfersh Barber</h3>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                </address>
+            </div>
+        </footer>
 
-    </table>
-    <footer class="bg bg-dark text-white">
-
-        <div class="centrar">
-            <address>
-                <h3>Galfersh Barber</h3>
-                <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
-            </address>
-        </div>
-    </footer>
-
-    <script src="./jquery/jquery-3.6.0.min.js"></script>
-    <script src="./sw/dist/sweetalert2.all.min.js"></script>
-    <script src="./bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        $(function() {
-            $('.carousel').carousel({
-                interval: 2000
-            });
-        });
-    </script>
+        <script src="./jquery/jquery-3.6.0.min.js"></script>
+        <script src="./sw/dist/sweetalert2.all.min.js"></script>
+        <script src="./bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

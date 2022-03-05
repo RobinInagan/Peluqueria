@@ -3,17 +3,17 @@
     text-align: center;
 }
 
-nav{
+nav {
     position: fixed;
 }
-*{
+
+* {
     font-family: 'Josefin Sans', sans-serif;
     font-family: 'Outfit', sans-serif;
     font-family: 'Poppins', sans-serif;
 }
 
-.posicion{
+.posicion {
     margin-top: 120px;
     margin-bottom: 0px;
 }
-
