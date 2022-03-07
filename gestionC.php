@@ -51,6 +51,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="./gestionC.php">Gestión clientes</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./gestionE.php">Gestión Empleado</a>
+                    </li>
                 </ul>
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Login">Acceder</button>
             </div>
@@ -193,6 +196,7 @@
                 </table>
             </div>
         </div>
+    </div>
         <footer class="bg bg-dark text-white fixed-bottom">
             <div class="centrar">
                 <address>
