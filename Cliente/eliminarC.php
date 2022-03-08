@@ -1,6 +1,6 @@
 <?php
 
-include("./Class/class_Cliente.php");
+include("../Class/class_Cliente.php");
 
 $cli = new Cliente();
 

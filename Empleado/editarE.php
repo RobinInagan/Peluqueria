@@ -1,5 +1,5 @@
 <?php
-include("./Class/class_Empleado.php");
+include("../Class/class_Empleado.php");
 
 $emp = new Empleado();
 
@@ -21,10 +21,10 @@ $reg = $emp->empleadoId($_GET['idEmpleado']);
     <!-- Bootstrap CSS 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     -->
-    <link rel="stylesheet" language="javascript" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" language="javascript" href="../bootstrap/css/bootstrap.min.css">
 
     <!-- Sweet alert-->
-    <link rel="stylesheet" href="./sw/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../sw/dist/sweetalert2.min.css">
 
     <!-- Iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,17 +34,17 @@ $reg = $emp->empleadoId($_GET['idEmpleado']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Outfit:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="./CSS/Style.css">
+    <link rel="stylesheet" href="../CSS/Style.css">
 
     <title>Galfersh Barber</title>
-    <link rel="icon" type="image/x-icon" href="./Images/Logo.jpg">
+    <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
 </head>
 
 <body class="bg-secondary bg-gradient">
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./Home.php">
-                <img src="./Images/LogoPequeño.jpg" alt="" width="100" height="100">
+            <a class="navbar-brand" href="../Home.php">
+                <img src="../Images/LogoPequeño.jpg" alt="" width="100" height="100">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,7 @@ $reg = $emp->empleadoId($_GET['idEmpleado']);
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="./Home.php">Home</a>
+                        <a class="nav-link " aria-current="page" href="../Home.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sobre Nosotros</a>
@@ -61,10 +61,10 @@ $reg = $emp->empleadoId($_GET['idEmpleado']);
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./gestionC.php">Gestión clientes</a>
+                        <a class="nav-link active" href="../Cliente/gestionC.php">Gestión clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./gestionE.php">Gestión Empleado</a>
+                        <a class="nav-link" href="../Empleado/gestionE.php">Gestión Empleado</a>
                     </li>
                 </ul>
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Login">Acceder</button>
@@ -247,9 +247,9 @@ $reg = $emp->empleadoId($_GET['idEmpleado']);
             </address>
         </div>
     </footer>
-    <script src="./jquery/jquery-3.6.0.min.js"></script>
-    <script src="./sw/dist/sweetalert2.all.min.js"></script>
-    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script src="../sw/dist/sweetalert2.all.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

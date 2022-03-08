@@ -1,6 +1,6 @@
 <?php
 
-include("./Class/class_Empleado.php");
+include("../Class/class_Empleado.php");
 
 $emp = new Empleado();
 

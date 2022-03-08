@@ -49,10 +49,10 @@
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./gestionC.php">Gestión clientes</a>
+                        <a class="nav-link" href="./Cliente/gestionC.php">Gestión clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./gestionE.php">Gestión Empleado</a>
+                        <a class="nav-link" href="./Empleado/gestionE.php">Gestión Empleado</a>
                     </li>
                 </ul>
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Login">Acceder</button>

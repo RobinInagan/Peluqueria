@@ -4,8 +4,8 @@ function eliminar(url) {
         text: 'No se puede reversar la acción',
         icon: 'question',
         showCancelButton: true,
-        confirmButtonColor: '#4BC21B',
-        cancelButtonColor: '#C21B1B',
+        confirmButtonColor: '#1c6b2a',
+        cancelButtonColor: '#800e1d',
         confirmButtonText: 'Si,eliminar registro',
     }).then((result) => {
         if (result.value) {
