@@ -9,30 +9,30 @@
     <!-- Bootstrap CSS 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     -->
-    <link rel="stylesheet" language="javascript" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" language="javascript" href="../bootstrap/css/bootstrap.min.css">
 
     <!-- Sweet alert-->
-    <link rel="stylesheet" href="./sw/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../sw/dist/sweetalert2.min.css">
 
     <!-- Iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" language="javascript" src="js/funciones.js"></script>
+    <script type="text/javascript" language="javascript" src="../JavasScript/Funciones.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Outfit:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="./CSS/Style.css">
+    <link rel="stylesheet" href="../CSS/Style.css">
 
     <title>Galfersh Barber</title>
-    <link rel="icon" type="image/x-icon" href="./Images/Logo.jpg">
+    <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./Home.php">
-                <img src="./Images/LogoPequeño.jpg" alt="" width="100" height="100">
+            <a class="navbar-brand" href="../Home.php">
+                <img src="../Images/LogoPequeño.jpg" alt="" width="100" height="100">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./Home.php">Home</a>
+                        <a class="nav-link " aria-current="page" href="../Home.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sobre Nosotros</a>
@@ -49,13 +49,13 @@
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./Cliente/gestionC.php">Gestión clientes</a>
+                        <a class="nav-link" href="../Cliente/gestionC.php">Gestión clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./Empleado/gestionE.php">Gestión Empleado</a>
+                        <a class="nav-link" href="../Empleado/gestionE.php">Gestión Empleado</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./Usuario/gestionU.php">Gestión Usuario</a>
+                        <a class="nav-link active" href="#">Gestión Usuario</a>
                     </li>
                 </ul>
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Login">Acceder</button>
@@ -91,16 +91,16 @@
                 </div>
                 <div class="mb-3 centrar">
                     <a>¿No tiene cuenta aún? Registrese!</a><br>
-                    <button type="button" class="btn btn-secondary" data-bs-target="#Registrar2" data-bs-toggle="modal" data-bs-dismiss="modal">Registrarse</button>
+                    <button type="button" class="btn btn-secondary" data-bs-target="#Registrar" data-bs-toggle="modal" data-bs-dismiss="modal">Registrarse</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="Registrar2" aria-hidden="true" aria-labelledby="Registrar2" tabindex="-1">
+    <div class="modal fade" id="Registrar" aria-hidden="true" aria-labelledby="Registrar" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="Registrar2">Registrarse</h5>
+                    <h5 class="modal-title" id="Registrar">Registrarse</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -149,43 +149,123 @@
             </div>
         </div>
     </div>
-
     <div class="posicion">
+        <br>
         <div class="container">
-            <div class="p-3 mb-2 centrar">
-                <div id="carouselExampleIndicators" class="carousel slide tamanio centrar" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner tamanio centrar">
-                        <div class="carousel-item active">
-                            <img src="./Images/Local.jpeg" class="d-block w-100" alt="..." height="600" width="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./Images/Local2.jpeg" class="d-block w-100" alt="..." height="600" width="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./Images/Local3.jpeg" class="d-block w-100" alt="..." height="600" width="">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+            <form action="./gestionU.php" method="POST" class="centrar">
+                <div class="btn-group btn-group-lg" role="group" aria-label="...">
+                    <button type="submit" id="admin" name="admin" class="btn btn-outline-dark" >Administradores</button>
+                    <button type="submit" name="cliente" class="btn btn-outline-dark">Clientes</button>
+                    <button type="submit" name="empleado" class="btn btn-outline-dark">Empleados</button>
                 </div>
+            </form>
+            <?php
+            //crear el objeto de tipo cliente
+            include("../Class/class_Usuario.php");
+
+        if(isset($_POST['admin'])){
+            $us = new Usuario();
+            $reg = $us->Mostrar(1);
+            ?>
+            <br>
+            <div class="card-footer">
+                <table class="table table-dark table-striped centrar">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Usuario</th>
+                        </tr>
+                    </thead>
+                    <?php
+
+                    //traer datos de la función mostrar.
+                    for ($i = 0; $i < count($reg); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $reg[$i]['idUsuario'] . "</td>";
+                        echo "<td>" . $reg[$i]['Usuario'] . "</td>";
+                    ?>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
             </div>
+            <?php
+
+        }
+
+        if(isset($_POST['cliente'])){
+            $us = new Usuario();
+            $reg = $us->Mostrar(2);
+            ?>
+            <br>
+            <div class="card-footer">
+                <table class="table table-dark table-striped centrar">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Usuario</th>
+                            <th>Cedula</th>
+                        </tr>
+                    </thead>
+                    <?php
+
+                    //traer datos de la función mostrar.
+                    for ($i = 0; $i < count($reg); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $reg[$i]['idUsuario'] . "</td>";
+                        echo "<td>" . $reg[$i]['Usuario'] . "</td>";
+                        echo "<td>" . $reg[$i]['Cliente_idCliente'] . "</td>";
+                    ?>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </div>
+            <?php
+
+        }
+        if(isset($_POST['empleado'])){
+            $us = new Usuario();
+            $reg = $us->Mostrar(3);
+            ?>
+            <br>
+            <div class="card-footer">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Usuario</th>
+                            <th>Cedula</th>
+                        </tr>
+                    </thead>
+                    <?php
+
+                    //traer datos de la función mostrar.
+                    for ($i = 0; $i < count($reg); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $reg[$i]['idUsuario'] . "</td>";
+                        echo "<td>" . $reg[$i]['Usuario'] . "</td>";
+                        echo "<td>" . $reg[$i]['Empleado_cedula'] . "</td>";
+                    ?>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </div>
+            <?php
+        }
+  
+        ?>
+    
         </div>
     </div>
-
-    </table>
-    <footer class="bg bg-dark text-white">
-
+    
+    
+    
+    <footer class="bg bg-dark text-white fixed-bottom">
         <div class="centrar">
             <address>
                 <h3>Galfersh Barber</h3>
@@ -196,16 +276,9 @@
         </div>
     </footer>
 
-    <script src="./jquery/jquery-3.6.0.min.js"></script>
-    <script src="./sw/dist/sweetalert2.all.min.js"></script>
-    <script src="./bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        $(function() {
-            $('.carousel').carousel({
-                interval: 2000
-            });
-        });
-    </script>
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script src="../sw/dist/sweetalert2.all.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

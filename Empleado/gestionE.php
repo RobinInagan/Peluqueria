@@ -25,14 +25,14 @@
     <link rel="stylesheet" href="../CSS/Style.css">
 
     <title>Galfersh Barber</title>
-    <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
+    <link rel="icon" type="image/x-icon" href="../IMAGES/Logo.jpg">
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../Home.php">
-                <img src="../Images/LogoPequeño.jpg" alt="" width="100" height="100">
+                <img src="../Images/LogoPequeño.jpg" alt="Logo" width="100" height="100">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -81,7 +81,7 @@
                     </form>
                 </div>
                 <div class="modal-footer centrar">
-                    <button type="button" class="btn btn btn-success ">Iniciar Sesión</button>
+                    <button type="button" class="btn btn btn-success">Iniciar Sesión</button>
                 </div>
                 <div class="mb-3 centrar">
                     <a href=" ">Olvido Su Contraseña?</a>
