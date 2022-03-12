@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -16,7 +19,7 @@
 
     <!-- Iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" language="javascript" src="js/funciones.js"></script>
+    <script type="text/javascript" language="javascript" src="./JavasScript/Funciones.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +31,7 @@
     <link rel="icon" type="image/x-icon" href="./Images/Logo.jpg">
 </head>
 
-<body>
+<body onload="limpiar();">
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="./Home.php">
@@ -48,17 +51,31 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./Cliente/gestionC.php">Gestión clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./Empleado/gestionE.php">Gestión Empleado</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./Usuario/gestionU.php">Gestión Usuario</a>
-                    </li>
+                    <?php
+                    if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./Cliente/gestionC.php">Gestión clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="./Empleado/gestionE.php">Gestión Empleado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./Usuario/gestionU.php">Gestión Usuario</a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
-                <a type="button" class="btn btn-outline-success" href="./Login.php">Acceder</a>
+
+                <?php
+                if (!$_SESSION['usuario']) {
+                    echo "<a type='button' class='btn btn-outline-success' href='./Login.php'>Acceder</a>";
+                }
+                if ($_SESSION['usuario']) {
+                    echo "<a type='button' class='btn btn-outline-danger' href='./logout.php'>Cerrar Sesión</a>";
+                }
+                ?>
             </div>
         </div>
     </nav>

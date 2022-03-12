@@ -1,3 +1,7 @@
+function limpiar() {
+    document.form.reset();
+}
+
 function eliminar(url) {
     swal.fire({
         title: '¿ Está Seguro ?',

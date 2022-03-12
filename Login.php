@@ -49,11 +49,11 @@
 
         <div class="frontbox">
             <div class="login">
-                <h2>LOG IN</h2>
-                <form action="./Home.php" method="PHP">
+                <h2>Iniciar Sesión</h2>
+                <form action="./validar.php" method="POST">
                     <div class="inputbox">
-                        <input type="text" name="email" placeholder="  Usuario">
-                        <input type="password" name="password" placeholder="  Contraseña">
+                        <input type="text" name="user" placeholder="  Usuario">
+                        <input type="password" name="pwd" placeholder="  Contraseña">
                     </div>
                     <p>¿Olvidaste tu contraseña?</p>
                     <button >Ingresar</button>
@@ -134,13 +134,6 @@
             $login.toggleClass('hide');
         })
 
-        setTimeout(function() {
-            $('#switch1').click()
-        }, 1000)
-
-        setTimeout(function() {
-            $('#switch2').click()
-        }, 3000)
     </script>
 </body>
 
