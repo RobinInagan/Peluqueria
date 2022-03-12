@@ -13,19 +13,127 @@
 
     <!-- Sweet alert-->
     <link rel="stylesheet" href="./sw/dist/sweetalert2.min.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Outfit:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <!-- Iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" language="javascript" src="js/funciones.js"></script>
+    <script type="text/javascript" language="javascript" src="./JavasScript/login.js"></script>
+    <link rel="stylesheet" href="./CSS/Style.css">
 
     <title>Galfersh Barber</title>
     <link rel="icon" type="image/x-icon" href="./Images/Logo.jpg">
 </head>
+
 <body>
-    
-<script src="./jquery/jquery-3.6.0.min.js"></script>
+
+
+    <div class="container2">
+        <div class="backbox">
+            <div class="loginMsg">
+                <div class="textcontent">
+                    <p class="title">¿No tienes cuenta?</p>
+                    <p>Regístrate</p>
+                    <button id="switch1">Registrarme</button>
+                </div>
+            </div>
+            <div class="signupMsg visibility">
+                <div class="textcontent">
+                    <p class="title">¿Ya tienes una cuenta?</p>
+                    <p>Entra para ver opciones de la peluquería</p>
+                    <button id="switch2">Ingresar</button>
+                </div>
+            </div>
+        </div>
+        <!-- backbox -->
+
+        <div class="frontbox">
+            <div class="login">
+                <h2>LOG IN</h2>
+                <form action="./Home.php" method="PHP">
+                    <div class="inputbox">
+                        <input type="text" name="email" placeholder="  Usuario">
+                        <input type="password" name="password" placeholder="  Contraseña">
+                    </div>
+                    <p>¿Olvidaste tu contraseña?</p>
+                    <button >Ingresar</button>
+                </form>
+            </div>
+
+            <div class="signup hide">
+                <h2>Registrar</h2>
+                <form action="">
+                    <div class="inputbox">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="text" name="nombre" placeholder="  Nombre">
+                                </td>
+                                <td>
+                                    <input type="text" name="apellido" placeholder="  Apellido">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="number" name="cedula" placeholder="  Cédula">
+                                </td>
+                                <td>
+                                    <input type="email" name="correo" placeholder="  Correo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" name="usuario" placeholder="  Usuario">
+                                </td>
+                                <td>
+                                    <input type="password" name="passwd" placeholder="  Contraseña">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button>Registrarme</button>
+                                </div>
+                </form>
+
+        </div>
+        <!-- frontbox -->
+    </div>
+    <script src="./jquery/jquery-3.6.0.min.js"></script>
     <script src="./sw/dist/sweetalert2.all.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        var $loginMsg = $('.loginMsg'),
+            $login = $('.login'),
+            $signupMsg = $('.signupMsg'),
+            $signup = $('.signup'),
+            $frontbox = $('.frontbox');
+
+        $('#switch1').on('click', function() {
+            $loginMsg.toggleClass("visibility");
+            $frontbox.addClass("moving");
+            $signupMsg.toggleClass("visibility");
+
+            $signup.toggleClass('hide');
+            $login.toggleClass('hide');
+        })
+
+        $('#switch2').on('click', function() {
+            $loginMsg.toggleClass("visibility");
+            $frontbox.removeClass("moving");
+            $signupMsg.toggleClass("visibility");
+
+            $signup.toggleClass('hide');
+            $login.toggleClass('hide');
+        })
+
+        setTimeout(function() {
+            $('#switch1').click()
+        }, 1000)
+
+        setTimeout(function() {
+            $('#switch2').click()
+        }, 3000)
+    </script>
 </body>
 
 </html>

@@ -88,16 +88,16 @@
                 </div>
                 <div class="mb-3 centrar">
                     <a>¿No tiene cuenta aún? Registrese!</a><br>
-                    <button type="button" class="btn btn-secondary" data-bs-target="#Registrar" data-bs-toggle="modal" data-bs-dismiss="modal">Registrarse</button>
+                    <button type="button" class="btn btn-secondary" data-bs-target="#Registrar2" data-bs-toggle="modal" data-bs-dismiss="modal">Registrarse</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="Registrar" aria-hidden="true" aria-labelledby="Registrar" tabindex="-1">
+    <div class="modal fade" id="Registrar2" aria-hidden="true" aria-labelledby="Registrar2" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="Registrar">Registrarse</h5>
+                    <h5 class="modal-title" id="Registrar2">Registrarse</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
