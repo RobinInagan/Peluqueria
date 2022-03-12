@@ -89,6 +89,14 @@
                                     <input type="password" name="passwd" placeholder="  Contraseña">
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <input type="number" name="tel" placeholder="  Teléfono">
+                                </td>
+                                <td>
+                                    <input type="date" name="date" placeholder="  Fecha Nacimiento">
+                                </td>
+                            </tr>
                         </table>
                     </div>
                     <button>Registrarme</button>

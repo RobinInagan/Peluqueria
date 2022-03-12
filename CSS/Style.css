@@ -36,7 +36,7 @@ body{
   .backbox{  
     background-color: #404040;
     width: 100%;
-    height: 80%;
+    height: 85%;
     position: absolute;
     transform: translate(0,-50%);
     top:50%;
@@ -46,7 +46,7 @@ body{
   .frontbox{
     background-color: white;
     border-radius: 20px;
-    height: 100%;
+    height: 105%;
     width: 50%;
     z-index: 10;
     position: absolute;
@@ -123,7 +123,21 @@ body{
     font-size: 12px;
   }
   
-  .login button,
+  .login button{
+        background-color: #35B729;
+        border: none;
+        color:white;
+        font-size: 12px;
+        font-weight: 300;
+        box-sizing: content-box;
+        padding:10px;
+        border-radius: 10px;
+        width: 80px;
+        position: absolute;
+        right:30px;
+        bottom: 30px;
+        cursor: pointer;
+  }
   .signup button{
     background-color: #35B729;
     border: none;
@@ -136,7 +150,7 @@ body{
     width: 80px;
     position: absolute;
     right:30px;
-    bottom: 30px;
+    bottom: 10px;
     cursor: pointer;
   }
   
