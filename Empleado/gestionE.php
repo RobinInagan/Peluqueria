@@ -29,7 +29,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../Home.php">
                 <img src="../Images/LogoPequeño.jpg" alt="Logo" width="100" height="100">
@@ -54,98 +54,15 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Gestión Empleado</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
+                    </li>
                 </ul>
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Login">Acceder</button>
+                <a type="button" class="btn btn-outline-danger" >Cerrar sesión</a>
             </div>
         </div>
     </nav>
 
-
-    <div class="modal fade" id="Login" tabindex="-1" aria-labelledby="Login" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="Login">Iniciar Sesión</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Usuario: </label>
-                            <input type="text" class="form-control" id="user">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Contraseña:</label>
-                            <input type="password" class="form-control" id="paswd">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer centrar">
-                    <button type="button" class="btn btn btn-success">Iniciar Sesión</button>
-                </div>
-                <div class="mb-3 centrar">
-                    <a href=" ">Olvido Su Contraseña?</a>
-                </div>
-                <div class="mb-3 centrar">
-                    <a>¿No tiene cuenta aún? Registrese!</a><br>
-                    <button type="button" class="btn btn-secondary" data-bs-target="#Registrar2" data-bs-toggle="modal" data-bs-dismiss="modal">Registrarse</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="Registrar2" aria-hidden="true" aria-labelledby="Registrar2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="Registrar2">Registrarse</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Cédula: </label>
-                            <input type="number" class="form-control" id="id_c">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Nombre(s): </label>
-                            <input type="text" class="form-control" id="nomb">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Apellidos: </label>
-                            <input type="text" class="form-control" id="apel">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Correo: </label>
-                            <input type="email" class="form-control" id="mail">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Teléfono: </label>
-                            <input type="number" class="form-control" id="tel_u">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Dirección: </label>
-                            <input type="text" class="form-control" id="dir">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Fecha de Nacimiento: </label>
-                            <input type="date" class="form-control" id="fecha_n">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Usuario: </label>
-                            <input type="text" class="form-control" id="user">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Contraseña: </label>
-                            <input type="password" class="form-control" id="paswd">
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Registrarse</button>
-                        </div>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="posicion">
         <div class="container">
             <?php
