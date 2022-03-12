@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario'])){
+    $_SESSION['usuario']=NULL;
+}
 ?>
 <!doctype html>
 <html lang="es">
@@ -69,7 +72,7 @@ session_start();
                 </ul>
 
                 <?php
-                if (!$_SESSION['usuario']) {
+                if (!isset($_SESSION['usuario'])){
                     echo "<a type='button' class='btn btn-outline-success' href='./Login.php'>Acceder</a>";
                 }
                 if ($_SESSION['usuario']) {
