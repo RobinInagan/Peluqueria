@@ -9,6 +9,12 @@ if (isset($_POST['grabar']) && $_POST['grabar'] == "si") {
 }
 
 $reg = $cli->clienteid($_GET['idCliente']);
+
+session_start();
+if (!isset($_SESSION['usuario'])){
+    $_SESSION['usuario']=NULL;
+}
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -60,17 +66,23 @@ $reg = $cli->clienteid($_GET['idCliente']);
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link active" href="../Cliente/gestionC.php">Gestión clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Empleado/gestionE.php">Gestión Empleado</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
-                    </li>
+                    <?php
+                    if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./Cliente/gestionC.php">Gestión clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../Empleado/gestionE.php">Gestión Empleado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
-                <a type="button" class="btn btn-outline-danger" >Cerrar sesión</a>
+                <a type="button" class="btn btn-outline-danger" href="../logout.php" >Cerrar sesión</a>
             </div>
         </div>
     </nav>

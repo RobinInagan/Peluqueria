@@ -1,8 +1,9 @@
 <?php
 session_start();
 if (!isset($_SESSION['usuario'])){
-    $_SESSION['usuario']=NULL;
+    $_SESSION['usuario']=NULL; $_SESSION['rol']=NULL;
 }
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -58,7 +59,7 @@ if (!isset($_SESSION['usuario'])){
                     if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="./Cliente/gestionC.php">Gestión clientes</a>
+                            <a class="nav-link " href="./Cliente/gestionC.php">Gestión clientes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="./Empleado/gestionE.php">Gestión Empleado</a>

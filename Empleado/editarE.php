@@ -9,6 +9,14 @@ if (isset($_POST['grabar']) && $_POST['grabar'] == "si") {
 }
 
 $reg = $emp->empleadoId($_GET['idEmpleado']);
+
+session_start();
+if (!isset($_SESSION['usuario'])){
+    $_SESSION['usuario']=NULL;
+    $_SESSION['rol']=NULL;
+}
+
+if($_SESSION['usuario'] && $_SESSION['rol'] == 1){
 ?>
 <!doctype html>
 <html lang="es">
@@ -60,17 +68,23 @@ $reg = $emp->empleadoId($_GET['idEmpleado']);
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Cliente/gestionC.php">Gestión clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Empleado/gestionE.php">Gestión Empleado</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
-                    </li>
+                    <?php
+                    if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../Cliente/gestionC.php">Gestión clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./Empleado/gestionE.php">Gestión Empleado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
-                <a type="button" class="btn btn-outline-danger" >Cerrar sesión</a>
+                <a type="button" class="btn btn-outline-danger" href="../logout.php">Cerrar sesión</a>
             </div>
         </div>
     </nav>
@@ -170,3 +184,22 @@ $reg = $emp->empleadoId($_GET['idEmpleado']);
 </body>
 
 </html>
+
+<?php
+}else if(isset($_SESSION['usuario']) && $_SESSION['rol']==3 || $_SESSION['rol']==2){
+    echo "
+    <script type='text/javascript'>
+    alert('Acceso denegado');
+    window.location ='../Home.php';
+    </script>
+";
+}
+else if($_SESSION['usuario']==null){
+    echo "
+    <script type='text/javascript'>
+    alert('Por favor acceder como administrador');
+    window.location ='../Home.php';
+    </script>
+";
+}
+?>
