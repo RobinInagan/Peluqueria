@@ -18,6 +18,11 @@ nav {
     margin-bottom: 0px;
 }
 
+.posicion-footer{
+    margin-top: 0px;
+    margin-bottom: 140px;
+}
+
 body{
     background-color: #A8A8A8;
     font-family: 'Roboto', sans-serif;
