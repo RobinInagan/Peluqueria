@@ -121,7 +121,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     ?>
                                 </select>
                             </div>
-                        </div>
+                        </div>  
                         <div class="col-md-4">
                             <label for="cargo">Cargo</label>
                             <div class="form-group">
@@ -142,6 +142,14 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         <div class="col-md-4">
                             <label for="tel">Telefono</label>
                             <input type="number" id="tel" name="tel" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="tel">Usuario</label>
+                            <input type="text" id="user" name="user" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="tel">Contraseña</label>
+                            <input type="password" id="passwd" name="passwd" class="form-control">
                         </div>
                         <br><br><br>
                         <div class="col-md-12 centrar">

@@ -62,7 +62,7 @@
 
             <div class="signup hide">
                 <h2>Registrar</h2>
-                <form action="">
+                <form action="./Cliente/insertC.php" method="POST">
                     <div class="inputbox">
                         <table>
                             <tr>

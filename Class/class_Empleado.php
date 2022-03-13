@@ -44,11 +44,14 @@
             return $this-> empleado;
         }
 
-        public function insertar($idC,$nom,$apel,$email,$dir,$dias,$cargo,$tel){
+        public function insertar($idC,$nom,$apel,$email,$dir,$dias,$cargo,$tel, $user, $pwd){
             $sql ="INSERT INTO `empleado`(`cedula`, `nombre`, `Apellidos`, `Correo`,`Dirección`,`dias_iddias`,`cargo_idcargo`) VALUES ('$idC','$nom','$apel','$email','$dir','$dias','$cargo')";
             $sql2 = "INSERT INTO `telefonos_e`(`Empleado_cedula`, `numero`) VALUES ('$idC','$tel')";
+            $sql3 = "INSERT INTO `usuario`(`idUsuario`, `Usuario`, `Contraseña`, `Roles_idRoles`, `Cliente_idCliente`, `Empleado_cedula`) VALUES (4,'$user','$pwd',3,null,'$idC')";
+
             $res = mysqli_query(Conexion::conectar(),$sql) or die ("Error en la consulta sql al insertar");
             $res2 = mysqli_query(Conexion::conectar(),$sql2) or die ("Error en la consulta sql2 al insertar telefono");
+            $res3 = mysqli_query(Conexion::conectar(),$sql3) or die ("Error en la consulta sql2 al insertar usuario");
             echo " 
                 <script type = 'text/javascript'>
                 Swal.fire({

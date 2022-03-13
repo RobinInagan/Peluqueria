@@ -11,7 +11,7 @@ include("../Class/class_Empleado.php");
 //Crear el objeto 
 $emp = new Empleado();
 
-$emp->insertar($_REQUEST['id'], $_REQUEST['nombre'], $_REQUEST['apell'], $_REQUEST['email'], $_REQUEST['dir'], $_REQUEST['dia'],$_REQUEST['cargo'],$_REQUEST['tel']);
+$emp->insertar($_REQUEST['id'], $_REQUEST['nombre'], $_REQUEST['apell'], $_REQUEST['email'], $_REQUEST['dir'], $_REQUEST['dia'],$_REQUEST['cargo'],$_REQUEST['tel'],$_REQUEST['user'],$_REQUEST['passwd']);
 
 
 }else if(isset($_SESSION['usuario']) && $_SESSION['rol']==3 || $_SESSION['rol']==2){

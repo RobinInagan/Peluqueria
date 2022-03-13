@@ -33,7 +33,7 @@
         //mostar Empleados
 
         public function Mostrar (){
-            $sql=" Select * from cliente";
+            $sql = "select c.idCliente, c.nombres, c.Apellidos, c.direccion, c.Correo, c.Fecha_N, t.numero from cliente c inner join telefonos_c t on idCliente=idCliente_fk";
 
             $res = mysqli_query(Conexion::conectar(),$sql);
 
@@ -43,18 +43,22 @@
             return $this-> cliente;
         }
 
-        public function insertar($idC,$nomC,$apelC,$dirC,$email,$fn){
-            $sql ="INSERT INTO `cliente`(`idCliente`, `nombres`, `Apellidos`, `direccion`, `Correo`, `Fecha_N`) VALUES ('$idC','$nomC','$apelC','$dirC','$email','$fn')";
+        public function insertar($idC,$nomC,$apelC,$email,$fn, $tel, $user, $pwd){
+            $sql ="INSERT INTO `cliente`(`idCliente`, `nombres`, `Apellidos`, `direccion`, `Correo`, `Fecha_N`) VALUES ('$idC','$nomC','$apelC','1','$email','$fn')";
+            $sql2 = "INSERT INTO `telefonos_c`(`idCliente_fk`, `numero`) VALUES ('$idC','$tel')";
+            $sql3 = "INSERT INTO `usuario`(`idUsuario`, `Usuario`, `Contraseña`, `Roles_idRoles`, `Cliente_idCliente`, `Empleado_cedula`) VALUES (3,'$user','$pwd',2,'$idC',null)";
             $res = mysqli_query(Conexion::conectar(),$sql) or die ("Error en la consulta sql al insertar");
+            $res2 = mysqli_query(Conexion::conectar(),$sql2) or die ("Error en la consulta sql al insertar telefono");
+            $res3 = mysqli_query(Conexion::conectar(),$sql3) or die ("Error en la consulta sql al insertar usuario");
             echo " 
                 <script type = 'text/javascript'>
                 Swal.fire({
                     title: 'Exito',
                     text: 'El cliente se registro correctamente',
-                    icon: 'Success',
+                    icon: 'success',
                 }).then((result)=>{
                         if(result.value){
-                            window.location ='Home.php';
+                            window.location ='../Login.php';
                         }
                     });
                 </script>

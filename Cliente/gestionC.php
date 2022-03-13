@@ -98,6 +98,7 @@ if($_SESSION['usuario'] && $_SESSION['rol'] == 1){
                             <th>Dirección</th>
                             <th>Correo</th>
                             <th>fecha Nacimiento</th>
+                            <th>Telefono</th>
                             <th class="col-2">Acciones</th>
                         </tr>
                     </thead>
@@ -112,6 +113,7 @@ if($_SESSION['usuario'] && $_SESSION['rol'] == 1){
                         echo "<td>" . $reg[$i]['direccion'] . "</td>";
                         echo "<td>" . $reg[$i]['Correo'] . "</td>";
                         echo "<td>" . $reg[$i]['Fecha_N'] . "</td>";
+                        echo "<td>" . $reg[$i]['numero'] . "</td>";
                     ?>
                         <td class="col-2">
                             <button class="btn btn-warning " onclick=window.location="./editarC.php?idCliente=<?php echo $reg[$i]['idCliente']; ?>">
@@ -129,16 +131,18 @@ if($_SESSION['usuario'] && $_SESSION['rol'] == 1){
             </div>
         </div>
     </div>
-        <footer class="bg bg-dark text-white fixed-bottom">
-            <div class="centrar">
-                <address>
-                    <h3>Galfersh Barber</h3>
-                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
-                </address>
-            </div>
-        </footer>
+        <div class="bottom-0">
+            <footer class="bg bg-dark text-white">
+                <div class="centrar">
+                    <address>
+                        <h3>Galfersh Barber</h3>
+                        <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
+                        <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
+                        <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                    </address>
+                </div>
+            </footer>
+        </div>
 
         <script src="../jquery/jquery-3.6.0.min.js"></script>
         <script src="../sw/dist/sweetalert2.all.min.js"></script>
