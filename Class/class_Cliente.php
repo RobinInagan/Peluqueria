@@ -33,7 +33,7 @@
         //mostar Empleados
 
         public function Mostrar (){
-            $sql = "select c.idCliente, c.nombres, c.Apellidos, c.direccion, c.Correo, c.Fecha_N, t.numero from cliente c inner join telefonos_c t on idCliente=idCliente_fk";
+            $sql = "select c.idCliente, c.nombres, c.Apellidos, c.Correo, c.Fecha_N, t.numero from cliente c inner join telefonos_c t on idCliente=idCliente_fk";
 
             $res = mysqli_query(Conexion::conectar(),$sql);
 
@@ -44,9 +44,9 @@
         }
 
         public function insertar($idC,$nomC,$apelC,$email,$fn, $tel, $user, $pwd){
-            $sql ="INSERT INTO `cliente`(`idCliente`, `nombres`, `Apellidos`, `direccion`, `Correo`, `Fecha_N`) VALUES ('$idC','$nomC','$apelC','1','$email','$fn')";
+            $sql ="INSERT INTO `cliente`(`idCliente`, `nombres`, `Apellidos`, `Correo`, `Fecha_N`) VALUES ('$idC','$nomC','$apelC','$email','$fn')";
             $sql2 = "INSERT INTO `telefonos_c`(`idCliente_fk`, `numero`) VALUES ('$idC','$tel')";
-            $sql3 = "INSERT INTO `usuario`(`idUsuario`, `Usuario`, `Contraseña`, `Roles_idRoles`, `Cliente_idCliente`, `Empleado_cedula`) VALUES (3,'$user','$pwd',2,'$idC',null)";
+            $sql3 = "INSERT INTO `usuario`(`Usuario`, `Contraseña`, `Roles_idRoles`, `Cliente_idCliente`, `Empleado_cedula`) VALUES ('$user','$pwd',2,'$idC',null)";
             $res = mysqli_query(Conexion::conectar(),$sql) or die ("Error en la consulta sql al insertar");
             $res2 = mysqli_query(Conexion::conectar(),$sql2) or die ("Error en la consulta sql al insertar telefono");
             $res3 = mysqli_query(Conexion::conectar(),$sql3) or die ("Error en la consulta sql al insertar usuario");
@@ -67,8 +67,8 @@
 
 
 
-        public function  editar($idC,$nomC,$apelC,$dirC,$email,$fn){
-            $sql="UPDATE `cliente` SET `nombres`='$nomC',`Apellidos`='$apelC',`direccion`='$dirC',`Correo`='$email',`Fecha_N`='$fn' WHERE `idCliente` ='$idC'";
+        public function  editar($idC,$nomC,$apelC,$email,$fn){
+            $sql="UPDATE `cliente` SET `nombres`='$nomC',`Apellidos`='$apelC',`Correo`='$email',`Fecha_N`='$fn' WHERE `idCliente` ='$idC'";
             $res = mysqli_query(Conexion::conectar(),$sql)or die ("Error en la consulta sql al editar");
             echo " 
             <script type = 'text/javascript'>

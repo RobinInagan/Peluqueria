@@ -95,7 +95,6 @@ if($_SESSION['usuario'] && $_SESSION['rol'] == 1){
                             <th>Cédula</th>
                             <th>Nombre(s)</th>
                             <th>Apellidos</th>
-                            <th>Dirección</th>
                             <th>Correo</th>
                             <th>fecha Nacimiento</th>
                             <th>Telefono</th>
@@ -110,7 +109,6 @@ if($_SESSION['usuario'] && $_SESSION['rol'] == 1){
                         echo "<td>" . $reg[$i]['idCliente'] . "</td>";
                         echo "<td>" . $reg[$i]['nombres'] . "</td>";
                         echo "<td>" . $reg[$i]['Apellidos'] . "</td>";
-                        echo "<td>" . $reg[$i]['direccion'] . "</td>";
                         echo "<td>" . $reg[$i]['Correo'] . "</td>";
                         echo "<td>" . $reg[$i]['Fecha_N'] . "</td>";
                         echo "<td>" . $reg[$i]['numero'] . "</td>";

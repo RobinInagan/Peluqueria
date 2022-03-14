@@ -4,7 +4,7 @@ include("../Class/class_Cliente.php");
 $cli = new Cliente();
 
 if (isset($_POST['grabar']) && $_POST['grabar'] == "si") {
-    $cli->editar($_POST['id'], $_POST['nom_c'], $_POST['apel_c'], $_POST['dir_c'], $_POST['email_c'], $_POST['fecha_c']);
+    $cli->editar($_POST['id'], $_POST['nom_c'], $_POST['apel_c'], $_POST['email_c'], $_POST['fecha_c']);
     exit();
 }
 
@@ -108,10 +108,6 @@ if (!isset($_SESSION['usuario'])){
                     <div class="col-md-4">
                         <label for="apel_e">Apellidos</label>
                         <input type="text" id="apel_c" name="apel_c" class="form-control" value="<?php echo $reg[0]['Apellidos'] ?>">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="tel_e">Dirección</label>
-                        <input type="text" id="dir_c" name="dir_c" class="form-control" value="<?php echo $reg[0]['direccion'] ?>">
                     </div>
                     <div class="col-md-4">
                         <label for="email_e">Correo</label>

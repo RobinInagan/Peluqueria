@@ -55,7 +55,7 @@
                         <input type="text" name="user" placeholder="  Usuario">
                         <input type="password" name="pwd" placeholder="  Contraseña">
                     </div>
-                    <p>¿Olvidaste tu contraseña?</p>
+                    <a href="./recuperar.php">¿Olvidaste tu contraseña?</a>
                     <button >Ingresar</button>
                 </form>
             </div>
