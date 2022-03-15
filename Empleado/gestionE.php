@@ -8,6 +8,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
+
 ?>
     <!doctype html>
     <html lang="es">
@@ -91,11 +92,11 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </div>
                         <div class="col-md-4">
                             <label for="nom_e">Nombre</label>
-                            <input type="text" id="nom_c" name="nombre" class="form-control" >
+                            <input type="text" id="nom_c" name="nombre" class="form-control">
                         </div>
                         <div class="col-md-4">
                             <label for="apel_e">Apellidos</label>
-                            <input type="text" id="apel_c" name="apell" class="form-control" >
+                            <input type="text" id="apel_c" name="apell" class="form-control">
                         </div>
                         <div class="col-md-4">
                             <label for="email_e">Correo</label>
@@ -121,12 +122,12 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     ?>
                                 </select>
                             </div>
-                        </div>  
+                        </div>
                         <div class="col-md-4">
                             <label for="cargo">Cargo</label>
                             <div class="form-group">
                                 <select class="form-select" name="cargo">
-                                    <option>---Seleccione cargo  del empleado-----</option>
+                                    <option>---Seleccione cargo del empleado-----</option>
                                     <?php
                                     $con = new Conexion();
                                     $link = $con->Conectar();
@@ -163,7 +164,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             <div class="container posicion-footer">
                 <?php
                 //crear el objeto de tipo cliente
-                
+
                 $cl = new Empleado();
                 $reg = $cl->Mostrar();
 
@@ -235,17 +236,31 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 
 <?php
 } else if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 2) {
-    echo "
-    <script type='text/javascript'>
-    alert('Acceso denegado');
-    window.location ='../Home.php';
+    echo " 
+    <script type = 'text/javascript'>
+    Swal.fire({
+        title: 'Error!',
+        text: 'Usuario no autorizado',
+        icon: 'error',
+    }).then((result)=>{
+            if(result.value){
+                window.location ='../Home.php';
+            }
+        });
     </script>
 ";
 } else if ($_SESSION['usuario'] == null) {
-    echo "
-    <script type='text/javascript'>
-    alert('Por favor acceder como administrador');
-    window.location ='../Home.php';
+    echo " 
+    <script type = 'text/javascript'>
+    Swal.fire({
+        title: 'Error!',
+        text: 'Inicie Sesión como admin',
+        icon: 'error',
+    }).then((result)=>{
+            if(result.value){
+                window.location ='../Home.php';
+            }
+        });
     </script>
 ";
 }
