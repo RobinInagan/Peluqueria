@@ -118,7 +118,7 @@ if (!isset($_SESSION['usuario'])){
     </div>
 
     </table>
-    <footer class="bg bg-dark text-white">
+    <footer class="bg bg-dark text-white"> 
         <div class="centrar">
             <address>
                 <h3>Galfersh Barber</h3>

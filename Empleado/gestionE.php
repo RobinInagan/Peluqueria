@@ -36,7 +36,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link rel="stylesheet" href="../CSS/Style.css">
 
         <title>Galfersh Barber</title>
-        <link rel="icon" type="image/x-icon" href="../IMAGES/Logo.jpg">
+        <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
     </head>
 
     <body>

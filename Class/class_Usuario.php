@@ -43,28 +43,8 @@
             return $this-> usuario;
         }
 
-        public function insertar($idC,$nom,$apel,$email,$dir,$dias,$cargo){
-            $sql ="INSERT INTO `empleado`(`cedula`, `nombre`, `Apellido`, `Correo`,`Dirección`,`dias_iddias`,`cargo_idcargo`) VALUES ('$idC','$nom','$apel','$email','$dir','$dias','$cargo')";
-            $res = mysqli_query(Conexion::conectar(),$sql) or die ("Error en la consulta sql al insertar");
-            echo " 
-                <script type = 'text/javascript'>
-                Swal.fire({
-                    title: 'Exito',
-                    text: 'El empleado se registro correctamente',
-                    icon: 'Success',
-                }).then((result)=>{
-                        if(result.value){
-                            window.location ='gestionE.php';
-                        }
-                    });
-                </script>
-            ";
-        }
-
-
-
-        public function  editar($idC,$nom,$apel,$email,$dir,$dias,$cargo){
-            $sql="UPDATE `empleado` SET `nombre`='$nom',`Apellidos`='$apel',`Correo`='$email',`Dirección`='$dir',`dias_iddias`='$dias',`cargo_idcargo`='$cargo' WHERE `cedula` ='$idC'";
+        public function  editar($idC,$user,$pwd){
+            $sql="UPDATE `usuario` SET `Usuario`='$user',`Contraseña`='$pwd' WHERE idUsuario = '$idC'";
             $res = mysqli_query(Conexion::conectar(),$sql)or die ("Error en la consulta sql al editar");
             echo " 
             <script type = 'text/javascript'>
@@ -74,7 +54,7 @@
                 icon: 'success',
             }).then((result)=>{
                     if(result.value){
-                        window.location ='gestionE.php';
+                        window.location ='gestionU.php';
                     }
                 });
             </script>
@@ -82,9 +62,8 @@
         }
 
         //Crear una función para capturar el id de los botones de acción 
-        public function empleadoId($id){
-            $sql=" Select e.cedula, e.nombre, e.Apellidos, e.Correo, e.Dirección, d.iddias, d.dia, c.idcargo, c.descripcion, t.numero from empleado e inner join cargo c on cargo_idcargo=idcargo inner join dias d on dias_iddias=iddias 
-            inner join telefonos_e t on cedula=empleado_cedula where cedula = '$id'";
+        public function usuarioID($id){
+            $sql=" Select * from usuario where idUsuario = '$id'";
             // $sql ="select * from empleado where cedula = '$id'";
             $res = mysqli_query(Conexion::Conectar(),$sql)or die ("Error en la consulta sql al buscar");
             if($reg=mysqli_fetch_assoc($res)){
@@ -92,25 +71,28 @@
             }
             return $this -> usuario;
         }
+
         
         public function Eliminar($id){
-            $sql="DELETE FROM `empleado` WHERE `empleado`.`cedula` = '$id'";
+            $sql="DELETE FROM `usuario` WHERE `usuario`.`idUsuario` = '$id'";
             $res=mysqli_query(Conexion::Conectar(),$sql)or die ("Error en la consulta sql al Eliminar");
             echo " 
             <script type = 'text/javascript'>
             Swal.fire({
                 title: 'Exito',
-                text: 'El empleado con id $id fue eliminado',
+                text: 'El usuario con id $id fue eliminado',
                 icon: 'success',
             }).then((result)=>{
                     if(result.value){
-                        window.location ='gestionE.php';
+                        window.location ='gestionU.php';
                     }
                 });
             </script>
         ";
         }
     }
+
+
     ?>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
     <script src="../sw/dist/sweetalert2.all.min.js"></script>

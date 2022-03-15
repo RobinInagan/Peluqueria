@@ -1,14 +1,14 @@
 <?php
-include("../Class/class_Cliente.php");
+include("../Class/class_Usuario.php");
 
-$cli = new Cliente();
+$us = new Usuario();
 
 if (isset($_POST['grabar']) && $_POST['grabar'] == "si") {
-    $cli->editar($_POST['id'], $_POST['nom_c'], $_POST['apel_c'], $_POST['email_c'], $_POST['fecha_c']);
+    $us->editar($_POST['id'], $_POST['user'], $_POST['pwd']);
     exit();
 }
 
-$reg = $cli->clienteid($_GET['idCliente']);
+$reg = $us->usuarioID($_GET['idUsuario']);
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -49,7 +49,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 </head>
 
 <body class="bg-secondary bg-gradient">
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="./Home.php">
                 <img src="../Images/LogoPequeño.jpg" alt="" width="100" height="100">
@@ -72,19 +72,19 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     ?>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./Cliente/gestionC.php">Gestión clientes</a>
+                            <a class="nav-link " href="./Cliente/gestionC.php">Gestión clientes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="../Empleado/gestionE.php">Gestión Empleado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
+                            <a class="nav-link active" href="../Usuario/gestionU.php">Gestión Usuario</a>
                         </li>
                     <?php
                     }
                     ?>
                 </ul>
-                <a type="button" class="btn btn-outline-danger" href="../logout.php" >Cerrar sesión</a>
+                <a type="button" class="btn btn-outline-danger" href="../logout.php">Cerrar sesión</a>
             </div>
         </div>
     </nav>
@@ -93,36 +93,49 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <div class="container">
             <div class="card-header ">
                 <br>
-                <h3 class="text-white">ACTUALIZACIÓN DE CLIENTES</h3>
+                <h3 class="text-white">ACTUALIZACIÓN DE USUARIOS</h3>
             </div>
             <div class=" card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <form name="form" action="editarC.php" method="POST">
+                        <form name="form" action="editarU.php" method="POST">
                             <input type="hidden" name="grabar" value="si">
-                            <label for="idCliente">Cedula</label>
-                            <input class="form-control" type="text" name="id" value="<?php echo $_GET['idCliente'] ?>" readonly>
+                            <label for="idCliente">Id_Usuario</label>
+                            <input class="form-control" type="text" name="id" value="<?php echo $_GET['idUsuario'] ?>" readonly>
                     </div>
                     <div class="col-md-4">
-                        <label for="nom_e">Nombre</label>
-                        <input type="text" id="nom_c" name="nom_c" class="form-control" value="<?php echo $reg[0]['nombres'] ?>">
+                        <label for="user">Usuario</label>
+                        <input type="text" name="user" class="form-control" value="<?php echo $reg[0]['Usuario'] ?>">
                     </div>
                     <div class="col-md-4">
-                        <label for="apel_e">Apellidos</label>
-                        <input type="text" id="apel_c" name="apel_c" class="form-control" value="<?php echo $reg[0]['Apellidos'] ?>">
+                        <label for="apel_e">Contraseña</label>
+                        <input type="text" name="pwd" class="form-control" value="<?php echo $reg[0]['Contraseña'] ?>">
                     </div>
                     <div class="col-md-4">
-                        <label for="email_e">Correo</label>
-                        <input type="text" id="email_c" name="email_c" class="form-control" value="<?php echo $reg[0]['Correo'] ?>">
+                        <label for="email_e">Rol</label>
+                        <input type="text"  name="rol" class="form-control" value="<?php echo $reg[0]['Roles_idRoles'] ?>" readonly>
                     </div>
-
-                    <div class="col-md-4">
-                        <label for="fecha_e">Fecha de Nacimiento</label>
-                        <input type="date" id="fecha_c" name="fecha_c" class="form-control" value="<?php echo $reg[0]['Fecha_N'] ?>">
-                    </div>
+                    <?php
+                    if ($reg[0]['Cliente_idCliente'] == null) {
+                    ?>
+                        <div class="col-md-4">
+                            <label for="email_e">Cédula</label>
+                            <input type="text"  name="id_e" class="form-control" value="<?php echo $reg[0]['Empleado_cedula'] ?>" readonly>
+                        </div>
+                    <?php
+                    }
+                    if ($reg[0]['Empleado_cedula'] == null) {
+                        ?>
+                            <div class="col-md-4">
+                                <label for="email_e">Cédula</label>
+                                <input type="text"  name="id_c" class="form-control" value="<?php echo $reg[0]['Cliente_idCliente'] ?>" readonly>
+                            </div>
+                        <?php
+                        }
+                    ?>
                     <br><br><br>
                     <div class="col-md-12 centrar">
-                        <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='gestionC.php'">
+                        <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='gestionU.php'">
                         <input type="submit" value="Editar" class="btn btn-dark" title="Editar">
                     </div>
                     </form>
