@@ -52,8 +52,8 @@
                 <h2>Iniciar Sesión</h2>
                 <form action="./validar.php" method="POST">
                     <div class="inputbox">
-                        <input type="text" name="user" placeholder="  Usuario">
-                        <input type="password" name="pwd" placeholder="  Contraseña">
+                        <input type="text" name="user" placeholder="  Usuario" Required>
+                        <input type="password" name="pwd" placeholder="  Contraseña" Required> 
                     </div>
                     <a href="./recuperar.php">¿Olvidaste tu contraseña?</a>
                     <button >Ingresar</button>
@@ -67,34 +67,34 @@
                         <table>
                             <tr>
                                 <td>
-                                    <input type="text" name="nombre" placeholder="  Nombre">
+                                    <input type="text" name="nombre" placeholder="  Nombre" Required>
                                 </td>
                                 <td>
-                                    <input type="text" name="apellido" placeholder="  Apellido">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="number" name="cedula" placeholder="  Cédula">
-                                </td>
-                                <td>
-                                    <input type="email" name="correo" placeholder="  Correo">
+                                    <input type="text" name="apellido" placeholder="  Apellido" Required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" name="usuario" placeholder="  Usuario">
+                                    <input type="number" name="cedula" placeholder="  Cédula" Required>
                                 </td>
                                 <td>
-                                    <input type="password" name="passwd" placeholder="  Contraseña">
+                                    <input type="email" name="correo" placeholder="  Correo" Required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="number" name="tel" placeholder="  Teléfono">
+                                    <input type="text" name="usuario" placeholder="  Usuario" Required>
                                 </td>
                                 <td>
-                                    <input type="date" name="date" placeholder="  Fecha Nacimiento">
+                                    <input type="password" name="passwd" placeholder="  Contraseña" Required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="number" name="tel" placeholder="  Teléfono" Required>
+                                </td>
+                                <td>
+                                    <input type="date" name="date" placeholder="  Fecha Nacimiento" Required>
                                 </td>
                             </tr>
                         </table>

@@ -107,20 +107,20 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     </div>
                     <div class="col-md-4">
                         <label for="nom_e">Nombre</label>
-                        <input type="text" id="nom_c" name="nom_c" class="form-control" value="<?php echo $reg[0]['nombres'] ?>">
+                        <input type="text" id="nom_c" name="nom_c" class="form-control" value="<?php echo $reg[0]['nombres'] ?>" Required>
                     </div>
                     <div class="col-md-4">
                         <label for="apel_e">Apellidos</label>
-                        <input type="text" id="apel_c" name="apel_c" class="form-control" value="<?php echo $reg[0]['Apellidos'] ?>">
+                        <input type="text" id="apel_c" name="apel_c" class="form-control" value="<?php echo $reg[0]['Apellidos'] ?>" Required>
                     </div>
                     <div class="col-md-4">
                         <label for="email_e">Correo</label>
-                        <input type="text" id="email_c" name="email_c" class="form-control" value="<?php echo $reg[0]['Correo'] ?>">
+                        <input type="text" id="email_c" name="email_c" class="form-control" value="<?php echo $reg[0]['Correo'] ?>" Required>
                     </div>
 
                     <div class="col-md-4">
                         <label for="fecha_e">Fecha de Nacimiento</label>
-                        <input type="date" id="fecha_c" name="fecha_c" class="form-control" value="<?php echo $reg[0]['Fecha_N'] ?>">
+                        <input type="date" id="fecha_c" name="fecha_c" class="form-control" value="<?php echo $reg[0]['Fecha_N'] ?>" Required>
                     </div>
                     <br><br><br>
                     <div class="col-md-12 centrar">

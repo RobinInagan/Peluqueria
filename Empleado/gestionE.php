@@ -93,24 +93,24 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </div>
                         <div class="col-md-4">
                             <label for="nom_e">Nombre</label>
-                            <input type="text" id="nom_c" name="nombre" class="form-control">
+                            <input type="text" id="nom_c" name="nombre" class="form-control" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="apel_e">Apellidos</label>
-                            <input type="text" id="apel_c" name="apell" class="form-control">
+                            <input type="text" id="apel_c" name="apell" class="form-control" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="email_e">Correo</label>
-                            <input type="text" id="email_c" name="email" class="form-control">
+                            <input type="text" id="email_c" name="email" class="form-control" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="dir_e">Dirección</label>
-                            <input type="text" id="dir_e" name="dir" class="form-control">
+                            <input type="text" id="dir_e" name="dir" class="form-control" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="dias">Dia de Descanso</label>
                             <div class="form-group">
-                                <select class="form-select" name="dia">
+                                <select class="form-select" name="dia" Required>
                                     <option>---Seleccione día----</option>
                                     <?php
                                     $con = new Conexion();
@@ -127,7 +127,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         <div class="col-md-4">
                             <label for="cargo">Cargo</label>
                             <div class="form-group">
-                                <select class="form-select" name="cargo">
+                                <select class="form-select" name="cargo" Required>
                                     <option>---Seleccione cargo del empleado-----</option>
                                     <?php
                                     $con = new Conexion();
@@ -143,15 +143,15 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </div>
                         <div class="col-md-4">
                             <label for="tel">Telefono</label>
-                            <input type="number" id="tel" name="tel" class="form-control">
+                            <input type="number" id="tel" name="tel" class="form-control" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="tel">Usuario</label>
-                            <input type="text" id="user" name="user" class="form-control">
+                            <input type="text" id="user" name="user" class="form-control" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="tel">Contraseña</label>
-                            <input type="password" id="passwd" name="passwd" class="form-control">
+                            <input type="password" id="passwd" name="passwd" class="form-control" Required>
                         </div>
                         <br><br><br>
                         <div class="col-md-12 centrar">
