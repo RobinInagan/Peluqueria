@@ -12,6 +12,8 @@
     <link rel="stylesheet" language="javascript" href="../bootstrap/css/bootstrap.min.css">
     <!-- Sweet alert-->
     <link rel="stylesheet" href="../sw/dist/sweetalert2.min.css">
+    <!-- Link para animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script type="text/javascript" language="javascript" src="../JavasScript/Funciones.js"></script>
     <title>Gestión Empleados</title>
 </head>
@@ -22,9 +24,10 @@
     include("../Conexion/Conexion.php");
 
     //clase empleado 
-    class Usuario{
+    class Usuario
+    {
         private $usuario;
-        
+
         public function __construct()
         {
             $this->usuario = array();
@@ -32,26 +35,34 @@
 
         //mostar Empleados
 
-        public function Mostrar ($id){
-            $sql=" Select * from usuario where Roles_idRoles='$id'";
+        public function Mostrar($id)
+        {
+            $sql = " Select * from usuario where Roles_idRoles='$id'";
 
-            $res = mysqli_query(Conexion::conectar(),$sql);
+            $res = mysqli_query(Conexion::conectar(), $sql);
 
-            while ($row = mysqli_fetch_assoc($res)){
-                $this -> usuario[] = $row;
+            while ($row = mysqli_fetch_assoc($res)) {
+                $this->usuario[] = $row;
             }
-            return $this-> usuario;
+            return $this->usuario;
         }
 
-        public function  editar($idC,$user,$pwd){
-            $sql="UPDATE `usuario` SET `Usuario`='$user',`Contraseña`='$pwd' WHERE idUsuario = '$idC'";
-            $res = mysqli_query(Conexion::conectar(),$sql)or die ("Error en la consulta sql al editar");
+        public function  editar($idC, $user, $pwd)
+        {
+            $sql = "UPDATE `usuario` SET `Usuario`='$user',`Contraseña`='$pwd' WHERE idUsuario = '$idC'";
+            $res = mysqli_query(Conexion::conectar(), $sql) or die("Error en la consulta sql al editar");
             echo " 
             <script type = 'text/javascript'>
             Swal.fire({
                 title: 'Exito',
                 text: 'El empleado con id $idC fue modificado',
                 icon: 'success',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                  },
+                  hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                  }
             }).then((result)=>{
                     if(result.value){
                         window.location ='gestionU.php';
@@ -62,26 +73,34 @@
         }
 
         //Crear una función para capturar el id de los botones de acción 
-        public function usuarioID($id){
-            $sql=" Select * from usuario where idUsuario = '$id'";
+        public function usuarioID($id)
+        {
+            $sql = " Select * from usuario where idUsuario = '$id'";
             // $sql ="select * from empleado where cedula = '$id'";
-            $res = mysqli_query(Conexion::Conectar(),$sql)or die ("Error en la consulta sql al buscar");
-            if($reg=mysqli_fetch_assoc($res)){
-                $this -> usuario[]=$reg;
+            $res = mysqli_query(Conexion::Conectar(), $sql) or die("Error en la consulta sql al buscar");
+            if ($reg = mysqli_fetch_assoc($res)) {
+                $this->usuario[] = $reg;
             }
-            return $this -> usuario;
+            return $this->usuario;
         }
 
-        
-        public function Eliminar($id){
-            $sql="DELETE FROM `usuario` WHERE `usuario`.`idUsuario` = '$id'";
-            $res=mysqli_query(Conexion::Conectar(),$sql)or die ("Error en la consulta sql al Eliminar");
+
+        public function Eliminar($id)
+        {
+            $sql = "DELETE FROM `usuario` WHERE `usuario`.`idUsuario` = '$id'";
+            $res = mysqli_query(Conexion::Conectar(), $sql) or die("Error en la consulta sql al Eliminar");
             echo " 
             <script type = 'text/javascript'>
             Swal.fire({
                 title: 'Exito',
                 text: 'El usuario con id $id fue eliminado',
                 icon: 'success',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                  },
+                  hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                  }
             }).then((result)=>{
                     if(result.value){
                         window.location ='gestionU.php';

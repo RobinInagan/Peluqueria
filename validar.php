@@ -15,6 +15,8 @@
 
     <!-- Iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Link para animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script type="text/javascript" language="javascript" src="js/funciones.js"></script>
     <title>INICIO DE SESION</title>
 </head>
@@ -43,6 +45,12 @@
             title: 'Exito',
             text: 'Bienvenido $user al sistema',
             icon: 'success',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
         }).then((result)=>{
                 if(result.value){
                     window.location ='Home.php';
@@ -58,6 +66,12 @@
             title: 'Error!',
             text: 'Usuario o contraseña incorrectos',
             icon: 'error',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
         }).then((result)=>{
                 if(result.value){
                     window.location ='Login.php';

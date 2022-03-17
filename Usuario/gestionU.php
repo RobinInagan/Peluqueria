@@ -84,13 +84,13 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             <div class="container">
                 <form action="./gestionU.php" method="POST" class="centrar">
                     <div class="btn-group btn-group-lg" role="group" aria-label="...">
-                        <button type="submit" id="admin" name="admin" class="btn btn-outline-dark">Administradores</button>
+                        <button type="submit" name="admin" class="btn btn-outline-dark">Administradores</button>
                         <button type="submit" name="cliente" class="btn btn-outline-dark">Clientes</button>
                         <button type="submit" name="empleado" class="btn btn-outline-dark">Empleados</button>
                     </div>
                 </form>
                 <?php
-                //crear el objeto de tipo cliente
+                //crear el objeto de tipo Usuario
                 include("../Class/class_Usuario.php");
 
                 if (isset($_POST['admin'])) {

@@ -12,6 +12,8 @@
     <link rel="stylesheet" language="javascript" href="../bootstrap/css/bootstrap.min.css">
     <!-- Sweet alert-->
     <link rel="stylesheet" href="../sw/dist/sweetalert2.min.css">
+    <!-- Link para animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />-
     <script type="text/javascript" language="javascript" src="../JavasScript/Funciones.js"></script>
     <title>Gestión Empleados</title>
 </head>
@@ -58,6 +60,12 @@
                     title: 'Exito',
                     text: 'El empleado se registro correctamente',
                     icon: 'success',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                      },
+                      hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                      }
                 }).then((result)=>{
                         if(result.value){
                             window.location ='gestionE.php';
@@ -78,6 +86,12 @@
                 title: 'Exito',
                 text: 'El empleado con id $idC fue modificado',
                 icon: 'success',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                  },
+                  hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                  }
             }).then((result)=>{
                     if(result.value){
                         window.location ='gestionE.php';
@@ -108,6 +122,12 @@
                 title: 'Exito',
                 text: 'El empleado con id $id fue eliminado',
                 icon: 'success',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                  },
+                  hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                  }
             }).then((result)=>{
                     if(result.value){
                         window.location ='gestionE.php';

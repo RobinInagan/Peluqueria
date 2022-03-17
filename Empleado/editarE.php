@@ -43,7 +43,8 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Outfit:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
         <!-- CSS -->
         <link rel="stylesheet" href="../CSS/Style.css">
-
+        <!-- Link para animation -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <title>Galfersh Barber</title>
         <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
     </head>
@@ -192,6 +193,12 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         title: 'Error!',
         text: 'Usuario no autorizado',
         icon: 'error',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
     }).then((result)=>{
             if(result.value){
                 window.location ='../Home.php';
@@ -206,6 +213,12 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         title: 'Error!',
         text: 'Inicie Sesión como admin',
         icon: 'error',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
     }).then((result)=>{
             if(result.value){
                 window.location ='../Home.php';
