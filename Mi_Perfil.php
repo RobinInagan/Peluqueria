@@ -4,7 +4,6 @@ if (!isset($_SESSION['usuario'])) {
     $_SESSION['usuario'] = NULL;
     $_SESSION['rol'] = NULL;
 }
-
 ?>
 <!doctype html>
 <html lang="es">
@@ -48,35 +47,8 @@ if (!isset($_SESSION['usuario'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./Home.php">Home</a>
+                        <a class="nav-link" aria-current="page" href="./Home.php">Home</a>
                     </li>
-                    <?php
-                    if ($_SESSION['usuario']== null && $_SESSION['rol'] == NULL) {
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                    <?php
-                    if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link " href="./Cliente/gestionC.php">Gestión clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="./Empleado/gestionE.php">Gestión Empleado</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./Usuario/gestionU.php">Gestión Usuario</a>
-                        </li>
-                    <?php
-                    }
-                    ?>
                     <?php
                     if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                     ?>
@@ -84,7 +56,7 @@ if (!isset($_SESSION['usuario'])) {
                             <a class="nav-link" href="#">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./Mi_Perfil.php">Mi Perfil</a>
+                            <a class="nav-link active" href="#">Mi Perfil</a>
                         </li>
                     <?php
                     }
@@ -105,38 +77,47 @@ if (!isset($_SESSION['usuario'])) {
 
     <div class="posicion">
         <div class="container">
-            <div class="p-3 mb-2 centrar">
-                <div id="carouselExampleIndicators" class="carousel slide tamanio centrar" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <div class="card-header ">
+                <br>
+                <h3 class="text-white">ACTUALIZACIÓN DE MI PERFIL</h3>
+            </div>
+            <div class=" card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <form name="form" action="editarC.php" method="POST">
+                            <input type="hidden" name="grabar" value="si">
+                            <label for="idCliente">Cedula</label>
+                            <input class="form-control" type="text" name="id" value="<?php echo $_GET['idCliente'] ?>" readonly>
                     </div>
-                    <div class="carousel-inner tamanio centrar">
-                        <div class="carousel-item active">
-                            <img src="./Images/Local.jpeg" class="d-block w-100" alt="..." height="600" width="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./Images/Local2.jpeg" class="d-block w-100" alt="..." height="600" width="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./Images/Local3.jpeg" class="d-block w-100" alt="..." height="600" width="">
-                        </div>
+                    <div class="col-md-4">
+                        <label for="nom_e">Nombre</label>
+                        <input type="text" id="nom_c" name="nom_c" class="form-control" value="<?php echo $reg[0]['nombres'] ?>">
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <div class="col-md-4">
+                        <label for="apel_e">Apellidos</label>
+                        <input type="text" id="apel_c" name="apel_c" class="form-control" value="<?php echo $reg[0]['Apellidos'] ?>">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="email_e">Correo</label>
+                        <input type="text" id="email_c" name="email_c" class="form-control" value="<?php echo $reg[0]['Correo'] ?>">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="fecha_e">Fecha de Nacimiento</label>
+                        <input type="date" id="fecha_c" name="fecha_c" class="form-control" value="<?php echo $reg[0]['Fecha_N'] ?>">
+                    </div>
+                    <br><br><br>
+                    <div class="col-md-12 centrar">
+                        <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='gestionC.php'">
+                        <input type="submit" value="Editar" class="btn btn-dark" title="Editar">
+                    </div>
+                    </form>
                 </div>
             </div>
+
         </div>
     </div>
 
-    </table>
     <footer class="bg bg-dark text-white">
         <div class="centrar">
             <address>
@@ -151,13 +132,7 @@ if (!isset($_SESSION['usuario'])) {
     <script src="./jquery/jquery-3.6.0.min.js"></script>
     <script src="./sw/dist/sweetalert2.all.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        $(function() {
-            $('.carousel').carousel({
-                interval: 2000
-            });
-        });
-    </script>
+    
 </body>
 
 </html>

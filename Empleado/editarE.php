@@ -61,13 +61,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../Home.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <a class="nav-link" aria-current="page" href="../Home.php">Home</a>
                         </li>
                         <?php
                         if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {

@@ -51,28 +51,21 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="../Home.php">Home</a>
+                            <?php
+                            if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
+                            ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Gestión clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre Nosotros</a>
+                            <a class="nav-link " href="../Empleado/gestionE.php">Gestión Empleado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
                         </li>
-                        <?php
-                        if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
-                        ?>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Gestión clientes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="../Empleado/gestionE.php">Gestión Empleado</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
-                            </li>
-                        <?php
-                        }
-                        ?>
+                    <?php
+                            }
+                    ?>
                     </ul>
                     <a type="button" class="btn btn-outline-danger" href="../logout.php">Cerrar sesión</a>
                 </div>
@@ -128,18 +121,19 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 </div>
             </div>
         </div>
-        <div class="bottom-0">
-            <footer class="bg bg-dark text-white" style=" position: absolute;bottom: 0;width: 100%;height: 150px;">
-                <div class="centrar">
-                    <address>
-                        <h3>Galfersh Barber</h3>
-                        <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                        <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                        <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
-                    </address>
-                </div>
-            </footer>
-        </div>
+
+        <footer class="bg bg-dark text-white">
+            <div class="centrar">
+                <address>
+                    <h3>Galfersh Barber</h3>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                </address>
+            </div>
+        </footer>
+
+
 
         <script src="../jquery/jquery-3.6.0.min.js"></script>
         <script src="../sw/dist/sweetalert2.all.min.js"></script>

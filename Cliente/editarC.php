@@ -64,12 +64,6 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="../Home.php">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
                     <?php
                     if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     ?>
