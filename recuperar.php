@@ -10,16 +10,22 @@ include('./Conexion/Conexion.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
- 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <link rel="stylesheet" language="javascript" href="./bootstrap/css/bootstrap.min.css">
 
     <!-- Sweet alert-->
     <link rel="stylesheet" href="./sw/dist/sweetalert2.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Outfit:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Outfit:wght@300&family=Poppins:wght@300&display=swap"
+        rel="stylesheet">
     <!-- Iconos -->
+    <!-- Link para animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" language="javascript" src="./JavasScript/login.js"></script>
     <link rel="stylesheet" href="./CSS/Style.css">
@@ -29,18 +35,19 @@ include('./Conexion/Conexion.php');
 </head>
 
 <body>
-    <div class="container position-absolute top-50 start-50 translate-middle" style="width: 600px; margin:auto;border-radius: 5px;background:white;">
+    <div class="container position-absolute top-50 start-50 translate-middle"
+        style="width: 600px; margin:auto;border-radius: 5px;background:white;">
         <table class="table table-borderless">
             <div class="card-body">
                 <h2 class="Centrar">Recuperar contraseña</h2>
                 <hr>
                 <form action="#" method="POST">
                     <tr>
-                        <td  class="align-baseline"> 
-                        <label for="Mail">Correo</label>
+                        <td class="align-baseline">
+                            <label for="Mail">Correo</label>
                             <input class="form-control" type="email" name="user" Required>
                         </td>
-                        <td  class="align-baseline">
+                        <td class="align-baseline">
                             <label for="rol">Rol</label>
                             <select class="form-select" name="rol" Required>
                                 <option>---Seleccione rol----</option>
@@ -98,12 +105,65 @@ if (isset($_POST['correo'])) {
         $tucorreo            = "From: natdan712@gmail.com";
 
         if (mail($paracorreo, $titulo, $mensaje, $tucorreo)) {
-            echo "<script> alert('Contraseña enviada');window.location= './Login.php' </script>";
+            echo
+            "<script type = 'text/javascript'> 
+    Swal.fire({
+        title: 'Exito',
+        text: 'Contraseña enviada al correo',
+        icon: 'success',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      }).then((result)=>{
+                if(result.value){
+                     window.location ='./Login.php';
+                 }
+             });
+      </script>
+      ";
         } else {
-            echo "<script> alert('Error');window.location= './Login.php' </script>";
+            echo 
+            "<script type = 'text/javascript'> 
+    Swal.fire({
+        title: 'Error',
+        icon: 'error',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      }).then((result)=>{
+                if(result.value){
+                     window.location ='./Login.php';
+                 }
+             });
+      </script>
+      ";
         }
     } else {
-        echo "<script> alert('Este correo no existe');window.location= './Login.php' </script>";
+        echo 
+        "<script type = 'text/javascript'> 
+    Swal.fire({
+        title: 'Error',
+        text: 'Este correo no existe',
+        icon: 'error',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      }).then((result)=>{
+                if(result.value){
+                     window.location ='./Login.php';
+                 }
+             });
+      </script>
+      ";
     }
     /*VaidrollTeam*/
 }
