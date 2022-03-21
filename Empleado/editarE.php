@@ -100,24 +100,24 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </div>
                         <div class="col-md-4">
                             <label for="nom_e">Nombre</label>
-                            <input type="text" id="nom_c" name="nombre" class="form-control" value="<?php echo $reg[0]['nombre'] ?>">
+                            <input type="text" id="nom_c" name="nombre" class="form-control" value="<?php echo $reg[0]['nombre'] ?>" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="apel_e">Apellidos</label>
-                            <input type="text" id="apel_c" name="apell" class="form-control" value="<?php echo $reg[0]['Apellidos'] ?>">
+                            <input type="text" id="apel_c" name="apell" class="form-control" value="<?php echo $reg[0]['Apellidos'] ?>" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="email_e">Correo</label>
-                            <input type="text" id="email_c" name="email" class="form-control" value="<?php echo $reg[0]['Correo'] ?>">
+                            <input type="text" id="email_c" name="email" class="form-control" value="<?php echo $reg[0]['Correo'] ?>" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="dir_e">Dirección</label>
-                            <input type="text" id="dir_e" name="dir" class="form-control" value="<?php echo $reg[0]['Dirección'] ?>">
+                            <input type="text" id="dir_e" name="dir" class="form-control" value="<?php echo $reg[0]['Dirección'] ?>" Required>
                         </div>
                         <div class="col-md-4">
                             <label for="dias">Dia de Descanso</label>
                             <div class="form-group">
-                                <select class="form-select" name="dia">
+                                <select class="form-select" name="dia" Required>
                                     <option value="<?php echo $reg[0]['iddias'] ?>"><?php echo $reg[0]['dia'] ?></option>
                                     <?php
                                     $con = new Conexion();
@@ -134,7 +134,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         <div class="col-md-4">
                             <label for="cargo">Cargo</label>
                             <div class="form-group">
-                                <select class="form-select" name="cargo">
+                                <select class="form-select" name="cargo" Required>
                                     <option value="<?php echo $reg[0]['idcargo'] ?>"><?php echo $reg[0]['descripcion'] ?></option>
                                     <?php
                                     $con = new Conexion();
@@ -150,7 +150,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </div>
                         <div class="col-md-4">
                             <label for="dir_e">Telefono</label>
-                            <input type="text" id="dir_e" name="dir_e" class="form-control" value="<?php echo $reg[0]['numero'] ?>">
+                            <input type="text" id="dir_e" name="dir_e" class="form-control" value="<?php echo $reg[0]['numero'] ?>" Required>
                         </div>
                         <br><br><br>
                         <div class="col-md-12 centrar">

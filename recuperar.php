@@ -38,11 +38,11 @@ include('./Conexion/Conexion.php');
                     <tr>
                         <td  class="align-baseline"> 
                         <label for="Mail">Correo</label>
-                            <input class="form-control" type="email" name="user" >
+                            <input class="form-control" type="email" name="user" Required>
                         </td>
                         <td  class="align-baseline">
                             <label for="rol">Rol</label>
-                            <select class="form-select" name="rol">
+                            <select class="form-select" name="rol" Required>
                                 <option>---Seleccione rol----</option>
                                 <?php
                                 $con = new Conexion();
