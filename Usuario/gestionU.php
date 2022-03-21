@@ -146,9 +146,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <button class="btn btn-warning" onclick=window.location="./editarU.php?idUsuario=<?php echo $reg[$i]['idUsuario']; ?>">
                                         <span class="material-icons">mode_edit</span>
                                     </button>
-                                    <button class="btn btn-danger" onclick="eliminar('eliminarU.php?id=<?php echo $reg[$i]['idUsuario']; ?>')">
-                                        <span class="material-icons">delete_sweep </span>
-                                    </button>
+                                    
                                 </td>
                                 </tr>
                             <?php
@@ -187,9 +185,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <button class="btn btn-warning" onclick=window.location="./editarU.php?idUsuario=<?php echo $reg[$i]['idUsuario']; ?>">
                                         <span class="material-icons">mode_edit</span>
                                     </button>
-                                    <button class="btn btn-danger" onclick="eliminar('eliminarU.php?id=<?php echo $reg[$i]['idUsuario']; ?>')">
-                                        <span class="material-icons">delete_sweep </span>
-                                    </button>
+                                    
                                 </td>
                                 </tr>
                                 </tr>
