@@ -59,6 +59,7 @@ if (!isset($_SESSION['usuario'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
                         </li>
+                        
                     <?php
                     }
                     ?>
@@ -73,6 +74,9 @@ if (!isset($_SESSION['usuario'])) {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./Usuario/gestionU.php">Gestión Usuario</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="./Cargo/gestionCg.php">Gestión Cargo</a>
                         </li>
                     <?php
                     }

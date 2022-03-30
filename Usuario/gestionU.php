@@ -163,7 +163,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 ?>
                     <br>
                     <div class="card-footer">
-                        <<table class="table table-dark table-striped centrar" style="width: 500px;margin: 0 auto;">
+                        <table class="table table-dark table-striped centrar" style="width: 500px;margin: 0 auto;">
                             <thead>
                                 <tr>
                                     <th>Id</th>
