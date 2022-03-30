@@ -1,14 +1,14 @@
 <?php
-include("../Class/class_Usuario.php");
+include("../Class/class_dias.php");
 
-$us = new Usuario();
+$dia = new dias();
 
 if (isset($_POST['grabar']) && $_POST['grabar'] == "si") {
-    $us->editar($_POST['id'], $_POST['user'], $_POST['pwd']);
+    $dia->editar($_POST['id'], $_POST['dia']);
     exit();
 }
 
-$reg = $us->usuarioID($_GET['idUsuario']);
+$reg = $dia->diasId($_GET['iddia']);
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -43,6 +43,8 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Outfit:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
         <!-- CSS -->
         <link rel="stylesheet" href="../CSS/Style.css">
+        <!-- Link para animation -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
         <title>Galfersh Barber</title>
         <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
@@ -66,19 +68,19 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         ?>
                             <li class="nav-item">
-                                <a class="nav-link " href="./Cliente/gestionC.php">Gestión clientes</a>
+                                <a class="nav-link" href="./Cliente/gestionC.php">Gestión clientes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="../Empleado/gestionE.php">Gestión Empleado</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="../Usuario/gestionU.php">Gestión Usuario</a>
+                                <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="../Cargo/gestionCg.php">Gestión Cargo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="../dias/gestionD.php">Gestión Días</a>
+                                <a class="nav-link active" href="./gestionD.php">Gestión Días</a>
                             </li>
                         <?php
                         }
@@ -93,49 +95,23 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             <div class="container">
                 <div class="card-header ">
                     <br>
-                    <h3 class="text-white">ACTUALIZACIÓN DE USUARIOS</h3>
+                    <h3 class="text-white">ACTUALIZACIÓN DE DÍAS</h3>
                 </div>
                 <div class=" card-body">
                     <div class="row">
-                        <div class="col-md-4">
-                            <form name="form" action="editarU.php" method="POST">
+                        <div class="col-md-6">
+                            <form name="form" action="editarD.php" method="POST">
                                 <input type="hidden" name="grabar" value="si">
-                                <label for="idCliente">Id_Usuario</label>
-                                <input class="form-control" type="text" name="id" value="<?php echo $_GET['idUsuario'] ?>" readonly>
+                                <label for="id">Id Día</label>
+                                <input class="form-control" type="text" name="id" value="<?php echo $_GET['iddia'] ?>" readonly>
                         </div>
-                        <div class="col-md-4">
-                            <label for="user">Usuario</label>
-                            <input type="text" name="user" class="form-control" value="<?php echo $reg[0]['Usuario'] ?>">
+                        <div class="col-md-6">
+                            <label for="nom_e">Descripción</label>
+                            <input type="text" id="desc" name="dia" class="form-control" value="<?php echo $reg[0]['dia'] ?>" Required>
                         </div>
-                        <div class="col-md-4">
-                            <label for="apel_e">Contraseña</label>
-                            <input type="text" name="pwd" class="form-control" value="<?php echo $reg[0]['Contraseña'] ?>">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="email_e">Rol</label>
-                            <input type="text" name="rol" class="form-control" value="<?php echo $reg[0]['Roles_idRoles'] ?>" readonly>
-                        </div>
-                        <?php
-                        if ($reg[0]['Cliente_idCliente'] == null) {
-                        ?>
-                            <div class="col-md-4">
-                                <label for="email_e">Cédula</label>
-                                <input type="text" name="id_e" class="form-control" value="<?php echo $reg[0]['Empleado_cedula'] ?>" readonly>
-                            </div>
-                        <?php
-                        }
-                        if ($reg[0]['Empleado_cedula'] == null) {
-                        ?>
-                            <div class="col-md-4">
-                                <label for="email_e">Cédula</label>
-                                <input type="text" name="id_c" class="form-control" value="<?php echo $reg[0]['Cliente_idCliente'] ?>" readonly>
-                            </div>
-                        <?php
-                        }
-                        ?>
                         <br><br><br>
                         <div class="col-md-12 centrar">
-                            <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='gestionU.php'">
+                            <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='gestionD.php'">
                             <input type="submit" value="Editar" class="btn btn-dark" title="Editar">
                         </div>
                         </form>
@@ -162,17 +138,43 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
     </html>
 <?php
 } else if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 2) {
-    echo "
-    <script type='text/javascript'>
-    alert('Acceso denegado');
-    window.location ='../Home.php';
+    echo " 
+    <script type = 'text/javascript'>
+    Swal.fire({
+        title: 'Error!',
+        text: 'Usuario no autorizado',
+        icon: 'error',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+    }).then((result)=>{
+            if(result.value){
+                window.location ='../Home.php';
+            }
+        });
     </script>
 ";
 } else if ($_SESSION['usuario'] == null) {
-    echo "
-    <script type='text/javascript'>
-    alert('Por favor acceder como administrador');
-    window.location ='../Home.php';
+    echo " 
+    <script type = 'text/javascript'>
+    Swal.fire({
+        title: 'Error!',
+        text: 'Inicie Sesión como admin',
+        icon: 'error',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+    }).then((result)=>{
+            if(result.value){
+                window.location ='../Home.php';
+            }
+        });
     </script>
 ";
 }

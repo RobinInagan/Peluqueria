@@ -51,7 +51,7 @@ if (!isset($_SESSION['usuario'])) {
                         <a class="nav-link active" aria-current="page" href="./Home.php">Home</a>
                     </li>
                     <?php
-                    if ($_SESSION['usuario']== null && $_SESSION['rol'] == NULL) {
+                    if ($_SESSION['usuario'] == null && $_SESSION['rol'] == NULL) {
                     ?>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Sobre Nosotros</a>
@@ -59,7 +59,7 @@ if (!isset($_SESSION['usuario'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
                         </li>
-                        
+
                     <?php
                     }
                     ?>
@@ -76,7 +76,10 @@ if (!isset($_SESSION['usuario'])) {
                             <a class="nav-link" href="./Usuario/gestionU.php">Gestión Usuario</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" href="./Cargo/gestionCg.php">Gestión Cargo</a>
+                            <a class="nav-link" href="./Cargo/gestionCg.php">Gestión Cargo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="./dias/gestionD.php">Gestión Días</a>
                         </li>
                     <?php
                     }

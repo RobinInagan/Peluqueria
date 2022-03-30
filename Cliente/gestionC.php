@@ -63,6 +63,12 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         <li class="nav-item">
                             <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Cargo/gestionCg.php">Gestión Cargo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../dias/gestionD.php">Gestión Días</a>
+                        </li>
                     <?php
                             }
                     ?>

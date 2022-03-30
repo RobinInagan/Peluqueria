@@ -37,7 +37,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
     </head>
 
-    <body>
+    <body class="bg-secondary bg-gradient">
 
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
             <div class="container-fluid">
@@ -63,6 +63,12 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="#">Gestión Usuario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Cargo/gestionCg.php">Gestión Cargo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="../dias/gestionD.php">Gestión Días</a>
                             </li>
                         <?php
                         }
@@ -146,7 +152,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <button class="btn btn-warning" onclick=window.location="./editarU.php?idUsuario=<?php echo $reg[$i]['idUsuario']; ?>">
                                         <span class="material-icons">mode_edit</span>
                                     </button>
-                                    
+
                                 </td>
                                 </tr>
                             <?php
@@ -185,14 +191,14 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <button class="btn btn-warning" onclick=window.location="./editarU.php?idUsuario=<?php echo $reg[$i]['idUsuario']; ?>">
                                         <span class="material-icons">mode_edit</span>
                                     </button>
-                                    
+
                                 </td>
                                 </tr>
                                 </tr>
                             <?php
                             }
                             ?>
-                            </table>
+                        </table>
                     </div>
                 <?php
                 }
