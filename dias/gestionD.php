@@ -7,11 +7,52 @@ if (!isset($_SESSION['usuario'])) {
     $_SESSION['rol'] = NULL;
 }
 
-if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
+if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 2) {
+    echo " 
+    <script type = 'text/javascript'>
+    Swal.fire({
+        title: 'Error!',
+        text: 'Usuario no autorizado',
+        icon: 'error',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+    }).then((result)=>{
+            if(result.value){
+                window.location ='../Home.php';
+            }
+        });
+    </script>
+";
+} else if ($_SESSION['usuario'] == null) {
+    echo " 
+    <script type = 'text/javascript'>
+    Swal.fire({
+        title: 'Error!',
+        text: 'Inicie Sesión como admin',
+        icon: 'error',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+    }).then((result)=>{
+            if(result.value){
+                window.location ='../Home.php';
+            }
+        });
+    </script>
+";
+} else {
 
 ?>
     <!doctype html>
     <html lang="es">
+    <html>
 
     <head>
         <!-- Required meta tags -->
@@ -32,11 +73,8 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Outfit:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
         <!-- CSS -->
         <link rel="stylesheet" href="../CSS/Style.css">
-        <!-- Link para animation -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        
+
         <title>Días</title>
-        
         <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
     </head>
 
@@ -44,7 +82,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../Home.php">
-                    <img src="../Images/LogoPequeño.jpg" alt="Logo" width="100" height="100">
+                    <img src="../Images/LogoPequeño.jpg" alt="" width="100" height="100">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -52,34 +90,44 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="../Home.php">Home</a>
+                            <a class="nav-link active" aria-current="page" href="../Home.php">Home</a>
                         </li>
-                        <?php
-                        if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
-                        ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Cliente/gestionC.php">Gestión clientes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Empleado/gestionE.php">Gestión Empleado</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="../Cargo/gestionCg.php">Gestión Cargo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Gestión Días</a>
-                            </li>
-                        <?php
-                        }
-                        ?>
+                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Dropdown
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="./dias/gestionD.php">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown2">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="nav2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Gestiones
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="nav2">
+                                        <li><a class="dropdown-item" href="../Cliente/gestionC.php">Gestión clientes</a></li>
+                                        <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
+                                        <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
+                                        <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
+                                        <li><a class="dropdown-item" href="#">Gestión Días</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </ul>
                     <a type="button" class="btn btn-outline-danger" href="../logout.php">Cerrar sesión</a>
                 </div>
             </div>
         </nav>
+
 
         <div class="container posicion-footer">
             <?php
@@ -131,7 +179,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <input type="text" id="desc" name="dia" class="form-control" placeholder="Día" Required>
                                 </div>
                                 <div class="col-md-2">
-                                    <button class="btn btn-success"> 
+                                    <button class="btn btn-success">
                                         <span class="material-icons">add_circle</span>
                                     </button>
                                 </div>
@@ -155,53 +203,11 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             </div>
         </footer>
 
-        <script src="../jquery/jquery-3.6.0.min.js"></script>
-        <script src="../sw/dist/sweetalert2.all.min.js"></script>
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        
     </body>
 
     </html>
 
 <?php
-} else if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 2) {
-    echo " 
-    <script type = 'text/javascript'>
-    Swal.fire({
-        title: 'Error!',
-        text: 'Usuario no autorizado',
-        icon: 'error',
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-    }).then((result)=>{
-            if(result.value){
-                window.location ='../Home.php';
-            }
-        });
-    </script>
-";
-} else if ($_SESSION['usuario'] == null) {
-    echo " 
-    <script type = 'text/javascript'>
-    Swal.fire({
-        title: 'Error!',
-        text: 'Inicie Sesión como admin',
-        icon: 'error',
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-    }).then((result)=>{
-            if(result.value){
-                window.location ='../Home.php';
-            }
-        });
-    </script>
-";
 }
 ?>

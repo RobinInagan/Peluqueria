@@ -8,7 +8,7 @@ if (!isset($_SESSION['usuario'])) {
 ?>
 <!doctype html>
 <html lang="es">
-
+<html>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -66,21 +66,36 @@ if (!isset($_SESSION['usuario'])) {
                     <?php
                     if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     ?>
-                        <li class="nav-item">
-                            <a class="nav-link " href="./Cliente/gestionC.php">Gestión clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="./Empleado/gestionE.php">Gestión Empleado</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./Usuario/gestionU.php">Gestión Usuario</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./Cargo/gestionCg.php">Gestión Cargo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="./dias/gestionD.php">Gestión Días</a>
-                        </li>
+                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Dropdown
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="./dias/gestionD.php">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown2">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="nav2" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                        Gestiones
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="nav2">
+                                        <li><a class="dropdown-item" href="./Cliente/gestionC.php">Gestión clientes</a></li>
+                                        <li><a class="dropdown-item" href="./Empleado/gestionE.php">Gestión Empleado</a></li>
+                                        <li><a class="dropdown-item" href="./Usuario/gestionU.php">Gestión Usuario</a></li>
+                                        <li><a class="dropdown-item" href="./Cargo/gestionCg.php">Gestión Cargo</a></li>
+                                        <li><a class="dropdown-item" href="./dias/gestionD.php">Gestión Días</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     <?php
                     }
                     ?>
@@ -155,8 +170,8 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </footer>
 
-    <script src="./jquery/jquery-3.6.0.min.js"></script>
-    <script src="./sw/dist/sweetalert2.all.min.js"></script>
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script src="../sw/dist/sweetalert2.all.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script>
         $(function() {

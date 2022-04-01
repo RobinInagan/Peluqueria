@@ -67,20 +67,17 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         <?php
                         if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./Cliente/gestionC.php">Gestión clientes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="../Empleado/gestionE.php">Gestión Empleado</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Usuario/gestionU.php">Gestión Usuario</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Cargo/gestionCg.php">Gestión Cargo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="./gestionD.php">Gestión Días</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Gestiones
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="../Cliente/gestionC.php">Gestión clientes</a></li>
+                                    <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
+                                    <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
+                                    <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
+                                    <li><a class="dropdown-item" href="./dias/gestionD.php">Gestión Días</a></li>
+                                </ul>
                             </li>
                         <?php
                         }
@@ -130,9 +127,6 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 </address>
             </div>
         </footer>
-        <script src="../jquery/jquery-3.6.0.min.js"></script>
-        <script src="../sw/dist/sweetalert2.all.min.js"></script>
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
     </body>
 
     </html>
