@@ -1,5 +1,5 @@
 <?php
-include("../Class/class_dias.php");
+include("../Class/class_servicio.php");
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -119,22 +119,65 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
             <?php
             //crear el objeto de tipo cliente
 
-            $dia = new dias();
-            $reg = $dia->Mostrar();
+            $servicio = new servicios();
+            $reg = $servicio->Mostrar();
 
             ?>
 
             <div class="posicion">
             <div class="card-header ">
                     <br>
-                    <h3 class="text-white">GESTIÓN DÍAS</h3>
+                    <h3 class="text-white">GESTIÓN SERVICIO</h3>
+                </div>
+                
+                <div class=" card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form name="form" action="./insertS.php" method="POST">
+                                <label for="idServicio">ID</label>
+                                <input class="form-control" type="number" name="id" value="">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="descripción">descripción</label>
+                            <input type="text" id="nom_c" name="desc" class="form-control" Required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="precio">Precio</label>
+                            <input type="text" id="apel_c" name="precio" class="form-control" Required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="cargo">Cargo</label>
+                            <div class="form-group">
+                                <select class="form-select" name="cargo" Required>
+                                    <option>---Seleccione cargo----</option>
+                                    <?php
+                                    $con = new Conexion();
+                                    $link = $con->Conectar();
+                                    $sql = "select * from cargo";
+                                    $res = mysqli_query($link, $sql);
+                                    while ($row = mysqli_fetch_array($res)) {
+                                        echo "<option value='" . $row['idcargo'] . "'>" . $row['descripcion'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <br><br><br>
+                        <div class="col-md-12 centrar">
+                            <input type="reset" value="Limpiar" class="btn btn-dark" title="limpiar">
+                            <input type="submit" value="Insertar" class="btn btn-dark" title="insertar">
+                        </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="card-footer table-responsive">
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>
-                                <th>Id Día</th>
-                                <th>Día</th>
+                                <th>Id</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Cargo</th>
                                 <th class="col-2">Acciones</th>
                             </tr>
                         </thead>
@@ -142,15 +185,14 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                         //traer datos de la función mostrar.
                         for ($i = 0; $i < count($reg); $i++) {
                             echo "<tr>";
-                            echo "<td>" . $reg[$i]['iddias'] . "</td>";
-                            echo "<td>" . $reg[$i]['dia'] . "</td>";
-                        ?>
+                            echo "<td>" . $reg[$i]['idServicio'] . "</td>";
+                            echo "<td>" . $reg[$i]['descripición'] . "</td>";
+                            echo "<td>" . $reg[$i]['precio'] . "</td>";
+                            echo "<td>" . $reg[$i]['descripcion'] . "</td>";
+                            ?>
                             <td class="col-2">
-                                <button class="btn btn-warning" onclick=window.location="./editarD.php?iddia=<?php echo $reg[$i]['iddias']; ?>">
+                                <button class="btn btn-warning" onclick=window.location="./editarS.php?idServicio=<?php echo $reg[$i]['idServicio']; ?>">
                                     <span class="material-icons">mode_edit</span>
-                                </button>
-                                <button class="btn btn-danger" onclick="eliminar('eliminarD.php?iddia=<?php echo $reg[$i]['iddias']; ?>')">
-                                    <span class="material-icons">delete_sweep </span>
                                 </button>
                             </td>
                             </tr>
@@ -158,25 +200,6 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                         }
                         ?>
                     </table>
-                    <div class="container">
-                        <div class=" card-body">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <form name="form" action="./insertD.php" method="POST">
-                                        <input class="form-control" type="number" name="id" value="" min="0" placeholder="ID Cargo">
-                                </div>
-                                <div class="col-md-5">
-                                    <input type="text" id="desc" name="dia" class="form-control" placeholder="Día" Required>
-                                </div>
-                                <div class="col-md-2">
-                                    <button class="btn btn-success">
-                                        <span class="material-icons">add_circle</span>
-                                    </button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

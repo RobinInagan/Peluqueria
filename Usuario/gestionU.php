@@ -79,6 +79,10 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <div class="posicion">
             <br>
             <div class="container">
+            <div class="card-header ">
+                <br>
+                <h3 class="text-white">GESTIÓN USUARIO</h3>
+            </div>
                 <form action="./gestionU.php" method="POST" class="centrar">
                     <div class="btn-group btn-group-lg" role="group" aria-label="...">
                         <button type="submit" name="admin" class="btn btn-outline-dark">Administradores</button>

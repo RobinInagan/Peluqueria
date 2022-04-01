@@ -1,5 +1,5 @@
 <?php
-include("../Class/class_dias.php");
+include("../Class/class_roles.php");
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -90,12 +90,12 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../Home.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="../Home.php">Home</a>
                         </li>
                         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown2">
                             <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="nav2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <li class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="nav2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Gestiones
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="nav2">
@@ -103,7 +103,8 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                                         <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
                                         <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
                                         <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
-                                        <li><a class="dropdown-item" href="#">Gestión Días</a></li>
+                                        <li><a class="dropdown-item" href="../roles/gestionD.php">Gestión Días</a></li>
+                                        <li><a class="dropdown-item active" href="#">Gestión roles</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -119,64 +120,36 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
             <?php
             //crear el objeto de tipo cliente
 
-            $dia = new dias();
-            $reg = $dia->Mostrar();
+            $roles = new roles();
+            $reg = $roles->Mostrar();
 
             ?>
-
             <div class="posicion">
-            <div class="card-header ">
-                    <br>
-                    <h3 class="text-white">GESTIÓN DÍAS</h3>
+                <div class="container">
+                    <div class="card-header ">
+                        <br>
+                        <h3 class="text-white">GESTIÓN ROLES</h3>
+                    </div>
                 </div>
+
                 <div class="card-footer table-responsive">
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>
-                                <th>Id Día</th>
-                                <th>Día</th>
-                                <th class="col-2">Acciones</th>
+                                <th>Id Rol</th>
+                                <th>Rol</th>
                             </tr>
                         </thead>
                         <?php
                         //traer datos de la función mostrar.
                         for ($i = 0; $i < count($reg); $i++) {
                             echo "<tr>";
-                            echo "<td>" . $reg[$i]['iddias'] . "</td>";
-                            echo "<td>" . $reg[$i]['dia'] . "</td>";
-                        ?>
-                            <td class="col-2">
-                                <button class="btn btn-warning" onclick=window.location="./editarD.php?iddia=<?php echo $reg[$i]['iddias']; ?>">
-                                    <span class="material-icons">mode_edit</span>
-                                </button>
-                                <button class="btn btn-danger" onclick="eliminar('eliminarD.php?iddia=<?php echo $reg[$i]['iddias']; ?>')">
-                                    <span class="material-icons">delete_sweep </span>
-                                </button>
-                            </td>
-                            </tr>
-                        <?php
+                            echo "<td>" . $reg[$i]['idRoles'] . "</td>";
+                            echo "<td>" . $reg[$i]['Rol'] . "</td>";
+                            echo "</tr>";
                         }
                         ?>
                     </table>
-                    <div class="container">
-                        <div class=" card-body">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <form name="form" action="./insertD.php" method="POST">
-                                        <input class="form-control" type="number" name="id" value="" min="0" placeholder="ID Cargo">
-                                </div>
-                                <div class="col-md-5">
-                                    <input type="text" id="desc" name="dia" class="form-control" placeholder="Día" Required>
-                                </div>
-                                <div class="col-md-2">
-                                    <button class="btn btn-success">
-                                        <span class="material-icons">add_circle</span>
-                                    </button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -193,7 +166,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
             </div>
         </footer>
 
-        
+
     </body>
 
     </html>

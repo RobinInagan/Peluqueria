@@ -60,7 +60,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">Gestión clientes</a></li>
-                                <li><a class="dropdown-item" href="./Empleado/gestionE.php">Gestión Empleado</a></li>
+                                <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
                                 <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
                                 <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
                                 <li><a class="dropdown-item" href="../dias/gestionD.php">Gestión Días</a></li>
@@ -77,13 +77,17 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 
         <div class="posicion">
             <div class="container">
+                <div class="card-header ">
+                    <br>
+                    <h3 class="text-white">GESTIÓN CLIENTE</h3>
+                </div>
                 <?php
                 //crear el objeto de tipo cliente
                 $cl = new Cliente();
                 $reg = $cl->Mostrar();
 
                 ?>
-                <div class="card-footer posicion">
+                <div class="card-footer">
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>
@@ -125,7 +129,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             </div>
         </div>
 
-        <footer class="bg bg-dark text-white " style=" position: absolute;bottom: 0;width: 100%;height: 150px;">
+        <footer class="bg bg-dark text-white ">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>

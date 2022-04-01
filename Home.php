@@ -66,20 +66,6 @@ if (!isset($_SESSION['usuario'])) {
                     <?php
                     if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     ?>
-                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropdown
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="./dias/gestionD.php">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown2">
                             <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
@@ -92,6 +78,10 @@ if (!isset($_SESSION['usuario'])) {
                                         <li><a class="dropdown-item" href="./Usuario/gestionU.php">Gestión Usuario</a></li>
                                         <li><a class="dropdown-item" href="./Cargo/gestionCg.php">Gestión Cargo</a></li>
                                         <li><a class="dropdown-item" href="./dias/gestionD.php">Gestión Días</a></li>
+                                        <li><a class="dropdown-item" href="./horas/gestionH.php">Gestión Horas</a></li>
+                                        <li><a class="dropdown-item" href="./roles/gestionR.php">Gestión Roles</a></li>
+                                        <li><a class="dropdown-item" href="./servicios/gestionS.php">Gestión Servicios</a></li>
+                                        <li><a class="dropdown-item" href="./roles/gestionR.php">Gestión Citas</a></li>
                                     </ul>
                                 </li>
                             </ul>

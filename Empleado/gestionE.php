@@ -81,6 +81,10 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 
         <div class="posicion">
             <div class="container">
+                <div class="card-header ">
+                    <br>
+                    <h3 class="text-white">GESTIÓN EMPLEADO</h3>
+                </div>
                 <div class=" card-body">
                     <div class="row">
                         <div class="col-md-4">

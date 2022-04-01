@@ -1,5 +1,5 @@
 <?php
-include("../Class/class_dias.php");
+include("../Class/class_horas.php");
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -103,7 +103,8 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                                         <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
                                         <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
                                         <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
-                                        <li><a class="dropdown-item" href="#">Gestión Días</a></li>
+                                        <li><a class="dropdown-item" href="../horas/gestionD.php">Gestión Días</a></li>
+                                        <li><a class="dropdown-item" href="#">Gestión Horas</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -119,22 +120,41 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
             <?php
             //crear el objeto de tipo cliente
 
-            $dia = new dias();
-            $reg = $dia->Mostrar();
+            $horas = new horas();
+            $reg = $horas->Mostrar();
 
             ?>
-
             <div class="posicion">
-            <div class="card-header ">
+                <div class="container">
+                <div class="card-header ">
                     <br>
-                    <h3 class="text-white">GESTIÓN DÍAS</h3>
+                    <h3 class="text-white">GESTIÓN HORAS</h3>
                 </div>
+                    <div class=" card-body">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <form name="form" action="./insertH.php" method="POST">
+                                    <input class="form-control" type="number" name="id" value="" min="0" placeholder="ID Hora">
+                            </div>
+                            <div class="col-md-5">
+                                <input type="text" id="desc" name="horas" class="form-control" placeholder="Hora" Required>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-success">
+                                    <span class="material-icons">add_circle</span>
+                                </button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card-footer table-responsive">
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>
-                                <th>Id Día</th>
-                                <th>Día</th>
+                                <th>Id Hora</th>
+                                <th>Hora</th>
                                 <th class="col-2">Acciones</th>
                             </tr>
                         </thead>
@@ -142,15 +162,12 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                         //traer datos de la función mostrar.
                         for ($i = 0; $i < count($reg); $i++) {
                             echo "<tr>";
-                            echo "<td>" . $reg[$i]['iddias'] . "</td>";
-                            echo "<td>" . $reg[$i]['dia'] . "</td>";
+                            echo "<td>" . $reg[$i]['idHoras'] . "</td>";
+                            echo "<td>" . $reg[$i]['descripcion'] . "</td>";
                         ?>
                             <td class="col-2">
-                                <button class="btn btn-warning" onclick=window.location="./editarD.php?iddia=<?php echo $reg[$i]['iddias']; ?>">
+                                <button class="btn btn-warning" onclick=window.location="./editarD.php?idhoras=<?php echo $reg[$i]['idHoras']; ?>">
                                     <span class="material-icons">mode_edit</span>
-                                </button>
-                                <button class="btn btn-danger" onclick="eliminar('eliminarD.php?iddia=<?php echo $reg[$i]['iddias']; ?>')">
-                                    <span class="material-icons">delete_sweep </span>
                                 </button>
                             </td>
                             </tr>
@@ -158,25 +175,6 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                         }
                         ?>
                     </table>
-                    <div class="container">
-                        <div class=" card-body">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <form name="form" action="./insertD.php" method="POST">
-                                        <input class="form-control" type="number" name="id" value="" min="0" placeholder="ID Cargo">
-                                </div>
-                                <div class="col-md-5">
-                                    <input type="text" id="desc" name="dia" class="form-control" placeholder="Día" Required>
-                                </div>
-                                <div class="col-md-2">
-                                    <button class="btn btn-success">
-                                        <span class="material-icons">add_circle</span>
-                                    </button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -193,7 +191,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
             </div>
         </footer>
 
-        
+
     </body>
 
     </html>
