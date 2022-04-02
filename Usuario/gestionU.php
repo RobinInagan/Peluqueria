@@ -65,6 +65,10 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <li><a class="dropdown-item" href="#">Gestión Usuario</a></li>
                                     <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
                                     <li><a class="dropdown-item" href="../dias/gestionD.php">Gestión Días</a></li>
+                                    <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
+                                    <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>
+                                    <li><a class="dropdown-item" href="../servicios/gestionS.php">Gestión Servicios</a></li>
+                                    <li><a class="dropdown-item" href="../citas/gestionCi.php">Gestión Citas</a></li>
                                 </ul>
                             </li>
                         <?php
@@ -79,10 +83,10 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <div class="posicion">
             <br>
             <div class="container">
-            <div class="card-header ">
-                <br>
-                <h3 class="text-white">GESTIÓN USUARIO</h3>
-            </div>
+                <div class="card-header ">
+                    <br>
+                    <h3 class="text-white">GESTIÓN USUARIO</h3>
+                </div>
                 <form action="./gestionU.php" method="POST" class="centrar">
                     <div class="btn-group btn-group-lg" role="group" aria-label="...">
                         <button type="submit" name="admin" class="btn btn-outline-dark">Administradores</button>

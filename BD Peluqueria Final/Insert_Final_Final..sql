@@ -36,7 +36,8 @@ begin
 		if(SELECT (case dayofweek(fecha1) when 2 then 'Lunes' when 3 then 'Martes' when 4 then 'Miércoles' when 5 then 'Jueves' when 6 then 'Viernes' when 7 then 'Sábado' when 1 then 'Domingo' end)=(select dia from dias inner join empleado on iddias=dias_iddias where cedula=empleado1)) then
 			select 'El empleado descansa ese dia' as Alerta;
 		else
-			insert into citas values (servicio1,cliente,empleado1,hora1,fecha1,1);
+			insert into citas (Servicio_idServicio,
+  Cliente_idCliente,Empleado_idEmpleado,Horas_idHoras, Fecha_cita,Estado_cita_idEstado_cita) values (servicio1,cliente,empleado1,hora1,fecha1,1);
         end if;
 	else
 		select 'El empleado no puede realizar este servicio' as Alerta; 

@@ -123,13 +123,14 @@ ENGINE = InnoDB;
 -- Table `PeluqueriaF`.`Citas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PeluqueriaF`.`Citas` (
+  `idcita` INT NOT NULL auto_increment,
   `Servicio_idServicio` INT NOT NULL,
   `Cliente_idCliente` INT NOT NULL,
   `Empleado_idEmpleado` INT NOT NULL,
   `Horas_idHoras` INT NOT NULL,
   `Fecha_cita` DATE NOT NULL,
   `Estado_cita_idEstado_cita` INT NOT NULL,
-  PRIMARY KEY (`Servicio_idServicio`, `Cliente_idCliente`, `Empleado_idEmpleado`, `Horas_idHoras`),
+  PRIMARY KEY (`idcita`),
     FOREIGN KEY (`Servicio_idServicio`)
     REFERENCES `PeluqueriaF`.`Servicio` (`idServicio`)
     ON DELETE cascade ON UPDATE cascade,

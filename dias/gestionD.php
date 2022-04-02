@@ -75,7 +75,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
         <link rel="stylesheet" href="../CSS/Style.css">
 
         <title>Días</title>
-        <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
+        <link rel="icon" type="image/x-icon" href=".../Images/Logo.jpg">
     </head>
 
     <body>
@@ -104,6 +104,10 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                                         <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
                                         <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
                                         <li><a class="dropdown-item" href="#">Gestión Días</a></li>
+                                        <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
+                                        <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>
+                                        <li><a class="dropdown-item" href="../servicios/gestionS.php">Gestión Servicios</a></li>
+                                        <li><a class="dropdown-item" href="../citas/gestionCi.php">Gestión Citas</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -125,7 +129,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
             ?>
 
             <div class="posicion">
-            <div class="card-header ">
+                <div class="card-header ">
                     <br>
                     <h3 class="text-white">GESTIÓN DÍAS</h3>
                 </div>
@@ -163,7 +167,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                             <div class="row">
                                 <div class="col-md-5">
                                     <form name="form" action="./insertD.php" method="POST">
-                                        <input class="form-control" type="number" name="id" value="" min="0" placeholder="ID Cargo">
+                                        <input class="form-control" type="number" name="id" value="" min="0" placeholder="ID Dias">
                                 </div>
                                 <div class="col-md-5">
                                     <input type="text" id="desc" name="dia" class="form-control" placeholder="Día" Required>
@@ -193,7 +197,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
             </div>
         </footer>
 
-        
+
     </body>
 
     </html>

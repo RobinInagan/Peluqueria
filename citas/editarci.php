@@ -1,5 +1,14 @@
 <?php
-include("../Class/class_Empleado.php");
+include("../Class/class_citas.php");
+
+$cita = new Citas();
+
+if (isset($_POST['grabar']) && $_POST['grabar'] == "si") {
+    $cita->editar($_POST['id'], $_POST['servicio'], $_POST['clienteid'], $_POST['empleado'], $_POST['hora'], $_POST['fecha'], $_POST['estado']);
+    exit();
+}
+
+$reg = $cita->citasId($_GET['idcita']);
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -8,7 +17,6 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
-
 ?>
     <!doctype html>
     <html lang="es">
@@ -28,7 +36,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 
         <!-- Iconos -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script type="text/javascript" language="javascript" src="../JavasScript/Funciones.js"></script>
+        <script type="text/javascript" language="javascript" src="js/funciones.js"></script>
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,11 +49,11 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
     </head>
 
-    <body>
+    <body class="bg-secondary bg-gradient">
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../Home.php">
-                    <img src="../Images/LogoPequeño.jpg" alt="Logo" width="100" height="100">
+                <a class="navbar-brand" href="./Home.php">
+                    <img src="../Images/LogoPequeño.jpg" alt="" width="100" height="100">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -53,7 +61,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="../Home.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="../Home.php">Home</a>
                         </li>
                         <?php
                         if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
@@ -64,7 +72,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a class="dropdown-item" href="../Cliente/gestionC.php">Gestión clientes</a></li>
-                                    <li><a class="dropdown-item" href="#">Gestión Empleado</a></li>
+                                    <li><a class="dropdown-item" href="./Empleado/gestionE.php">Gestión Empleado</a></li>
                                     <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
                                     <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
                                     <li><a class="dropdown-item" href="../dias/gestionD.php">Gestión Días</a></li>
@@ -87,152 +95,114 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             <div class="container">
                 <div class="card-header ">
                     <br>
-                    <h3 class="text-white">GESTIÓN EMPLEADO</h3>
+                    <h3 class="text-white">ACTUALIZACIÓN DE CITAS</h3>
                 </div>
                 <div class=" card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <form name="form" action="./insertarE.php" method="POST">
-                                <label for="idEmpleado">Cedula</label>
-                                <input class="form-control" type="number" name="id" value="">
+                            <form name="form" action="editarci.php" method="POST">
+                                <input type="hidden" name="grabar" value="si">
+                                <label for="idEmpleado">Id Cita</label>
+                                <input class="form-control" type="text" name="id" value="<?php echo $_GET['idcita'] ?>" readonly>
                         </div>
                         <div class="col-md-4">
-                            <label for="nom_e">Nombre</label>
-                            <input type="text" id="nom_c" name="nombre" class="form-control" Required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="apel_e">Apellidos</label>
-                            <input type="text" id="apel_c" name="apell" class="form-control" Required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="email_e">Correo</label>
-                            <input type="text" id="email_c" name="email" class="form-control" Required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="dir_e">Dirección</label>
-                            <input type="text" id="dir_e" name="dir" class="form-control" Required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="dias">Dia de Descanso</label>
+                            <label for="nom_e">Servicio</label>
                             <div class="form-group">
-                                <select class="form-select" name="dia" Required>
-                                    <option>---Seleccione día----</option>
+                                <select class="form-select" name="servicio" Required>
+                                    <option value="<?php echo $reg[0]['idServicio'] ?>"><?php echo $reg[0]['descripición'] ?></option>
                                     <?php
                                     $con = new Conexion();
                                     $link = $con->Conectar();
-                                    $sql = "select * from dias";
+                                    $sql = "select * from servicio";
                                     $res = mysqli_query($link, $sql);
                                     while ($row = mysqli_fetch_array($res)) {
-                                        echo "<option value='" . $row['iddias'] . "'>" . $row['dia'] . "</option>";
+                                        echo "<option value='" . $row['idServicio'] . "'>" . $row['descripición'] . "</option>";
                                     }
                                     ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="cargo">Cargo</label>
+                            <label for="apel_e">Cliente</label>
+                            <input type="text" id="apel_c" name="cliente" class="form-control" value="<?php echo $reg[0]['nombres'] ?>" readonly>
+                            <input type="hidden" id="apel_c" name="clienteid" class="form-control" value="<?php echo $reg[0]['idCliente'] ?>" >
+                        </div>
+                        <div class="col-md-4">
+                            <label for="email_e">Empleado</label>
                             <div class="form-group">
-                                <select class="form-select" name="cargo" Required>
-                                    <option>---Seleccione cargo del empleado-----</option>
+                                <select class="form-select" name="empleado" Required>
+                                    <option value="<?php echo $reg[0]['cedula'] ?>"><?php echo $reg[0]['nombre'] ?></option>
                                     <?php
                                     $con = new Conexion();
                                     $link = $con->Conectar();
-                                    $sql = "select * from cargo";
+                                    $sql = "select * from empleado";
                                     $res = mysqli_query($link, $sql);
                                     while ($row = mysqli_fetch_array($res)) {
-                                        echo "<option value='" . $row['idcargo'] . "'>" . $row['descripcion'] . "</option>";
+                                        echo "<option value='" . $row['cedula'] . "'>" . $row['nombre'] ." ". $row['Apellidos'] . "</option>";
                                     }
                                     ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="tel">Telefono</label>
-                            <input type="number" id="tel" name="tel" class="form-control" Required>
+                            <label for="dir_e">Horas</label>
+                            <div class="form-group">
+                                <select class="form-select" name="hora" Required>
+                                    <option value="<?php echo $reg[0]['idHoras'] ?>"><?php echo $reg[0]['descripcion'] ?></option>
+                                    <?php
+                                    $con = new Conexion();
+                                    $link = $con->Conectar();
+                                    $sql = "select * from horas";
+                                    $res = mysqli_query($link, $sql);
+                                    while ($row = mysqli_fetch_array($res)) {
+                                        echo "<option value='" . $row['idHoras'] . "'>" . $row['descripcion'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="tel">Usuario</label>
-                            <input type="text" id="user" name="user" class="form-control" Required>
+                            <label for="dir_e">Fecha Cita</label>
+                            <input type="date" id="dir_e" name="fecha" class="form-control" value="<?php echo $reg[0]['Fecha_cita'] ?>" Required>
                         </div>
                         <div class="col-md-4">
-                            <label for="tel">Contraseña</label>
-                            <input type="password" id="passwd" name="passwd" class="form-control" Required>
+                            <label for="dir_e">Estado</label>
+                            <div class="form-group">
+                                <select class="form-select" name="estado" Required>
+                                    <option value="<?php echo $reg[0]['idEstado_cita'] ?>"><?php echo $reg[0]['descripciòn'] ?></option>
+                                    <?php
+                                    $con = new Conexion();
+                                    $link = $con->Conectar();
+                                    $sql = "select * from estado_cita";
+                                    $res = mysqli_query($link, $sql);
+                                    while ($row = mysqli_fetch_array($res)) {
+                                        echo "<option value='" . $row['idEstado_cita'] . "'>" . $row['descripciòn'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                         <br><br><br>
                         <div class="col-md-12 centrar">
-                            <input type="reset" value="Limpiar" class="btn btn-dark" title="limpiar">
-                            <input type="submit" value="Insertar" class="btn btn-dark" title="insertar">
+                            <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='gestionCi.php'">
+                            <input type="submit" value="Editar" class="btn btn-dark" title="Editar">
                         </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="container posicion-footer">
-                <?php
-                //crear el objeto de tipo cliente
-
-                $cl = new Empleado();
-                $reg = $cl->Mostrar();
-
-                ?>
-                <div class="card-footer table-responsive">
-                    <table class="table table-dark table-striped">
-                        <thead>
-                            <tr>
-                                <th>Cédula</th>
-                                <th>Nombre(s)</th>
-                                <th>Apellidos</th>
-                                <th>Correo</th>
-                                <th>Dirección</th>
-                                <th>Descanso</th>
-                                <th>Cargo</th>
-                                <th>Telefono</th>
-                                <th class="col-2">Acciones</th>
-                            </tr>
-                        </thead>
-                        <?php
-
-                        //traer datos de la función mostrar.
-                        for ($i = 0; $i < count($reg); $i++) {
-                            echo "<tr>";
-                            echo "<td>" . $reg[$i]['cedula'] . "</td>";
-                            echo "<td>" . $reg[$i]['nombre'] . "</td>";
-                            echo "<td>" . $reg[$i]['Apellidos'] . "</td>";
-                            echo "<td>" . $reg[$i]['Correo'] . "</td>";
-                            echo "<td>" . $reg[$i]['Dirección'] . "</td>";
-                            echo "<td>" . $reg[$i]['dia'] . "</td>";
-                            echo "<td>" . $reg[$i]['descripcion'] . "</td>";
-                            echo "<td>" . $reg[$i]['numero'] . "</td>";
-                        ?>
-                            <td class="col-2">
-                                <button class="btn btn-warning" onclick=window.location="./editarE.php?idEmpleado=<?php echo $reg[$i]['cedula']; ?>">
-                                    <span class="material-icons">mode_edit</span>
-                                </button>
-                                <button class="btn btn-danger" onclick="eliminar('eliminarE.php?id=<?php echo $reg[$i]['cedula']; ?>')">
-                                    <span class="material-icons">delete_sweep </span>
-                                </button>
-                            </td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </table>
-                </div>
-            </div>
         </div>
-        <footer class="bg bg-dark text-white">
-            <div class="row">
-                <div class="centrar">
-                    <address>
-                        <h3>Galfersh Barber</h3>
-                        <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                        <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                        <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
-                    </address>
-                </div>
+
+        <footer class="bg bg-dark text-white " style=" position: absolute;bottom: 0;width: 100%;height: 150px;">
+            <div class="centrar">
+                <address>
+                    <h3>Galfersh Barber</h3>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                </address>
             </div>
         </footer>
-
     </body>
 
     </html>

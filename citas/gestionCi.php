@@ -1,5 +1,5 @@
 <?php
-include("../Class/class_Cliente.php");
+include("../Class/class_citas.php");
 session_start();
 if (!isset($_SESSION['usuario'])) {
     $_SESSION['usuario'] = NULL;
@@ -59,7 +59,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                 Gestiones
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Gestión clientes</a></li>
+                                <li><a class="dropdown-item" href="../Cliente/gestionC.php">Gestión clientes</a></li>
                                 <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
                                 <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
                                 <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
@@ -67,7 +67,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                 <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
                                 <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>
                                 <li><a class="dropdown-item" href="../servicios/gestionS.php">Gestión Servicios</a></li>
-                                <li><a class="dropdown-item" href="../citas/gestionCi.php">Gestión Citas</a></li>
+                                <li><a class="dropdown-item" href="#">Gestión Citas</a></li>
                             </ul>
                         </li>
                     <?php
@@ -83,24 +83,25 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             <div class="container">
                 <div class="card-header ">
                     <br>
-                    <h3 class="text-white">GESTIÓN CLIENTE</h3>
+                    <h3 class="text-white">GESTIÓN CITAS</h3>
                 </div>
                 <?php
-                //crear el objeto de tipo cliente
-                $cl = new Cliente();
-                $reg = $cl->Mostrar();
+                //crear el objeto de tipo citas
+                $ci = new citas();
+                $reg = $ci->Mostrar();
 
                 ?>
                 <div class="card-footer">
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>
-                                <th>Cédula</th>
-                                <th>Nombre(s)</th>
-                                <th>Apellidos</th>
-                                <th>Correo</th>
-                                <th>fecha Nacimiento</th>
-                                <th>Telefono</th>
+                                <th>ID</th>
+                                <th>Servicio</th>
+                                <th>Cliente</th>
+                                <th>Empleado</th>
+                                <th>Hora</th>
+                                <th>Fecha </th>
+                                <th>Estado</th>
                                 <th class="col-2">Acciones</th>
                             </tr>
                         </thead>
@@ -109,19 +110,17 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         //traer datos de la función mostrar.
                         for ($i = 0; $i < count($reg); $i++) {
                             echo "<tr>";
-                            echo "<td>" . $reg[$i]['idCliente'] . "</td>";
+                            echo "<td>" . $reg[$i]['idcita'] . "</td>";
+                            echo "<td>" . $reg[$i]['descripición'] . "</td>";
                             echo "<td>" . $reg[$i]['nombres'] . "</td>";
-                            echo "<td>" . $reg[$i]['Apellidos'] . "</td>";
-                            echo "<td>" . $reg[$i]['Correo'] . "</td>";
-                            echo "<td>" . $reg[$i]['Fecha_N'] . "</td>";
-                            echo "<td>" . $reg[$i]['numero'] . "</td>";
+                            echo "<td>" . $reg[$i]['nombre'] . "</td>";
+                            echo "<td>" . $reg[$i]['descripcion'] . "</td>";
+                            echo "<td>" . $reg[$i]['Fecha_cita'] . "</td>";
+                            echo "<td>" . $reg[$i]['descripciòn'] . "</td>";
                         ?>
                             <td class="col-2">
-                                <button class="btn btn-warning " onclick=window.location="./editarC.php?idCliente=<?php echo $reg[$i]['idCliente']; ?>">
+                                <button class="btn btn-warning " onclick=window.location="./editarci.php?idcita=<?php echo $reg[$i]['idcita']; ?>">
                                     <span class="material-icons">mode_edit</span>
-                                </button>
-                                <button class="btn btn-danger" onclick="eliminar('eliminarC.php?id=<?php echo $reg[$i]['idCliente']; ?>')">
-                                    <span class="material-icons">delete_sweep </span>
                                 </button>
                             </td>
                             </tr>

@@ -104,7 +104,10 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                                         <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
                                         <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
                                         <li><a class="dropdown-item" href="../roles/gestionD.php">Gestión Días</a></li>
-                                        <li><a class="dropdown-item active" href="#">Gestión roles</a></li>
+                                        <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
+                                        <li><a class="dropdown-item" href="#">Gestión Roles</a></li>
+                                        <li><a class="dropdown-item" href="../servicios/gestionS.php">Gestión Servicios</a></li>
+                                        <li><a class="dropdown-item" href="../citas/gestionCi.php">Gestión Citas</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -81,7 +81,7 @@ if (!isset($_SESSION['usuario'])) {
                                         <li><a class="dropdown-item" href="./horas/gestionH.php">Gestión Horas</a></li>
                                         <li><a class="dropdown-item" href="./roles/gestionR.php">Gestión Roles</a></li>
                                         <li><a class="dropdown-item" href="./servicios/gestionS.php">Gestión Servicios</a></li>
-                                        <li><a class="dropdown-item" href="./roles/gestionR.php">Gestión Citas</a></li>
+                                        <li><a class="dropdown-item" href="./citas/gestionCi.php">Gestión Citas</a></li>
                                     </ul>
                                 </li>
                             </ul>
