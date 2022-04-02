@@ -9,6 +9,7 @@ if (!isset($_SESSION['usuario'])) {
 <!doctype html>
 <html lang="es">
 <html>
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -54,7 +55,7 @@ if (!isset($_SESSION['usuario'])) {
                     if ($_SESSION['usuario'] == null && $_SESSION['rol'] == NULL) {
                     ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre Nosotros</a>
+                            <a class="nav-link" href="./about.php">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
@@ -145,11 +146,74 @@ if (!isset($_SESSION['usuario'])) {
                     </button>
                 </div>
             </div>
+            <div class="reserva row">
+                <div class=" centrarIt col-6">
+                    <a class="btn btn-secondary btn-lg" style="color:black;" href="Login.php">
+                        Reservar
+                    </a>
+                </div>
+                <div class="col-6">
+                    <h1>¡Reserva tu cita!</h1>
+                    <h5>Para reservar una cita deberás registrarte antes en nuestra aplicación.
+                        Podrás elegir el servicio, profesional y horario de tu preferencia.</h5>
+                </div>
+            </div>
+
+            <h2>Servicios</h2>
+            <hr>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card">
+                        <a data-bs-toggle="collapse" data-bs-placement="top" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
+                            <img src="./Images/Logo.jpg" class="card-img-top" alt="Barberia" data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Barbería</h5>
+                            <div class="collapse" id="collapse1">
+                                <div class="card card-body">
+                                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <a data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
+                            <img src="./Images/Logo.jpg" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Manicure</h5>
+                            <div class="collapse" id="collapse2">
+                                <div class="card card-body">
+                                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <a data-bs-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
+                            <img src="./Images/Logo.jpg" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Tintes</h5>
+                            <div class="collapse" id="collapse3">
+                                <div class="card card-body">
+                                    No sólo cambiamos el color de tu cabello, sino te ofrecemos la mejor experiencia con los mejores productos y profesionales.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     </table>
-    <footer class="bg bg-dark text-white">
+    <footer class="bg bg-dark text-white" style="margin-top: 30px;">
         <div class="centrar">
             <address>
                 <h3>Galfersh Barber</h3>

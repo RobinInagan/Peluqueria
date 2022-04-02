@@ -27,7 +27,9 @@
 
 <body>
 
-
+    <div class="container">
+        <a class="btn btn-secondary" href="Home.php" style="margin-top: 30px;">Volver al Home</a>
+    </div>
     <div class="container2">
         <div class="backbox">
             <div class="loginMsg">
@@ -53,10 +55,10 @@
                 <form action="./validar.php" method="POST">
                     <div class="inputbox">
                         <input type="text" name="user" placeholder="  Usuario" Required>
-                        <input type="password" name="pwd" placeholder="  Contraseña" Required> 
+                        <input type="password" name="pwd" placeholder="  Contraseña" Required>
                     </div>
                     <a href="./recuperar.php">¿Olvidaste tu contraseña?</a>
-                    <button >Ingresar</button>
+                    <button>Ingresar</button>
                 </form>
             </div>
 
@@ -100,8 +102,8 @@
                         </table>
                     </div>
                     <button>Registrarme</button>
-                                </div>
-                </form>
+            </div>
+            </form>
 
         </div>
         <!-- frontbox -->
@@ -133,7 +135,6 @@
             $signup.toggleClass('hide');
             $login.toggleClass('hide');
         })
-
     </script>
 </body>
 

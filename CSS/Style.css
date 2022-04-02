@@ -110,7 +110,7 @@ body{
   
   .login h2,
   .signup h2 {
-    color: #35B729;
+    color: #2a8a22;
     font-size:22px;
   }
   
@@ -129,7 +129,7 @@ body{
   }
   
   .login button{
-        background-color: #35B729;
+        background-color: #2a8a22;
         border: none;
         color:white;
         font-size: 12px;
@@ -144,7 +144,7 @@ body{
         cursor: pointer;
   }
   .signup button{
-    background-color: #35B729;
+    background-color: #2a8a22;
     border: none;
     color:white;
     font-size: 12px;
@@ -179,3 +179,16 @@ body{
     display: none;
   }
   
+  .reserva{
+    background-color: #939493; 
+    border-radius:20px;
+    margin-bottom: 40px; 
+    margin-top: 40px; 
+    padding: 30px;  
+  }
+
+  .centrarIt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
