@@ -146,11 +146,22 @@ if (!isset($_SESSION['usuario'])) {
                     </button>
                 </div>
             </div>
+                <?php
+                
+                 if($_SESSION['usuario'] == null && $_SESSION['rol']==null){
+                    $s = 0;
+                    $r = 0;
+                 }else{
+                     $s = $_SESSION['usuario'];
+                     $r = $_SESSION['rol'];
+                 }
+                
+                ?>
             <div class="reserva row">
                 <div class=" centrarIt col-6">
-                    <a class="btn btn-secondary btn-lg" style="color:black;" href="Login.php">
+                    <button class="btn btn-secondary btn-lg" style="color:black;" onclick="verificar('<?php echo $s;?>','<?php echo $r;?>');">
                         Reservar
-                    </a>
+                    </button>
                 </div>
                 <div class="col-6">
                     <h1>¡Reserva tu cita!</h1>
@@ -224,8 +235,8 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </footer>
 
-    <script src="../jquery/jquery-3.6.0.min.js"></script>
-    <script src="../sw/dist/sweetalert2.all.min.js"></script>
+    <script src="./jquery/jquery-3.6.0.min.js"></script>
+    <script src="./sw/dist/sweetalert2.all.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script>
         $(function() {

@@ -146,6 +146,24 @@
             </script>
         ";
         }
+
+        public function Filtrar($servicio)
+        {
+            $sql = "SELECT cargo_idcargo FROM `servicio` WHERE idservicio=$servicio";
+            $res = mysqli_query(Conexion::Conectar(), $sql) or die("Error en la consulta sql al buscar id cargo");
+            if ($reg = mysqli_fetch_assoc($res)) {
+                $this->citas[] = $reg;
+            }
+
+            $sql2 = "SELECT `cedula`, `nombre`, `Apellidos` FROM `empleado` WHERE `cargo_idcargo` = ".$this->citas[0]['cargo_idcargo']." ";
+            $this->citas = array();
+            $res2 = mysqli_query(Conexion::Conectar(), $sql2) or die("Error en la consulta sql al buscar empleado");
+            if ($reg2 = mysqli_fetch_assoc($res2)) {
+                $this->citas[] = $reg2;
+            }
+            return $this->citas;
+        }
+
     }
     ?>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
