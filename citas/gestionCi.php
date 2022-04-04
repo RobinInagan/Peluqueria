@@ -197,13 +197,13 @@ if (!isset($_SESSION['usuario'])) {
                         </li>
                     <?php
                             }
-                            if ($_SESSION['usuario'] && ($_SESSION['rol'] == 2 || $_SESSION['rol'] == 3)) {
+                            if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                     ?>
                         <li class="nav-item">
                             <a class="nav-link" href="../about.php">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Mi_Perfil.php">Mi Perfil</a>
+                            <a class="nav-link" href="../Usuario/Mi_PerfilC.php">Mi Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Mis Citas</a>
@@ -211,6 +211,22 @@ if (!isset($_SESSION['usuario'])) {
                     <?php
 
                             }
+                    ?>
+                    <?php
+                    if ($_SESSION['usuario'] &&  $_SESSION['rol'] == 3) {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../about.php">Sobre Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Usuario/Mi_PerfilE.php">Mi Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Mis Citas</a>
+                        </li>
+                    <?php
+
+                    }
                     ?>
                     </ul>
                     <a type="button" class="btn btn-outline-danger" href="../logout.php">Cerrar sesión</a>
@@ -338,13 +354,27 @@ if (!isset($_SESSION['usuario'])) {
                         </li>
                     <?php
                             }
-                            if ($_SESSION['usuario'] && ($_SESSION['rol'] == 2 || $_SESSION['rol'] == 3)) {
+                            if ($_SESSION['usuario'] && $_SESSION['rol'] == 2){
                     ?>
                         <li class="nav-item">
                             <a class="nav-link" href="../about.php">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Mi_Perfil.php">Mi Perfil</a>
+                            <a class="nav-link" href="../Usuario/Mi_PerfilC.php">Mi Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Mis Citas</a>
+                        </li>
+                    <?php
+
+                            }
+                            if ($_SESSION['usuario'] && $_SESSION['rol'] == 3) {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../about.php">Sobre Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Usuario/Mi_PerfilE.php">Mi Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Mis Citas</a>

@@ -23,7 +23,6 @@
     <?php
 
     include("../Conexion/Conexion.php");
-
     //clase empleado 
     class Cliente
     {
@@ -98,6 +97,31 @@
             }).then((result)=>{
                     if(result.value){
                         window.location ='gestionC.php';
+                    }
+                });
+            </script>
+        ";
+        }
+
+        public function  editarperfil($idC, $nomC, $apelC, $email, $fn)
+        {
+            $sql = "UPDATE `cliente` SET `nombres`='$nomC',`Apellidos`='$apelC',`Correo`='$email',`Fecha_N`='$fn' WHERE `idCliente` ='$idC'";
+            $res = mysqli_query(Conexion::conectar(), $sql) or die("Error en la consulta sql al editar");
+            echo " 
+            <script type = 'text/javascript'>
+            Swal.fire({
+                title: 'Exito',
+                text: 'El empleado con id $idC fue modificado',
+                icon: 'success',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                  },
+                  hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                  }
+            }).then((result)=>{
+                    if(result.value){
+                        window.location ='../Usuario/Mi_perfilC.php';
                     }
                 });
             </script>

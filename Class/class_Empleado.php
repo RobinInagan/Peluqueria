@@ -101,6 +101,31 @@
         ";
         }
 
+        public function editarperfil($idC,$nom,$apel,$email,$dir){
+            $sql="UPDATE `empleado` SET `nombre`='$nom',`Apellidos`='$apel',`Correo`='$email',`Dirección`='$dir' WHERE `cedula` ='$idC'";
+            $res = mysqli_query(Conexion::conectar(),$sql)or die ("Error en la consulta sql al editar");
+            echo " 
+            <script type = 'text/javascript'>
+            Swal.fire({
+                title: 'Exito',
+                text: 'El empleado con id $idC fue modificado',
+                icon: 'success',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                  },
+                  hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                  }
+            }).then((result)=>{
+                    if(result.value){
+                        window.location ='../Usuario/Mi_perfilE.php';
+                    }
+                });
+            </script>
+        ";
+        }
+
+
         //Crear una función para capturar el id de los botones de acción 
         public function empleadoId($id){
             $sql=" Select e.cedula, e.nombre, e.Apellidos, e.Correo, e.Dirección, d.iddias, d.dia, c.idcargo, c.descripcion, t.numero from empleado e inner join cargo c on cargo_idcargo=idcargo inner join dias d on dias_iddias=iddias 

@@ -57,10 +57,6 @@ if (!isset($_SESSION['usuario'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./citas/gestionCi.php">Mis Citas</a>
-                        </li>
-
                     <?php
                     }
                     ?>
@@ -91,13 +87,28 @@ if (!isset($_SESSION['usuario'])) {
                     }
                     ?>
                     <?php
-                    if ($_SESSION['usuario'] && ($_SESSION['rol'] == 2 || $_SESSION['rol'] == 3)) {
+                    if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                     ?>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./Mi_Perfil.php">Mi Perfil</a>
+                            <a class="nav-link" href="./Usuario/Mi_PerfilC.php">Mi Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./citas/gestionCi.php">Mis Citas</a>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    if ($_SESSION['usuario'] &&  $_SESSION['rol'] == 3) {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Sobre Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./Usuario/Mi_PerfilE.php">Mi Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./citas/gestionCi.php">Mis Citas</a>
@@ -137,7 +148,7 @@ if (!isset($_SESSION['usuario'])) {
                 <img style="height: 400px; width: 100%;" src="./Images/local3.jpeg" alt="Local">
             </div>
             <div style="margin-top: 25px;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5624.43371370802!2d-74.15680541075233!3d4.580514819798787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9f1aa7475d81%3A0x6f28a2ff1bedb5!2sUniversidad%20Distrital%20Francisco%20Jos%C3%A9%20De%20Caldas%20Facultad%20Tecnol%C3%B3gica!5e0!3m2!1ses!2sco!4v1648919038133!5m2!1ses!2sco" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.5477982662014!2d-74.10477582765779!3d4.576849100000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f98c325cec007%3A0x5e53caf16f60e5ce!2sOlga%20Lucia!5e0!3m2!1ses!2sco!4v1649108406914!5m2!1ses!2sco" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
@@ -153,8 +164,8 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </footer>
 
-    <script src="../jquery/jquery-3.6.0.min.js"></script>
-    <script src="../sw/dist/sweetalert2.all.min.js"></script>
+    <script src="./jquery/jquery-3.6.0.min.js"></script>
+    <script src="./sw/dist/sweetalert2.all.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
 </body>
 
