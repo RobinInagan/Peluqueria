@@ -11,6 +11,8 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
     <!doctype html>
     <html lang="es">
 
+    <html>
+
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -85,69 +87,53 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                     <br>
                     <h3 class="text-white">AGENDAMIENTO DE CITAS</h3>
                 </div>
-                <form action="./listaCliente.php" method="POST">
+                <form action="listaCliente2.php" method="POST">
                     <div class=" card-body">
                         <div class="row">
                             <div class="col-md-7">
                                 <label for="nom_e">Servicio</label>
+                                <?php 
+                                    $con = new Conexion();
+                                    $link = $con->Conectar();
+                                    $sql1 = "select * from servicio where idServicio = ".$_POST['servicio2']."";
+                                    $res1 = mysqli_query($link, $sql1);
+                                    $row1 = mysqli_fetch_array($res1);
+
+                                ?>
+                                <input type="text" id="servicio" name="servicio" class="form-control" value="<?php echo $row1['descripición'] ?>" readonly>
+                                <input type='hidden' name='servicioo' value="<?php echo $_POST['servicio2']?>">
+                            </div>
+                            <div class="col-md-5">
+                                <label for="dir_e">Fecha Cita</label>
+                                <input type="date" id="fecha" name="fecha" class="form-control" value="<?php echo $_POST['fecha'] ?>" readonly>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="email_e">Empleado</label>
                                 <div class="form-group">
-                                    <select class="form-select" name="servicio2" Required>
-                                        <option value=""> ---- Seleccione Servicio---</option>
+                                    <select class="form-select" name="empleado" Required>
+                                        <option value="">Seleccione empleado</option>
                                         <?php
-                                        $con = new Conexion();
-                                        $link = $con->Conectar();
-                                        $sql = "select * from servicio";
+                                        $fecha = $_POST['fecha'];
+                                        $sql = "select * from empleado inner JOIN cargo ON empleado.cargo_idcargo = cargo.idcargo inner join servicio on servicio.cargo_idcargo = cargo.idcargo where servicio.idServicio = " . $_POST['servicio2'] . " ";
                                         $res = mysqli_query($link, $sql);
                                         while ($row = mysqli_fetch_array($res)) {
-                                            echo "<option value='" . $row['idServicio'] . "'>" . $row['descripición'] . "</option>";
-
+                                            echo "<option value='" . $row['cedula'] . "'>" . $row['nombre'] . " " . $row['Apellidos'] . "</option>";
                                         }
+
                                         ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <label for="dir_e">Fecha Cita</label>
-                                <input type="date" id="dir_e" name="fecha" class="form-control" value="" placeholder="Fecha Cita" Required>
-                            </div>
-                            <br><br><br>
+                            
                             <div class="col-md-12 centrar">
-                                <input type="submit" value="Continuar" name="continuar" class="btn btn-dark" title="Continuar">
+                            <br>
+                                <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='./citaclientes.php'">
+                                <input type="submit" value="Continuar" class="btn btn-dark" title="Editar">
                             </div>
-                        </div>
-                    </div>
-
                 </form>
-                
-                <?php
-                if (isset($_POST['continuar'])) {
-                    echo "<h2>" . $_POST['servicio2'] . "</h2>";
-                ?>
-                    <form action="" method="POST">
-                        <div class="col-md-4">
-                            <label for="email_e">Empleado</label>
-                            <div class="form-group">
-                                <select class="form-select" name="empleado" Required>
-                                    <option value="">Seleccione empleado</option>
-                                    <?php
-                                    $cita = new Citas();
-                                    $sql = "select * from empleado inner JOIN cargo ON empleado.cargo_idcargo = cargo.idcargo inner join servicio on servicio.cargo_idcargo = cargo.idcargo where servicio.idServicio = " . $_POST['servicio2'] . " ";
-                                    $res = mysqli_query($link, $sql);
-                                    while ($row = mysqli_fetch_array($res)) {
-                                        echo "<option value='" . $row['cedula'] . "'>" . $row['nombre'] . " " . $row['Apellidos'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        <?php
-                                        }
-                        ?>
-                        </div>
-                    </form>
             </div>
         </div>
-
-        <footer class="bg bg-dark text-white ">
+        <footer class="bg bg-dark text-white fixed-bottom">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>

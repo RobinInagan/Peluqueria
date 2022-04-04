@@ -52,15 +52,15 @@
             return $this->citas;
         }
 
-        public function insertar($id, $desc)
+        public function insertar($serv, $cliente, $emple, $hora, $fecha)
         {
-            $sql = "INSERT INTO `citas`(`idcitas`, `descripcion`) VALUES ('$id','$desc')";
+            $sql = "INSERT INTO `citas`(`Servicio_idServicio`, `Cliente_idCliente`, `Empleado_idEmpleado`, `Horas_idHoras`, `Fecha_cita`, `Estado_cita_idEstado_cita`) VALUES ($serv,$cliente,$emple,$hora,'$fecha',1)";
             $res = mysqli_query(Conexion::conectar(), $sql) or die("Error en la consulta sql al insertar citas");
             echo " 
                 <script type = 'text/javascript'>
                 Swal.fire({
                     title: 'Exito',
-                    text: 'El citas se registro correctamente',
+                    text: 'La cita se registró correctamente',
                     icon: 'success',
                     showClass: {
                         popup: 'animate__animated animate__fadeInDown'
@@ -70,7 +70,7 @@
                       }
                 }).then((result)=>{
                         if(result.value){
-                            window.location ='../citas/gestionCg.php';
+                            window.location ='../Home.php';
                         }
                     });
                 </script>
@@ -147,23 +147,31 @@
         ";
         }
 
-        public function Filtrar($servicio)
-        {
-            $sql = "SELECT cargo_idcargo FROM `servicio` WHERE idservicio=$servicio";
+        // public function Filtrar($servicio)
+        // {
+        //     $sql = "SELECT cargo_idcargo FROM `servicio` WHERE idservicio=$servicio";
+        //     $res = mysqli_query(Conexion::Conectar(), $sql) or die("Error en la consulta sql al buscar id cargo");
+        //     if ($reg = mysqli_fetch_assoc($res)) {
+        //         $this->citas[] = $reg;
+        //     }
+
+        //     $sql2 = "SELECT `cedula`, `nombre`, `Apellidos` FROM `empleado` WHERE `cargo_idcargo` = ".$this->citas[0]['cargo_idcargo']." ";
+        //     $this->citas = array();
+        //     $res2 = mysqli_query(Conexion::Conectar(), $sql2) or die("Error en la consulta sql al buscar empleado");
+        //     if ($reg2 = mysqli_fetch_assoc($res2)) {
+        //         $this->citas[] = $reg2;
+        //     }
+        //     return $this->citas;
+        // }
+
+        public function Filtrar($servicio){
+            $sql = "select * from empleado inner JOIN cargo ON empleado.cargo_idcargo = cargo.idcargo inner join servicio on servicio.cargo_idcargo = cargo.idcargo where servicio.idServicio = $servicio";
             $res = mysqli_query(Conexion::Conectar(), $sql) or die("Error en la consulta sql al buscar id cargo");
             if ($reg = mysqli_fetch_assoc($res)) {
                 $this->citas[] = $reg;
             }
-
-            $sql2 = "SELECT `cedula`, `nombre`, `Apellidos` FROM `empleado` WHERE `cargo_idcargo` = ".$this->citas[0]['cargo_idcargo']." ";
-            $this->citas = array();
-            $res2 = mysqli_query(Conexion::Conectar(), $sql2) or die("Error en la consulta sql al buscar empleado");
-            if ($reg2 = mysqli_fetch_assoc($res2)) {
-                $this->citas[] = $reg2;
-            }
             return $this->citas;
         }
-
     }
     ?>
     <script src="../jquery/jquery-3.6.0.min.js"></script>

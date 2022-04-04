@@ -11,6 +11,8 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
     <!doctype html>
     <html lang="es">
 
+    <html>
+
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -85,69 +87,73 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                     <br>
                     <h3 class="text-white">AGENDAMIENTO DE CITAS</h3>
                 </div>
-                <form action="./listaCliente.php" method="POST">
+                <form action="insertci.php" method="POST">
                     <div class=" card-body">
                         <div class="row">
                             <div class="col-md-7">
                                 <label for="nom_e">Servicio</label>
-                                <div class="form-group">
-                                    <select class="form-select" name="servicio2" Required>
-                                        <option value=""> ---- Seleccione Servicio---</option>
-                                        <?php
-                                        $con = new Conexion();
-                                        $link = $con->Conectar();
-                                        $sql = "select * from servicio";
-                                        $res = mysqli_query($link, $sql);
-                                        while ($row = mysqli_fetch_array($res)) {
-                                            echo "<option value='" . $row['idServicio'] . "'>" . $row['descripición'] . "</option>";
-
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
+                                <?php 
+                                    $con = new Conexion();
+                                    $link = $con->Conectar();
+                                    $sql1 = "select * from servicio where idServicio = ".$_POST['servicioo']."";
+                                    $res1 = mysqli_query($link, $sql1);
+                                    $row1 = mysqli_fetch_array($res1);
+                                ?>
+                                <input type="text" id="servicio" name="servicio" class="form-control" value="<?php echo $row1['descripición'] ?>" readonly>
+                                <input type='hidden' name='servicio2' value="<?php echo $_POST['servicioo']?>">
                             </div>
                             <div class="col-md-5">
                                 <label for="dir_e">Fecha Cita</label>
-                                <input type="date" id="dir_e" name="fecha" class="form-control" value="" placeholder="Fecha Cita" Required>
+                                <input type="date" id="dir_e" name="fecha" class="form-control" value="<?php echo $_POST['fecha'] ?>" readonly>
+                                
                             </div>
-                            <br><br><br>
-                            <div class="col-md-12 centrar">
-                                <input type="submit" value="Continuar" name="continuar" class="btn btn-dark" title="Continuar">
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-                
-                <?php
-                if (isset($_POST['continuar'])) {
-                    echo "<h2>" . $_POST['servicio2'] . "</h2>";
-                ?>
-                    <form action="" method="POST">
-                        <div class="col-md-4">
-                            <label for="email_e">Empleado</label>
-                            <div class="form-group">
-                                <select class="form-select" name="empleado" Required>
-                                    <option value="">Seleccione empleado</option>
-                                    <?php
-                                    $cita = new Citas();
-                                    $sql = "select * from empleado inner JOIN cargo ON empleado.cargo_idcargo = cargo.idcargo inner join servicio on servicio.cargo_idcargo = cargo.idcargo where servicio.idServicio = " . $_POST['servicio2'] . " ";
+                            <div class="col-md-5">
+                                <label for="email_e">Empleado</label>
+                                <?php 
+                                    $con = new Conexion();
+                                    $link = $con->Conectar();
+                                    $sql = "select * from empleado where cedula = ".$_POST['empleado']."";
                                     $res = mysqli_query($link, $sql);
-                                    while ($row = mysqli_fetch_array($res)) {
-                                        echo "<option value='" . $row['cedula'] . "'>" . $row['nombre'] . " " . $row['Apellidos'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
+                                    $row = mysqli_fetch_array($res);
+
+                                ?>
+                                <input type="text" id="emple" name="emple" class="form-control" value="<?php echo "".$row['nombre']." ".$row['Apellidos'].""?>" readonly>    
+                                <input type='hidden' name='empleado1' value="<?php echo $_POST['empleado']?>">
                             </div>
-                        <?php
+                            <div class="col-md-5">
+                                <label>Horas Disponibles</label>
+                                <div class="form-group">
+                                    <select class="form-select" name="horas" Required>
+                                        <option value="">Seleccione Hora</option>
+                                        <?php
+                                        $fecha = $_POST['fecha'];
+                                        // $sql2 = "SELECT * FROM horas WHERE NOT EXISTS(SELECT null FROM citas WHERE Empleado_idEmpleado = ".$_POST['empleado']." and idHoras = 10 and Fecha_cita = '2021-10-13')";
+                                        $sql2 = "SELECT * FROM horas where NOT horas.idHoras = EXISTS((SELECT citas.Horas_idHoras from citas where citas.Empleado_idEmpleado = ".$_POST['empleado']." and citas.Fecha_cita = '".$_POST['fecha']."'))";
+                                        $res2 = mysqli_query($link, $sql2);
+                                        while ($row2 = mysqli_fetch_array($res2)) {
+                                            echo "<option value='" . $row2['idHoras'] . "'>" . $row2['descripcion'] . "</option>";
                                         }
-                        ?>
-                        </div>
-                    </form>
+
+                                        ?>
+                                    </select>
+                                    <?php 
+                                        $sql3 = "SELECT usuario.Cliente_idCliente FROM usuario where usuario.Usuario = '".$_SESSION['usuario']."'";
+                                        $res3 = mysqli_query($link, $sql3);
+                                        $row3 = mysqli_fetch_array($res3);
+                                    ?>
+                                    <input type='hidden' name='idcliente' value="<?php echo $row3['Cliente_idCliente']?>">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12 centrar">
+                            <br>
+                                <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='./citaclientes.php'">
+                                <input type="submit" value="Continuar" class="btn btn-dark" title="inserta">
+                            </div>
+                </form>
             </div>
         </div>
-
-        <footer class="bg bg-dark text-white ">
+        <footer class="bg bg-dark text-white fixed-bottom">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
