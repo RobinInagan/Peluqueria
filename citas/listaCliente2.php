@@ -128,7 +128,8 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                                         <?php
                                         $fecha = $_POST['fecha'];
                                         // $sql2 = "SELECT * FROM horas WHERE NOT EXISTS(SELECT null FROM citas WHERE Empleado_idEmpleado = ".$_POST['empleado']." and idHoras = 10 and Fecha_cita = '2021-10-13')";
-                                        $sql2 = "SELECT * FROM horas where NOT horas.idHoras = EXISTS((SELECT citas.Horas_idHoras from citas where citas.Empleado_idEmpleado = ".$_POST['empleado']." and citas.Fecha_cita = '".$_POST['fecha']."'))";
+                                        // $sql2 = "SELECT * FROM horas where NOT horas.idHoras = EXISTS((SELECT citas.Horas_idHoras from citas where citas.Empleado_idEmpleado = ".$_POST['empleado']." and citas.Fecha_cita = '".$_POST['fecha']."'))";
+                                        $sql2 = "SELECT * FROM horas WHERE horas.idHoras NOT IN (SELECT citas.Horas_idHoras FROM citas WHERE citas.Empleado_idEmpleado=".$_POST['empleado']." and citas.Fecha_cita='".$_POST['fecha']."' and (Estado_cita_idEstado_cita=1 or Estado_cita_idEstado_cita=2))";
                                         $res2 = mysqli_query($link, $sql2);
                                         while ($row2 = mysqli_fetch_array($res2)) {
                                             echo "<option value='" . $row2['idHoras'] . "'>" . $row2['descripcion'] . "</option>";
