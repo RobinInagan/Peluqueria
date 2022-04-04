@@ -100,15 +100,17 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                                         $res = mysqli_query($link, $sql);
                                         while ($row = mysqli_fetch_array($res)) {
                                             echo "<option value='" . $row['idServicio'] . "'>" . $row['descripición'] . "</option>";
-
                                         }
                                         ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-5">
+                                <?php
+                                $fecha_actual=date("Y-m-d");
+                                ?>
                                 <label for="dir_e">Fecha Cita</label>
-                                <input type="date" id="dir_e" name="fecha" class="form-control" value="" placeholder="Fecha Cita" Required>
+                                <input type="date" id="dir_e" name="fecha" class="form-control" min="<?php echo "" . date('Y') . "-" . date('m') . "-" . date('d') . "" ?>" max="<?php echo "" . date('Y-m-d', strtotime($fecha_actual . "+ 1 month"))."" ?>">
                             </div>
                             <br><br><br>
                             <div class="col-md-12 centrar">
@@ -118,36 +120,21 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                     </div>
 
                 </form>
-                
+
                 <?php
                 if (isset($_POST['continuar'])) {
-                    echo "<h2>" . $_POST['servicio2'] . "</h2>";
+
                 ?>
-                    <form action="" method="POST">
-                        <div class="col-md-4">
-                            <label for="email_e">Empleado</label>
-                            <div class="form-group">
-                                <select class="form-select" name="empleado" Required>
-                                    <option value="">Seleccione empleado</option>
-                                    <?php
-                                    $cita = new Citas();
-                                    $sql = "select * from empleado inner JOIN cargo ON empleado.cargo_idcargo = cargo.idcargo inner join servicio on servicio.cargo_idcargo = cargo.idcargo where servicio.idServicio = " . $_POST['servicio2'] . " ";
-                                    $res = mysqli_query($link, $sql);
-                                    while ($row = mysqli_fetch_array($res)) {
-                                        echo "<option value='" . $row['cedula'] . "'>" . $row['nombre'] . " " . $row['Apellidos'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        <?php
-                                        }
-                        ?>
-                        </div>
-                    </form>
+
+                <?php
+                }
+                ?>
             </div>
+            </form>
+        </div>
         </div>
 
-        <footer class="bg bg-dark text-white ">
+        <footer class="bg bg-dark text-white fixed-bottom">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
