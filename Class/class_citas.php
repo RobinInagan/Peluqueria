@@ -106,6 +106,31 @@
         ";
         }
 
+        public function  cancelarCita($id)
+        {
+            $sql = "UPDATE `citas` SET `Estado_cita_idEstado_cita`=3 WHERE `citas`.`idcita`=$id";
+            $res = mysqli_query(Conexion::conectar(), $sql) or die("Error en la consulta sql al editar citas");
+            echo " 
+            <script type = 'text/javascript'>
+            Swal.fire({
+                title: 'Exito',
+                text: 'La cita con id $id fue Cancelada',
+                icon: 'success',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                  },
+                  hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                  }
+            }).then((result)=>{
+                    if(result.value){
+                        window.location ='../citas/gestionCi.php';
+                    }
+                });
+            </script>
+        ";
+        }
+        
         //Crear una función para capturar el id de los botones de acción 
         public function citasId($id)
         {
