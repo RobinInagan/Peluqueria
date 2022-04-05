@@ -7,6 +7,21 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
+    $con = new Conexion();
+    $link = $con->Conectar();
+    $query = $link->query("select `idcita`,`servicio`.`idServicio`, `servicio`.`descripición`, `servicio`.`precio`, 
+    `cliente`.`idCliente`, `cliente`.`nombres`, `empleado`.`cedula`, `empleado`.`nombre`,
+     `horas`.`idHoras`, `horas`.`descripcion`, `Fecha_cita`, `estado_cita`.`idEstado_cita`,
+     `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
+     inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
+     Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
+     on Estado_cita_idEstado_cita = idEstado_cita where citas.Cliente_idCliente = " . $_POST['cliente'] . " ORDER BY citas.Fecha_cita ASC");
+    $citas = array();
+    $n = 0;
+    while ($r = $query->fetch_object()) {
+        $citas[] = $r;
+        $n++;
+    }
 ?>
     <!doctype html>
     <html lang="es">
@@ -23,6 +38,8 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 
         <!-- Sweet alert-->
         <link rel="stylesheet" href="../sw/dist/sweetalert2.min.css">
+        <script src="../jspdf/dist/jspdf.min.js"></script>
+        <script src="../JavasScript/jspdf.plugin.autotable.min.js"></script>
 
         <!-- Iconos -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -96,7 +113,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             $reg = mysqli_fetch_array($res);
                             ?>
 
-                            <input type="text" id="dir_e" name="cliente1" class="form-control" value="<?php echo "".$reg['nombres']." ".$reg['Apellidos']."" ?>" readonly>
+                            <input type="text" id="cliente" name="cliente1" class="form-control" value="<?php echo "" . $reg['nombres'] . " " . $reg['Apellidos'] . "" ?>" readonly>
                         </div>
                         <br><br><br>
                         <div class="col-md-12 centrar">
@@ -130,7 +147,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                           `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
                           inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
                           Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
-                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Cliente_idCliente = ".$_POST['cliente']." ORDER BY citas.Fecha_cita ASC";
+                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Cliente_idCliente = " . $_POST['cliente'] . " ORDER BY citas.Fecha_cita ASC";
                             $res1 = mysqli_query($link, $sql1);
 
 
@@ -149,6 +166,10 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </table>
                     </div>
                 </div>
+                <div class="col-md-12 centrar">
+                    <button name="volver" id="GenerarMensual" class="btn btn-dark">Generar PDF</button>
+                </div>
+                <br>
             </div>
         </div>
 
@@ -162,6 +183,32 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 </address>
             </div>
         </footer>
+
+        <script>
+            $("#GenerarMensual").click(function() {
+                var pdf = new jsPDF();
+                
+                pdf.text(20, 20, "Informe para Cliente:");
+
+
+                var columns = ["Id", "Servicio", "Empleado", "Hora", "Precio", "Fecha", "Estado"];
+
+                var data = [
+                    <?php foreach ($citas as $c) : ?>[<?php echo $c->idcita; ?>, "<?php echo $c->descripición; ?>", "<?php echo $c->nombre; ?>",
+                         "<?php echo $c->descripcion; ?>", "<?php echo $c->precio; ?>", "<?php echo $c->Fecha_cita; ?>", "<?php echo $c->descripciòn; ?>"],
+                    <?php endforeach; ?>
+                ];
+
+
+            pdf.autoTable(columns, data, {
+                margin: {
+                    top: 25
+                }
+            });
+
+            pdf.save('InformeCliente.pdf');
+            });
+        </script>
     </body>
 
     </html>

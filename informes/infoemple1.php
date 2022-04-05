@@ -7,6 +7,22 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
+
+    $con = new Conexion();
+    $link = $con->Conectar();
+    $query = $link->query("select `idcita`,`servicio`.`idServicio`, `servicio`.`descripición`, `servicio`.`precio`, 
+    `cliente`.`idCliente`, `cliente`.`nombres`, `empleado`.`cedula`, `empleado`.`nombre`,
+     `horas`.`idHoras`, `horas`.`descripcion`, `Fecha_cita`, `estado_cita`.`idEstado_cita`,
+     `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
+     inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
+     Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
+     on Estado_cita_idEstado_cita = idEstado_cita where citas.Empleado_idEmpleado = ".$_POST['empleado']." ORDER BY citas.Fecha_cita ASC");
+    $citas = array();
+    $n = 0;
+    while ($r = $query->fetch_object()) {
+        $citas[] = $r;
+        $n++;
+    }
 ?>
     <!doctype html>
     <html lang="es">
@@ -20,7 +36,9 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
         <link rel="stylesheet" language="javascript" href="../bootstrap/css/bootstrap.min.css">
-
+        <script src="../jspdf/dist/jspdf.min.js"></script>
+        <script src="../JavasScript/jspdf.plugin.autotable.min.js"></script>
+        
         <!-- Sweet alert-->
         <link rel="stylesheet" href="../sw/dist/sweetalert2.min.css">
 
@@ -149,6 +167,10 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </table>
                     </div>
                 </div>
+                <div class="col-md-12 centrar">
+                    <button name="volver" id="GenerarMensual" class="btn btn-dark">Generar PDF</button>
+                </div>
+                <br>
             </div>
         </div>
 
@@ -162,6 +184,32 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 </address>
             </div>
         </footer>
+        <script>
+            $("#GenerarMensual").click(function() {
+                var pdf = new jsPDF();
+                pdf.text(20, 20, "Informe para Empleado:");
+
+                console.log(1);
+
+
+                var columns = ["Id", "Servicio", "Cliente", "Hora", "Precio", "Fecha", "Estado"];
+
+                var data = [
+                    <?php foreach ($citas as $c) : ?>[<?php echo $c->idcita; ?>, "<?php echo $c->descripición; ?>", "<?php echo $c->nombres; ?>",
+                         "<?php echo $c->descripcion; ?>", "<?php echo $c->precio; ?>", "<?php echo $c->Fecha_cita; ?>", "<?php echo $c->descripciòn; ?>"],
+                    <?php endforeach; ?>
+                ];
+
+
+            pdf.autoTable(columns, data, {
+                margin: {
+                    top: 25
+                }
+            });
+
+            pdf.save('InformeEmpleado.pdf');
+            });
+        </script>
     </body>
 
     </html>
