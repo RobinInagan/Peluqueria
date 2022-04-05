@@ -89,7 +89,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             </div>
                             <div class="col-md-6">
                                 <label for="dir_e">Fecha Informe</label>
-                                <input type="month" id="dir_e" name="fecha" class="form-control" value="yyyy-mm">
+                                <input type="month" id="dir_e" name="fecha" class="form-control" required>
                             </div>
                             <br><br><br>
                             <div class="col-md-12 centrar">
@@ -97,17 +97,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             </div>
                         </div>
                     </div>
-
                 </form>
-
-                <?php
-                if (isset($_POST['continuar'])) {
-
-                ?>
-
-                <?php
-                }
-                ?>
             </div>
             </form>
         </div>

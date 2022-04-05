@@ -86,6 +86,9 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     <div class="row">
                         <div class="col-md-3">
                         </div>
+                        <?php
+                            echo "".$_POST['fecha']."-01";
+                        ?>
                         <div class="col-md-6">
                             <label for="dir_e">Fecha Informe</label>
                             <input type="month" id="dir_e" name="fecha1" class="form-control" value="<?php echo $_POST['fecha'] ?>" readonly>
@@ -96,6 +99,14 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </div>
                     </div>
                 </div>
+                <?php
+                $cit = new Citas();
+                $reg= $cit->mensual($_POST['fecha']);
+                echo "<h1>".count($reg)."</h1>";
+                for($i=0;$i< count($reg);$i++){
+                    echo "<h3>".$reg[$i]['idcita']."</h3>";
+                }
+                ?>
             </div>
         </div>
 
