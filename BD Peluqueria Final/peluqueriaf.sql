@@ -21,26 +21,6 @@ SET time_zone = "+00:00";
 -- Base de datos: `peluqueriaf`
 --
 
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `incitas` (IN `servicio1` INT, IN `cliente` INT, IN `empleado1` INT, IN `hora1` INT, IN `fecha1` DATE)  begin
-	if((select cargo_idcargo from empleado where cedula=empleado1)=(select cargo_idcargo from servicio where idservicio=servicio1))then
-		if(SELECT (case dayofweek(fecha1) when 2 then 'Lunes' when 3 then 'Martes' when 4 then 'Miércoles' when 5 then 'Jueves' when 6 then 'Viernes' when 7 then 'Sábado' when 1 then 'Domingo' end)=(select dia from dias inner join empleado on iddias=dias_iddias where cedula=empleado1)) then
-			select 'El empleado descansa ese dia' as Alerta;
-		else
-			insert into citas (Servicio_idServicio,
-  Cliente_idCliente,Empleado_idEmpleado,Horas_idHoras, Fecha_cita,Estado_cita_idEstado_cita) values (servicio1,cliente,empleado1,hora1,fecha1,1);
-        end if;
-	else
-		select 'El empleado no puede realizar este servicio' as Alerta; 
-    end if;
-end$$
-
-DELIMITER ;
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `cargo`
@@ -491,6 +471,28 @@ ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`Empleado_cedula`) REFERENCES `empleado` (`cedula`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `incitas` (IN `servicio1` INT, IN `cliente` INT, IN `empleado1` INT, IN `hora1` INT, IN `fecha1` DATE)  begin
+	if((select cargo_idcargo from empleado where cedula=empleado1)=(select cargo_idcargo from servicio where idservicio=servicio1))then
+		if(SELECT (case dayofweek(fecha1) when 2 then 'Lunes' when 3 then 'Martes' when 4 then 'Miércoles' when 5 then 'Jueves' when 6 then 'Viernes' when 7 then 'Sábado' when 1 then 'Domingo' end)=(select dia from dias inner join empleado on iddias=dias_iddias where cedula=empleado1)) then
+			select 'El empleado descansa ese dia' as Alerta;
+		else
+			insert into citas (Servicio_idServicio,
+  Cliente_idCliente,Empleado_idEmpleado,Horas_idHoras, Fecha_cita,Estado_cita_idEstado_cita) values (servicio1,cliente,empleado1,hora1,fecha1,1);
+        end if;
+	else
+		select 'El empleado no puede realizar este servicio' as Alerta; 
+    end if;
+end$$
+
+DELIMITER ;
+
+-- --------------------------------------------------------
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

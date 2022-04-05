@@ -67,7 +67,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <li><a class="dropdown-item" href="../Cliente/gestionC.php">Gestión clientes</a></li>
                                     <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
                                     <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
-                                    <li><a class="dropdown-item" href="#">Gestión Cargo</a></li>
+                                    <li><a class="dropdown-item active" href="#">Gestión Cargo</a></li>
                                     <li><a class="dropdown-item" href="../dias/gestionD.php">Gestión Días</a></li>
                                     <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
                                     <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>
