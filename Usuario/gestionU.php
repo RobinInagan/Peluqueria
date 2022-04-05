@@ -9,7 +9,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 ?>
     <!doctype html>
     <html lang="es">
-
+    <html>
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -37,8 +37,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
     </head>
 
-    <body class="bg-secondary bg-gradient">
-
+    <body>
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../Home.php">
@@ -56,13 +55,13 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         ?>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Gestiones
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a class="dropdown-item" href="../Cliente/gestionC.php">Gestión clientes</a></li>
                                     <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
-                                    <li><a class="dropdown-item" href="#">Gestión Usuario</a></li>
+                                    <li><a class="dropdown-item active" href="#">Gestión Usuario</a></li>
                                     <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
                                     <li><a class="dropdown-item" href="../dias/gestionD.php">Gestión Días</a></li>
                                     <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
@@ -225,7 +224,9 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 </address>
             </div>
         </footer>
-
+        <script src="../jquery/jquery-3.6.0.min.js"></script>
+        <script src="../sw/dist/sweetalert2.all.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
     </body>
 
     </html>

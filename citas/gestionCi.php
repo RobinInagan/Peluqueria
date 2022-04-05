@@ -57,7 +57,7 @@ if (!isset($_SESSION['usuario'])) {
                             if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Gestiones
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -69,7 +69,7 @@ if (!isset($_SESSION['usuario'])) {
                                 <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
                                 <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>
                                 <li><a class="dropdown-item" href="../servicios/gestionS.php">Gestión Servicios</a></li>
-                                <li><a class="dropdown-item" href="#">Gestión Citas</a></li>
+                                <li><a class="dropdown-item active" href="#">Gestión Citas</a></li>
                             </ul>
                         </li>
                     <?php
@@ -180,7 +180,7 @@ if (!isset($_SESSION['usuario'])) {
                             if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Gestiones
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -192,7 +192,7 @@ if (!isset($_SESSION['usuario'])) {
                                 <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
                                 <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>
                                 <li><a class="dropdown-item" href="../servicios/gestionS.php">Gestión Servicios</a></li>
-                                <li><a class="dropdown-item" href="#">Gestión Citas</a></li>
+                                <li><a class="dropdown-item active" href="#">Gestión Citas</a></li>
                             </ul>
                         </li>
                     <?php

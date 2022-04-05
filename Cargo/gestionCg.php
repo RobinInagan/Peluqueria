@@ -60,14 +60,14 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         ?>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Gestiones
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a class="dropdown-item" href="../Cliente/gestionC.php">Gestión clientes</a></li>
                                     <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
                                     <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
-                                    <li><a class="dropdown-item" href="#">Gestión Cargo</a></li>
+                                    <li><a class="dropdown-item active" href="#">Gestión Cargo</a></li>
                                     <li><a class="dropdown-item" href="../dias/gestionD.php">Gestión Días</a></li>
                                     <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
                                     <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>

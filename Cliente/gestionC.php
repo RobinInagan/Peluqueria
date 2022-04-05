@@ -55,11 +55,11 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Gestiones
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Gestión clientes</a></li>
+                            <ul class="dropdown-menu dropdown-menu-dark " aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item active" href="#">Gestión clientes</a></li>
                                 <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
                                 <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
                                 <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
