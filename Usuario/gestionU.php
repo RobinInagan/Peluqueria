@@ -37,7 +37,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link rel="icon" type="image/x-icon" href="../Images/Logo.jpg">
     </head>
 
-    <body>
+    <body style="background-color: #939493">
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../Home.php">
@@ -125,7 +125,6 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </table>
                     </div>
                 <?php
-
                 }
 
                 if (isset($_POST['cliente'])) {
