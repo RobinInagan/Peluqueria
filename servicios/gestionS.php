@@ -95,7 +95,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown2">
                             <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="nav2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="nav2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Gestiones
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="nav2">
@@ -106,7 +106,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                                         <li><a class="dropdown-item" href="../dias/gestionD.php">Gestión Días</a></li>
                                         <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
                                         <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>
-                                        <li><a class="dropdown-item" href="#">Gestión Servicios</a></li>
+                                        <li><a class="dropdown-item active" href="#">Gestión Servicios</a></li>
                                         <li><a class="dropdown-item" href="../citas/gestionCi.php">Gestión Citas</a></li>
                                     </ul>
                                 </li>

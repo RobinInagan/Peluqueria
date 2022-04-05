@@ -90,12 +90,12 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../Home.php">Home</a>
+                            <a class="nav-link " aria-current="page" href="../Home.php">Home</a>
                         </li>
                         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown2">
                             <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="nav2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="nav2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Gestiones
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="nav2">
@@ -103,8 +103,8 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                                         <li><a class="dropdown-item" href="../Empleado/gestionE.php">Gestión Empleado</a></li>
                                         <li><a class="dropdown-item" href="../Usuario/gestionU.php">Gestión Usuario</a></li>
                                         <li><a class="dropdown-item" href="../Cargo/gestionCg.php">Gestión Cargo</a></li>
-                                        <li><a class="dropdown-item" href="../horas/gestionD.php">Gestión Días</a></li>
-                                        <li><a class="dropdown-item" href="#">Gestión Horas</a></li>
+                                        <li><a class="dropdown-item" href="../dias/gestionD.php">Gestión Días</a></li>
+                                        <li><a class="dropdown-item active" href="#">Gestión Horas</a></li>
                                         <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>
                                         <li><a class="dropdown-item" href="../servicios/gestionS.php">Gestión Servicios</a></li>
                                         <li><a class="dropdown-item" href="../citas/gestionCi.php">Gestión Citas</a></li>
