@@ -86,9 +86,6 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     <div class="row">
                         <div class="col-md-3">
                         </div>
-                        <?php
-                            echo "".$_POST['fecha']."-01";
-                        ?>
                         <div class="col-md-6">
                             <label for="dir_e">Fecha Informe</label>
                             <input type="month" id="dir_e" name="fecha1" class="form-control" value="<?php echo $_POST['fecha'] ?>" readonly>
@@ -99,18 +96,68 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </div>
                     </div>
                 </div>
+
+
+                <div class="card-footer table-responsive">
+                    <div class="card-footer">
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Servicio</th>
+                                    <th>Cliente</th>
+                                    <th>Empleado</th>
+                                    <th>Hora</th>
+                                    <th>Precio</th>
+                                    <th>Fecha </th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <?php
+
+                            $con = new Conexion();
+                            $link = $con->Conectar();
+                            $sql1 = "select `idcita`,`servicio`.`idServicio`, `servicio`.`descripición`, `servicio`.`precio`, 
+                         `cliente`.`idCliente`, `cliente`.`nombres`, `empleado`.`cedula`, `empleado`.`nombre`,
+                          `horas`.`idHoras`, `horas`.`descripcion`, `Fecha_cita`, `estado_cita`.`idEstado_cita`,
+                          `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
+                          inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
+                          Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
+                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Fecha_cita LIKE '" . $_POST['fecha'] . "%'ORDER BY citas.Fecha_cita ASC";
+                            $res1 = mysqli_query($link, $sql1);
+
+
+                            //traer datos de la función mostrar.
+                            while ($reg = mysqli_fetch_array($res1)) {
+                                echo "<tr>";
+                                echo "<td>" . $reg['idcita'] . "</td>";
+                                echo "<td>" . $reg['descripición'] . "</td>";
+                                echo "<td>" . $reg['nombres'] . "</td>";
+                                echo "<td>" . $reg['nombre'] . "</td>";
+                                echo "<td>" . $reg['descripcion'] . "</td>";
+                                echo "<td>" . $reg['precio'] . "</td>";
+                                echo "<td>" . $reg['Fecha_cita'] . "</td>";
+                                echo "<td>" . $reg['descripciòn'] . "</td> </tr>";
+                            }
+                            ?>
+                        </table>
+                    </div>
+                </div>
                 <?php
-                $cit = new Citas();
-                $reg= $cit->mensual($_POST['fecha']);
-                echo "<h1>".count($reg)."</h1>";
-                for($i=0;$i< count($reg);$i++){
-                    echo "<h3>".$reg[$i]['idcita']."</h3>";
-                }
-                ?>
+                $sql2 = "select SUM(servicio.precio) as resp from citas inner join servicio on Servicio_idServicio= idServicio 
+                          inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
+                          Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
+                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Fecha_cita LIKE '" . $_POST['fecha'] . "%' and Estado_cita_idEstado_cita=2 ORDER BY citas.Fecha_cita ASC";
+
+                          $res2 = mysqli_query($link, $sql2);
+                          $reg = mysqli_fetch_array($res2);
+
+                          echo "<h2>Total: $".$reg['resp']."</h2>";
+                        ?>
             </div>
         </div>
 
-        <footer class="bg bg-dark text-white fixed-bottom">
+        <footer class="bg bg-dark text-white">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
