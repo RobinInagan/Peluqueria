@@ -10,6 +10,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
     <!doctype html>
     <html lang="es">
     <html>
+
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -86,6 +87,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     <br>
                     <h3 class="text-white">GESTIÓN USUARIO</h3>
                 </div>
+
                 <form action="./gestionU.php" method="POST" class="centrar">
                     <div class="btn-group btn-group-lg" role="group" aria-label="...">
                         <button type="submit" name="admin" class="btn btn-outline-dark">Administradores</button>
@@ -223,9 +225,6 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 </address>
             </div>
         </footer>
-        <script src="../jquery/jquery-3.6.0.min.js"></script>
-        <script src="../sw/dist/sweetalert2.all.min.js"></script>
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
     </body>
 
     </html>

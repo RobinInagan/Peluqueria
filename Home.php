@@ -87,11 +87,14 @@ if (!isset($_SESSION['usuario'])) {
                                 </li>
                             </ul>
                         </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./informes/informes.php">Informes</a>
+                        </li>
                     <?php
                     }
                     ?>
                     <?php
-                    if ($_SESSION['usuario'] && $_SESSION['rol'] == 2){
+                    if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                     ?>
                         <li class="nav-item">
                             <a class="nav-link" href="./about.php">Sobre Nosotros</a>
@@ -164,20 +167,20 @@ if (!isset($_SESSION['usuario'])) {
                     </button>
                 </div>
             </div>
-                <?php
-                
-                 if($_SESSION['usuario'] == null && $_SESSION['rol']==null){
-                    $s = 0;
-                    $r = 0;
-                 }else{
-                     $s = $_SESSION['usuario'];
-                     $r = $_SESSION['rol'];
-                 }
-                
-                ?>
+            <?php
+
+            if ($_SESSION['usuario'] == null && $_SESSION['rol'] == null) {
+                $s = 0;
+                $r = 0;
+            } else {
+                $s = $_SESSION['usuario'];
+                $r = $_SESSION['rol'];
+            }
+
+            ?>
             <div class="reserva row">
                 <div class=" centrarIt col-6">
-                    <button class="btn btn-secondary btn-lg" style="color:black;" onclick="verificar('<?php echo $s;?>','<?php echo $r;?>');">
+                    <button class="btn btn-secondary btn-lg" style="color:black;" onclick="verificar('<?php echo $s; ?>','<?php echo $r; ?>');">
                         Reservar
                     </button>
                 </div>
