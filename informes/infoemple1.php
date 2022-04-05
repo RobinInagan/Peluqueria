@@ -68,7 +68,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Informes</a>
+                            <a class="nav-link active" href="./informes.php">Informes</a>
                         </li>
                     </ul>
                     <a type="button" class="btn btn-outline-danger" href="../logout.php">Cerrar sesión</a>
@@ -82,41 +82,77 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                     <br>
                     <h3 class="text-white">INFORME EMPLEADO</h3>
                 </div>
-                <form action="./infoemple1.php" method="POST">
-                    <div class=" card-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-6">
-                                    <label for="cargo">Empleado</label>
-                                    <div class="form-group">
-                                        <select class="form-select" name="empleado" Required>
-                                            <option>---Seleccione Empleado-----</option>
-                                            <?php
-                                            $con = new Conexion();
-                                            $link = $con->Conectar();
-                                            $sql = "select * from empleado";
-                                            $res = mysqli_query($link, $sql);
-                                            while ($row = mysqli_fetch_array($res)) {
-                                                echo "<option value='" . $row['cedula'] . "'>" . $row['nombre'] . " " . $row['Apellidos'] . "</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            <br><br><br>
-                            <div class="col-md-12 centrar">
-                                <input type="submit" value="Continuar" name="continuar" class="btn btn-dark" title="Continuar">
-                            </div>
+                <div class=" card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dir_e"> Informe Empleado</label>
+                            <?php
+                            $con = new Conexion();
+                            $link = $con->Conectar();
+                            $sql = "select * from empleado where cedula =" . $_POST['empleado'] . "";
+                            $res = mysqli_query($link, $sql);
+                            $reg = mysqli_fetch_array($res);
+                            ?>
+
+                            <input type="text" id="dir_e" name="empleado1" class="form-control" value="<?php echo "".$reg['nombre']." ".$reg['Apellidos']."" ?>" readonly>
+                        </div>
+                        <br><br><br>
+                        <div class="col-md-12 centrar">
+                            <a name="volver" class="btn btn-dark" href="./infoemple.php">Volver</a>
                         </div>
                     </div>
-                </form>
+                </div>
+
+
+                <div class="card-footer table-responsive">
+                    <div class="card-footer">
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Servicio</th>
+                                    <th>Cliente</th>
+                                    <th>Hora</th>
+                                    <th>Precio</th>
+                                    <th>Fecha </th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <?php
+
+                            $con = new Conexion();
+                            $link = $con->Conectar();
+                            $sql1 = "select `idcita`,`servicio`.`idServicio`, `servicio`.`descripición`, `servicio`.`precio`, 
+                         `cliente`.`idCliente`, `cliente`.`nombres`, `empleado`.`cedula`, `empleado`.`nombre`,
+                          `horas`.`idHoras`, `horas`.`descripcion`, `Fecha_cita`, `estado_cita`.`idEstado_cita`,
+                          `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
+                          inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
+                          Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
+                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Empleado_idEmpleado = ".$_POST['empleado']." ORDER BY citas.Fecha_cita ASC";
+                            $res1 = mysqli_query($link, $sql1);
+
+
+                            //traer datos de la función mostrar.
+                            while ($reg = mysqli_fetch_array($res1)) {
+                                echo "<tr>";
+                                echo "<td>" . $reg['idcita'] . "</td>";
+                                echo "<td>" . $reg['descripición'] . "</td>";
+                                echo "<td>" . $reg['nombres'] . "</td>";
+                                echo "<td>" . $reg['descripcion'] . "</td>";
+                                echo "<td>" . $reg['precio'] . "</td>";
+                                echo "<td>" . $reg['Fecha_cita'] . "</td>";
+                                echo "<td>" . $reg['descripciòn'] . "</td> </tr>";
+                            }
+                            ?>
+                        </table>
+                    </div>
+                </div>
             </div>
-            </form>
-        </div>
         </div>
 
-        <footer class="bg bg-dark text-white fixed-bottom">
+        <footer class="bg bg-dark text-white">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
