@@ -144,8 +144,8 @@ if (!isset($_SESSION['usuario'])) {
                     Quis labore do nisi nostrud nisi tempor. Laborum id sunt magna occaecat cillum
                     irure incididunt ut nisi pariatur ipsum excepteur aliquip.</p>
             </div>
-            <div class="col-md-7">
-                <img style="height: 400px; width: 100%;" src="./Images/local3.jpeg" alt="Local">
+            <div class="col-md-7 centrar">
+                <img  style="height: 400px; width: 85%;" src="./Images/about.jpeg" alt="Local">
             </div>
             <div style="margin-top: 25px;">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.5477982662014!2d-74.10477582765779!3d4.576849100000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f98c325cec007%3A0x5e53caf16f60e5ce!2sOlga%20Lucia!5e0!3m2!1ses!2sco!4v1649108406914!5m2!1ses!2sco" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
