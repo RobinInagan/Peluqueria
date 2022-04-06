@@ -88,22 +88,22 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             <div class="col-md-3">
                             </div>
                             <div class="col-md-6">
-                                    <label for="cargo">Clientes</label>
-                                    <div class="form-group">
-                                        <select class="form-select" name="cliente" Required>
-                                            <option>---Seleccione cliente-----</option>
-                                            <?php
-                                            $con = new Conexion();
-                                            $link = $con->Conectar();
-                                            $sql = "select * from cliente";
-                                            $res = mysqli_query($link, $sql);
-                                            while ($row = mysqli_fetch_array($res)) {
-                                                echo "<option value='" . $row['idCliente'] . "'>" . $row['nombres'] . " " . $row['Apellidos'] . "</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
+                                <label for="cargo">Clientes</label>
+                                <div class="form-group">
+                                    <select class="form-select" name="cliente" Required>
+                                        <option>---Seleccione cliente-----</option>
+                                        <?php
+                                        $con = new Conexion();
+                                        $link = $con->Conectar();
+                                        $sql = "select * from cliente";
+                                        $res = mysqli_query($link, $sql);
+                                        while ($row = mysqli_fetch_array($res)) {
+                                            echo "<option value='" . $row['idCliente'] . "'>" . $row['nombres'] . " " . $row['Apellidos'] . "</option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
+                            </div>
                             <br><br><br>
                             <div class="col-md-12 centrar">
                                 <input type="submit" value="Continuar" name="continuar" class="btn btn-dark" title="Continuar">
@@ -116,16 +116,17 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         </div>
         </div>
 
-        <footer class="bg bg-dark text-white fixed-bottom">
+        <footer class="bg bg-dark text-white fixed-bottom" style="margin-top: 30px;">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
-                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Calle 27sur 12g-24</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>3153242040</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>Galfershbarber@gmail.com</p>
                 </address>
             </div>
         </footer>
+
     </body>
 
     </html>

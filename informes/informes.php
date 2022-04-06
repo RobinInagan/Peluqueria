@@ -64,7 +64,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                 <li><a class="dropdown-item" href="../horas/gestionH.php">Gestión Horas</a></li>
                                 <li><a class="dropdown-item" href="../roles/gestionR.php">Gestión Roles</a></li>
                                 <li><a class="dropdown-item" href="../servicios/gestionS.php">Gestión Servicios</a></li>
-                                <li><a class="dropdown-item" href="#">Gestión Citas</a></li>
+                                <li><a class="dropdown-item" href="../citas/gestionCi.php">Gestión Citas</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -88,7 +88,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             <div class="collapse" id="collapse1">
                                 <div class="card card-body centrar">
                                     <form action="./mensual.php" method="POST">
-                                        <input type="submit" class="btn btn-primary" value="Ver informe">
+                                        <input type="submit" class="btn btn-dark " value="Ver informe">
                                     </form>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             <div class="collapse" id="collapse2">
                                 <div class="card card-body centrar">
                                     <form action="./infocliente.php" method="POST">
-                                        <input type="submit" class="btn btn-primary" value="Ver informe">
+                                        <input type="submit" class="btn btn-dark" value="Ver informe">
                                     </form>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             <div class="collapse" id="collapse3">
                                 <div class="card card-body centrar">
                                     <form action="./infoemple.php" method="POST">
-                                        <input type="submit" class="btn btn-primary" value="Ver informe">
+                                        <input type="submit" class="btn btn-dark" value="Ver informe">
                                     </form>
                                 </div>
                             </div>
@@ -132,13 +132,13 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             </div>
         </div>
         <br>
-        <footer class="bg bg-dark text-white ">
+        <footer class="bg bg-dark text-white" style="margin-top: 30px;">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
-                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Calle 27sur 12g-24</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>3153242040</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>Galfershbarber@gmail.com</p>
                 </address>
             </div>
         </footer>

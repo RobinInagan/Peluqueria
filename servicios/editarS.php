@@ -83,6 +83,9 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <li><a class="dropdown-item" href="../citas/gestionCi.php">Gestión Citas</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../informes/informes.php">Informes</a>
+                            </li>
                         <?php
                         }
                         ?>
@@ -142,13 +145,13 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 
             </div>
         </div>
-        <footer class="bg bg-dark text-white fixed-bottom">
+        <footer class="bg bg-dark text-white fixed-bottom" style="margin-top: 30px;">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
-                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Calle 27sur 12g-24</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>3153242040</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>Galfershbarber@gmail.com</p>
                 </address>
             </div>
         </footer>

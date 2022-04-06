@@ -82,6 +82,9 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <li><a class="dropdown-item active" href="./citas/gestionCi.php">Gestión Citas</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../informes/informes.php">Informes</a>
+                            </li>
                         <?php
                         }
                         ?>
@@ -125,7 +128,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         <div class="col-md-4">
                             <label for="apel_e">Cliente</label>
                             <input type="text" id="apel_c" name="cliente" class="form-control" value="<?php echo $reg[0]['nombres'] ?>" readonly>
-                            <input type="hidden" id="apel_c" name="clienteid" class="form-control" value="<?php echo $reg[0]['idCliente'] ?>" >
+                            <input type="hidden" id="apel_c" name="clienteid" class="form-control" value="<?php echo $reg[0]['idCliente'] ?>">
                         </div>
                         <div class="col-md-4">
                             <label for="email_e">Empleado</label>
@@ -138,7 +141,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     $sql = "select * from empleado";
                                     $res = mysqli_query($link, $sql);
                                     while ($row = mysqli_fetch_array($res)) {
-                                        echo "<option value='" . $row['cedula'] . "'>" . $row['nombre'] ." ". $row['Apellidos'] . "</option>";
+                                        echo "<option value='" . $row['cedula'] . "'>" . $row['nombre'] . " " . $row['Apellidos'] . "</option>";
                                     }
                                     ?>
                                 </select>
@@ -193,16 +196,17 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             </div>
         </div>
 
-        <footer class="bg bg-dark text-white " style=" position: absolute;bottom: 0;width: 100%;height: 150px;">
+        <footer class="bg bg-dark text-white" style="margin-top: 30px;">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
-                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Calle 27sur 12g-24</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>3153242040</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>Galfershbarber@gmail.com</p>
                 </address>
             </div>
         </footer>
+
     </body>
 
     </html>

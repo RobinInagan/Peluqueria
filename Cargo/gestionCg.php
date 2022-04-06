@@ -75,6 +75,9 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <li><a class="dropdown-item" href="../citas/gestionCi.php">Gestión Citas</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../informes/informes.php">Informes</a>
+                            </li>
                         <?php
                         }
                         ?>
@@ -94,7 +97,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             ?>
 
             <div class="posicion">
-            <div class="card-header ">
+                <div class="card-header ">
                     <br>
                     <h3 class="text-white">GESTIÓN CARGO</h3>
                 </div>
@@ -149,16 +152,14 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 </div>
             </div>
         </div>
-        <footer class="bg bg-dark text-white">
-            <div class="row">
-                <div class="centrar">
-                    <address>
-                        <h3>Galfersh Barber</h3>
-                        <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                        <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                        <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
-                    </address>
-                </div>
+        <footer class="bg bg-dark text-white" style="margin-top: 30px;">
+            <div class="centrar">
+                <address>
+                    <h3>Galfersh Barber</h3>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Calle 27sur 12g-24</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>3153242040</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>Galfershbarber@gmail.com</p>
+                </address>
             </div>
         </footer>
     </body>

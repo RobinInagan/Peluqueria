@@ -16,7 +16,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
      `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
      inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
      Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
-     on Estado_cita_idEstado_cita = idEstado_cita where citas.Empleado_idEmpleado = ".$_POST['empleado']." ORDER BY citas.Fecha_cita ASC");
+     on Estado_cita_idEstado_cita = idEstado_cita where citas.Empleado_idEmpleado = " . $_POST['empleado'] . " ORDER BY citas.Fecha_cita ASC");
     $citas = array();
     $n = 0;
     while ($r = $query->fetch_object()) {
@@ -38,7 +38,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link rel="stylesheet" language="javascript" href="../bootstrap/css/bootstrap.min.css">
         <script src="../jspdf/dist/jspdf.min.js"></script>
         <script src="../JavasScript/jspdf.plugin.autotable.min.js"></script>
-        
+
         <!-- Sweet alert-->
         <link rel="stylesheet" href="../sw/dist/sweetalert2.min.css">
 
@@ -114,7 +114,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             $reg = mysqli_fetch_array($res);
                             ?>
 
-                            <input type="text" id="dir_e" name="empleado1" class="form-control" value="<?php echo "".$reg['nombre']." ".$reg['Apellidos']."" ?>" readonly>
+                            <input type="text" id="dir_e" name="empleado1" class="form-control" value="<?php echo "" . $reg['nombre'] . " " . $reg['Apellidos'] . "" ?>" readonly>
                         </div>
                         <br><br><br>
                         <div class="col-md-12 centrar">
@@ -148,7 +148,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                           `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
                           inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
                           Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
-                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Empleado_idEmpleado = ".$_POST['empleado']." ORDER BY citas.Fecha_cita ASC";
+                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Empleado_idEmpleado = " . $_POST['empleado'] . " ORDER BY citas.Fecha_cita ASC";
                             $res1 = mysqli_query($link, $sql1);
 
 
@@ -174,16 +174,17 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             </div>
         </div>
 
-        <footer class="bg bg-dark text-white">
+        <footer class="bg bg-dark text-white" style="margin-top: 30px;">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
-                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Calle 27sur 12g-24</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>3153242040</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>Galfershbarber@gmail.com</p>
                 </address>
             </div>
         </footer>
+        
         <script>
             $("#GenerarMensual").click(function() {
                 var pdf = new jsPDF();
@@ -196,18 +197,18 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 
                 var data = [
                     <?php foreach ($citas as $c) : ?>[<?php echo $c->idcita; ?>, "<?php echo $c->descripición; ?>", "<?php echo $c->nombres; ?>",
-                         "<?php echo $c->descripcion; ?>", "<?php echo $c->precio; ?>", "<?php echo $c->Fecha_cita; ?>", "<?php echo $c->descripciòn; ?>"],
+                            "<?php echo $c->descripcion; ?>", "<?php echo $c->precio; ?>", "<?php echo $c->Fecha_cita; ?>", "<?php echo $c->descripciòn; ?>"],
                     <?php endforeach; ?>
                 ];
 
 
-            pdf.autoTable(columns, data, {
-                margin: {
-                    top: 25
-                }
-            });
+                pdf.autoTable(columns, data, {
+                    margin: {
+                        top: 25
+                    }
+                });
 
-            pdf.save('InformeEmpleado.pdf');
+                pdf.save('InformeEmpleado.pdf');
             });
         </script>
     </body>

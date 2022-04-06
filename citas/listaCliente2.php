@@ -92,33 +92,33 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                         <div class="row">
                             <div class="col-md-7">
                                 <label for="nom_e">Servicio</label>
-                                <?php 
-                                    $con = new Conexion();
-                                    $link = $con->Conectar();
-                                    $sql1 = "select * from servicio where idServicio = ".$_POST['servicioo']."";
-                                    $res1 = mysqli_query($link, $sql1);
-                                    $row1 = mysqli_fetch_array($res1);
+                                <?php
+                                $con = new Conexion();
+                                $link = $con->Conectar();
+                                $sql1 = "select * from servicio where idServicio = " . $_POST['servicioo'] . "";
+                                $res1 = mysqli_query($link, $sql1);
+                                $row1 = mysqli_fetch_array($res1);
                                 ?>
                                 <input type="text" id="servicio" name="servicio" class="form-control" value="<?php echo $row1['descripición'] ?>" readonly>
-                                <input type='hidden' name='servicio2' value="<?php echo $_POST['servicioo']?>">
+                                <input type='hidden' name='servicio2' value="<?php echo $_POST['servicioo'] ?>">
                             </div>
                             <div class="col-md-5">
                                 <label for="dir_e">Fecha Cita</label>
                                 <input type="date" id="dir_e" name="fecha" class="form-control" value="<?php echo $_POST['fecha'] ?>" readonly>
-                                
+
                             </div>
                             <div class="col-md-5">
                                 <label for="email_e">Empleado</label>
-                                <?php 
-                                    $con = new Conexion();
-                                    $link = $con->Conectar();
-                                    $sql = "select * from empleado where cedula = ".$_POST['empleado']."";
-                                    $res = mysqli_query($link, $sql);
-                                    $row = mysqli_fetch_array($res);
+                                <?php
+                                $con = new Conexion();
+                                $link = $con->Conectar();
+                                $sql = "select * from empleado where cedula = " . $_POST['empleado'] . "";
+                                $res = mysqli_query($link, $sql);
+                                $row = mysqli_fetch_array($res);
 
                                 ?>
-                                <input type="text" id="emple" name="emple" class="form-control" value="<?php echo "".$row['nombre']." ".$row['Apellidos'].""?>" readonly>    
-                                <input type='hidden' name='empleado1' value="<?php echo $_POST['empleado']?>">
+                                <input type="text" id="emple" name="emple" class="form-control" value="<?php echo "" . $row['nombre'] . " " . $row['Apellidos'] . "" ?>" readonly>
+                                <input type='hidden' name='empleado1' value="<?php echo $_POST['empleado'] ?>">
                             </div>
                             <div class="col-md-5">
                                 <label>Horas Disponibles</label>
@@ -129,7 +129,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
                                         $fecha = $_POST['fecha'];
                                         // $sql2 = "SELECT * FROM horas WHERE NOT EXISTS(SELECT null FROM citas WHERE Empleado_idEmpleado = ".$_POST['empleado']." and idHoras = 10 and Fecha_cita = '2021-10-13')";
                                         // $sql2 = "SELECT * FROM horas where NOT horas.idHoras = EXISTS((SELECT citas.Horas_idHoras from citas where citas.Empleado_idEmpleado = ".$_POST['empleado']." and citas.Fecha_cita = '".$_POST['fecha']."'))";
-                                        $sql2 = "SELECT * FROM horas WHERE horas.idHoras NOT IN (SELECT citas.Horas_idHoras FROM citas WHERE citas.Empleado_idEmpleado=".$_POST['empleado']." and citas.Fecha_cita='".$_POST['fecha']."' and (Estado_cita_idEstado_cita=1 or Estado_cita_idEstado_cita=2))";
+                                        $sql2 = "SELECT * FROM horas WHERE horas.idHoras NOT IN (SELECT citas.Horas_idHoras FROM citas WHERE citas.Empleado_idEmpleado=" . $_POST['empleado'] . " and citas.Fecha_cita='" . $_POST['fecha'] . "' and (Estado_cita_idEstado_cita=1 or Estado_cita_idEstado_cita=2))";
                                         $res2 = mysqli_query($link, $sql2);
                                         while ($row2 = mysqli_fetch_array($res2)) {
                                             echo "<option value='" . $row2['idHoras'] . "'>" . $row2['descripcion'] . "</option>";
@@ -137,30 +137,30 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 2) {
 
                                         ?>
                                     </select>
-                                    <?php 
-                                        $sql3 = "SELECT usuario.Cliente_idCliente FROM usuario where usuario.Usuario = '".$_SESSION['usuario']."'";
-                                        $res3 = mysqli_query($link, $sql3);
-                                        $row3 = mysqli_fetch_array($res3);
+                                    <?php
+                                    $sql3 = "SELECT usuario.Cliente_idCliente FROM usuario where usuario.Usuario = '" . $_SESSION['usuario'] . "'";
+                                    $res3 = mysqli_query($link, $sql3);
+                                    $row3 = mysqli_fetch_array($res3);
                                     ?>
-                                    <input type='hidden' name='idcliente' value="<?php echo $row3['Cliente_idCliente']?>">
+                                    <input type='hidden' name='idcliente' value="<?php echo $row3['Cliente_idCliente'] ?>">
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-12 centrar">
-                            <br>
+                                <br>
                                 <input type="button" value="Volver" class="btn btn-dark" title="Volver" onclick="window.location='./citaclientes.php'">
                                 <input type="submit" value="Continuar" class="btn btn-dark" title="inserta">
                             </div>
                 </form>
             </div>
         </div>
-        <footer class="bg bg-dark text-white fixed-bottom">
+        <footer class="bg bg-dark text-white fixed-bottom" style="margin-top: 30px;">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
-                    <p> <span class="oi oi-home footer-address-icon"></span>Cra 34 #43-44</p>
-                    <p><span class="oi oi-phone footer-address-icon"></span>34322123</p>
-                    <p><span class="oi oi-inbox footer-address-icon"></span>galfersh@gmail.com</p>
+                    <p> <span class="oi oi-home footer-address-icon"></span>Calle 27sur 12g-24</p>
+                    <p><span class="oi oi-phone footer-address-icon"></span>3153242040</p>
+                    <p><span class="oi oi-inbox footer-address-icon"></span>Galfershbarber@gmail.com</p>
                 </address>
             </div>
         </footer>
