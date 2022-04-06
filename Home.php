@@ -198,7 +198,7 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="col">
                     <div class="card">
                         <a data-bs-toggle="collapse" data-bs-placement="top" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
-                            <img src="./Images/Logo.jpg" class="card-img-top" alt="Barberia" data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
+                            <img src="./Images/barberia.jpeg" class="card-img-top" alt="Barberia" data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">                    
                         </a>
                         <div class="card-body">
                             <h5 class="card-title">Barbería</h5>
@@ -213,7 +213,7 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="col">
                     <div class="card">
                         <a data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
-                            <img src="./Images/Logo.jpg" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
+                            <img src="./Images/manicure1.jpeg" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title">Manicure</h5>
@@ -228,7 +228,7 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="col">
                     <div class="card">
                         <a data-bs-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
-                            <img src="./Images/Logo.jpg" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
+                            <img src="./Images/tintes.jpeg" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title">Tintes</h5>

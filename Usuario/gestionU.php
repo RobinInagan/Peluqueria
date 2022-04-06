@@ -216,7 +216,13 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             </div>
         </div>
 
+<<<<<<< HEAD
         <footer class="bg bg-dark text-white" style="margin-top: 30px;">
+=======
+
+
+        <footer class="bg bg-dark text-white fixed-bottom">
+>>>>>>> 3235ad89423dfd9a81ac8b642fe71b0f51ca4ca2
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>

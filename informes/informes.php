@@ -81,7 +81,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 <div class="col">
                     <div class="card">
                         <a data-bs-toggle="collapse" data-bs-placement="top" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
-                            <img src="../Images/Logo.jpg" class="card-img-top" alt="Barberia" data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
+                            <img src="../Images/imensual.png" class="card-img-top" alt="Barberia" data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title">Informe Mensual</h5>
@@ -98,7 +98,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 <div class="col">
                     <div class="card">
                         <a data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
-                            <img src="../Images/Logo.jpg" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
+                            <img src="../Images/icliente.jpeg" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title">Informe Cliente</h5>
@@ -115,7 +115,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 <div class="col">
                     <div class="card">
                         <a data-bs-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
-                            <img src="../Images/Logo.jpg" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
+                            <img src="../Images/iempelado.png" class="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click aquí">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title">Informe Empleado</h5>
