@@ -141,9 +141,6 @@ if (!isset($_SESSION['usuario'])) {
                                 <button class="btn btn-warning " onclick=window.location="./editarci.php?idcita=<?php echo $reg[$i]['idcita']; ?>">
                                     <span class="material-icons">mode_edit</span>
                                 </button>
-                                <button class="btn btn-danger" onclick="editar1('editar1.php?id=<?php echo $reg[$i]['idcita']; ?>')">
-                                    <span class="material-icons">delete_sweep </span>
-                                </button>
                             </td>
                             </tr>
                         <?php

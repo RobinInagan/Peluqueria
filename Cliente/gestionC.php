@@ -123,9 +123,6 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                 <button class="btn btn-warning " onclick=window.location="./editarC.php?idCliente=<?php echo $reg[$i]['idCliente']; ?>">
                                     <span class="material-icons">mode_edit</span>
                                 </button>
-                                <button class="btn btn-danger" onclick="eliminar('eliminarC.php?id=<?php echo $reg[$i]['idCliente']; ?>')">
-                                    <span class="material-icons">delete_sweep </span>
-                                </button>
                             </td>
                             </tr>
                         <?php

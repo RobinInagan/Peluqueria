@@ -156,10 +156,6 @@ if (isset($_SESSION['usuario']) && $_SESSION['rol'] == 3 || $_SESSION['rol'] == 
                                 <button class="btn btn-warning" onclick=window.location="./editarD.php?iddia=<?php echo $reg[$i]['iddias']; ?>">
                                     <span class="material-icons">mode_edit</span>
                                 </button>
-                                <button class="btn btn-danger" onclick="eliminar('eliminarD.php?iddia=<?php echo $reg[$i]['iddias']; ?>')">
-                                    <span class="material-icons">delete_sweep </span>
-                                </button>
-                            </td>
                             </tr>
                         <?php
                         }

@@ -171,18 +171,8 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         <div class="col-md-4">
                             <label for="dir_e">Estado</label>
                             <div class="form-group">
-                                <select class="form-select" name="estado" Required>
-                                    <option value="<?php echo $reg[0]['idEstado_cita'] ?>"><?php echo $reg[0]['descripciòn'] ?></option>
-                                    <?php
-                                    $con = new Conexion();
-                                    $link = $con->Conectar();
-                                    $sql = "select * from estado_cita";
-                                    $res = mysqli_query($link, $sql);
-                                    while ($row = mysqli_fetch_array($res)) {
-                                        echo "<option value='" . $row['idEstado_cita'] . "'>" . $row['descripciòn'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
+                                <input type="hidden" name="estado" value="<?php echo $reg[0]['idEstado_cita'] ?>">
+                                <input class="form-control" type="text" name="des-estado" value="<?php echo $reg[0]['descripciòn'] ?>" readonly>
                             </div>
                         </div>
                         <br><br><br>

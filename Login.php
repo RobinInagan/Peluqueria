@@ -64,7 +64,7 @@
 
             <div class="signup hide">
                 <h2>Registrar</h2>
-                <form action="./Cliente/insertC.php" method="POST">
+                <form name="form" action="./Cliente/insertC.php" method="POST">
                     <div class="inputbox">
                         <table>
                             <tr>
@@ -93,7 +93,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="number" name="tel" placeholder="  Teléfono" Required>
+                                    <input type="number" name="tel" placeholder="  Teléfono" Required min="9" max="9999999999">
                                 </td>
                                 <td>
                                     <input type="date" name="date" placeholder="  Fecha Nacimiento" Required>

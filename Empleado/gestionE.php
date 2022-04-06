@@ -210,10 +210,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                             <td class="col-2">
                                 <button class="btn btn-warning" onclick=window.location="./editarE.php?idEmpleado=<?php echo $reg[$i]['cedula']; ?>">
                                     <span class="material-icons">mode_edit</span>
-                                </button>
-                                <button class="btn btn-danger" onclick="eliminar('eliminarE.php?id=<?php echo $reg[$i]['cedula']; ?>')">
-                                    <span class="material-icons">delete_sweep </span>
-                                </button>
+                                </button>   
                             </td>
                             </tr>
                         <?php
