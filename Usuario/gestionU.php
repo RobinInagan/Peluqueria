@@ -215,7 +215,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
 
 
 
-        <footer class="bg bg-dark text-white ">
+        <footer class="bg bg-dark text-white fixed-bottom">
             <div class="centrar">
                 <address>
                     <h3>Galfersh Barber</h3>
