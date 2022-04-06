@@ -207,12 +207,13 @@
         }
 
         public function mensual($date){
-            $sql = "select `idcita`,`servicio`.`idServicio`, `servicio`.`descripición`, servicio.precio,`cliente`.`idCliente`, 
-            `cliente`.`nombres`, `empleado`.`cedula`, `empleado`.`nombre`, `horas`.`idHoras`, `horas`.`descripcion`, 
-            `Fecha_cita`, `estado_cita`.`idEstado_cita`,`estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio = 
-            idServicio inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
-            Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
-            on Estado_cita_idEstado_cita = idEstado_cita where MONTH(citas.Fecha_cita) = MONTH('$date-01') and (YEAR(citas.Fecha_cita) = YEAR('$date-01'))";
+            $sql = "select `idcita`,`servicio`.`idServicio`, `servicio`.`descripición`, 
+            `cliente`.`idCliente`, `cliente`.`nombres`, `empleado`.`cedula`, `empleado`.`nombre`,
+             `horas`.`idHoras`, `horas`.`descripcion`, `Fecha_cita`, `estado_cita`.`idEstado_cita`,
+             `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
+             inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
+             Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
+             on Estado_cita_idEstado_cita = idEstado_cita where citas.Fecha_cita LIKE '$date%'ORDER BY citas.Fecha_cita ASC";
             $res = mysqli_query(Conexion::Conectar(), $sql) or die("Error en la consulta sql al buscar id cargo");
             if ($reg = mysqli_fetch_assoc($res)) {
                 $this->citas[] = $reg;

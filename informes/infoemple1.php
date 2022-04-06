@@ -16,7 +16,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
      `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
      inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
      Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
-     on Estado_cita_idEstado_cita = idEstado_cita where citas.Fecha_cita LIKE '" . $_POST['fecha'] . "%'ORDER BY citas.Fecha_cita ASC");
+     on Estado_cita_idEstado_cita = idEstado_cita where citas.Empleado_idEmpleado = ".$_POST['empleado']." ORDER BY citas.Fecha_cita ASC");
     $citas = array();
     $n = 0;
     while ($r = $query->fetch_object()) {
@@ -36,12 +36,12 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
         <link rel="stylesheet" language="javascript" href="../bootstrap/css/bootstrap.min.css">
-
+        <script src="../jspdf/dist/jspdf.min.js"></script>
+        <script src="../JavasScript/jspdf.plugin.autotable.min.js"></script>
+        
         <!-- Sweet alert-->
         <link rel="stylesheet" href="../sw/dist/sweetalert2.min.css">
 
-        <script src="../jspdf/dist/jspdf.min.js"></script>
-        <script src="../JavasScript/jspdf.plugin.autotable.min.js"></script>
         <!-- Iconos -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script type="text/javascript" language="javascript" src="../JavasScript/Funciones.js"></script>
@@ -98,19 +98,27 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
             <div class="container">
                 <div class="card-header ">
                     <br>
-                    <h3 class="text-white">INFORME MENSUAL</h3>
+                    <h3 class="text-white">INFORME EMPLEADO</h3>
                 </div>
                 <div class=" card-body">
                     <div class="row">
                         <div class="col-md-3">
                         </div>
                         <div class="col-md-6">
-                            <label for="dir_e">Fecha Informe</label>
-                            <input type="month" id="dir_e" name="fecha1" class="form-control" value="<?php echo $_POST['fecha'] ?>" readonly>
+                            <label for="dir_e"> Informe Empleado</label>
+                            <?php
+                            $con = new Conexion();
+                            $link = $con->Conectar();
+                            $sql = "select * from empleado where cedula =" . $_POST['empleado'] . "";
+                            $res = mysqli_query($link, $sql);
+                            $reg = mysqli_fetch_array($res);
+                            ?>
+
+                            <input type="text" id="dir_e" name="empleado1" class="form-control" value="<?php echo "".$reg['nombre']." ".$reg['Apellidos']."" ?>" readonly>
                         </div>
                         <br><br><br>
                         <div class="col-md-12 centrar">
-                            <a name="volver" class="btn btn-dark" href="./mensual.php">Volver</a>
+                            <a name="volver" class="btn btn-dark" href="./infoemple.php">Volver</a>
                         </div>
                     </div>
                 </div>
@@ -124,7 +132,6 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                     <th>ID</th>
                                     <th>Servicio</th>
                                     <th>Cliente</th>
-                                    <th>Empleado</th>
                                     <th>Hora</th>
                                     <th>Precio</th>
                                     <th>Fecha </th>
@@ -141,7 +148,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                           `estado_cita`.`descripciòn` from citas inner join servicio on Servicio_idServicio= idServicio 
                           inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
                           Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
-                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Fecha_cita LIKE '" . $_POST['fecha'] . "%'ORDER BY citas.Fecha_cita ASC";
+                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Empleado_idEmpleado = ".$_POST['empleado']." ORDER BY citas.Fecha_cita ASC";
                             $res1 = mysqli_query($link, $sql1);
 
 
@@ -151,7 +158,6 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                                 echo "<td>" . $reg['idcita'] . "</td>";
                                 echo "<td>" . $reg['descripición'] . "</td>";
                                 echo "<td>" . $reg['nombres'] . "</td>";
-                                echo "<td>" . $reg['nombre'] . "</td>";
                                 echo "<td>" . $reg['descripcion'] . "</td>";
                                 echo "<td>" . $reg['precio'] . "</td>";
                                 echo "<td>" . $reg['Fecha_cita'] . "</td>";
@@ -161,17 +167,6 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                         </table>
                     </div>
                 </div>
-                <?php
-                $sql2 = "select SUM(servicio.precio) as resp from citas inner join servicio on Servicio_idServicio= idServicio 
-                          inner join cliente on Cliente_idCliente = idCliente inner join empleado on 
-                          Empleado_idEmpleado = cedula inner join horas on Horas_idHoras = idHoras inner join estado_cita 
-                          on Estado_cita_idEstado_cita = idEstado_cita where citas.Fecha_cita LIKE '" . $_POST['fecha'] . "%' and Estado_cita_idEstado_cita=2 ORDER BY citas.Fecha_cita ASC";
-
-                $res2 = mysqli_query($link, $sql2);
-                $reg = mysqli_fetch_array($res2);
-
-                echo "<h2>Total: $" . $reg['resp'] . "</h2>";
-                ?>
                 <div class="col-md-12 centrar">
                     <button name="volver" id="GenerarMensual" class="btn btn-dark">Generar PDF</button>
                 </div>
@@ -189,20 +184,19 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 </address>
             </div>
         </footer>
-
         <script>
             $("#GenerarMensual").click(function() {
                 var pdf = new jsPDF();
-                pdf.text(20, 20, "Informe Mensual Peluquería Galfersh Barber");
+                pdf.text(20, 20, "Informe para Empleado:");
 
                 console.log(1);
 
 
-                var columns = ["Id", "Servicio", "Cliente", "Empleado", "Hora", "Precio", "Fecha", "Estado"];
+                var columns = ["Id", "Servicio", "Cliente", "Hora", "Precio", "Fecha", "Estado"];
 
                 var data = [
                     <?php foreach ($citas as $c) : ?>[<?php echo $c->idcita; ?>, "<?php echo $c->descripición; ?>", "<?php echo $c->nombres; ?>",
-                         "<?php echo $c->nombre; ?>", "<?php echo $c->descripcion; ?>", "<?php echo $c->precio; ?>", "<?php echo $c->Fecha_cita; ?>", "<?php echo $c->descripciòn; ?>"],
+                         "<?php echo $c->descripcion; ?>", "<?php echo $c->precio; ?>", "<?php echo $c->Fecha_cita; ?>", "<?php echo $c->descripciòn; ?>"],
                     <?php endforeach; ?>
                 ];
 
@@ -213,7 +207,7 @@ if ($_SESSION['usuario'] && $_SESSION['rol'] == 1) {
                 }
             });
 
-            pdf.save('InformeMensual.pdf');
+            pdf.save('InformeEmpleado.pdf');
             });
         </script>
     </body>
